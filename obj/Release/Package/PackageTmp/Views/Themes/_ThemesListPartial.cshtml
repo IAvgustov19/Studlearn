@@ -1,0 +1,26 @@
+﻿@model IEnumerable<SW.Shared.Models.Documents.ThemePreview>
+@{
+    Layout = null;
+}
+@if (Model.Count() > 0)
+{
+    <div id="themes" class="blog-tags">
+        <ul>
+            @foreach (var theme in Model)
+            {
+                <li>
+                    <a class=""
+                       href="~/themes/details/@theme.Id" data-id="@theme.Id" data-name="@theme.Name" data-slug="@theme.Slug"
+                       title="Посмотреть работы по теме @theme.Name">
+                        <i class="fa fa-tags"></i>
+                        @theme.Name
+                        @if (theme.DocumentsCount != 0)
+                        {
+                            <span>(@theme.DocumentsCount)</span>
+                        }
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+}

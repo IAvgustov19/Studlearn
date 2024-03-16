@@ -1,0 +1,15 @@
+﻿@helper AuthorLink(string name, string id, string slug = "", string css = "")
+{
+    string link = String.IsNullOrEmpty(slug) ? "/authors/details/" + id : "/authors/profile/" + slug;
+    <a class="@css" href="@link">
+        @name
+    </a>
+}
+
+@helper WorkLink(string title, long id, string slug = "", string @css = "")
+{
+    string link = String.IsNullOrEmpty(slug) ? "/works/index/" + id : "/works/details/" + slug;
+    <a class="@css" href="@link">
+        @title
+    </a>
+}

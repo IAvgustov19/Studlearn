@@ -1,0 +1,77 @@
+﻿@model SW.Shared.Models.Documents.CommentPreview
+
+<div class="@(Model.Rating <= -5 ? "media comment bad" : "media comment")"
+     style="border-left: 5px solid @(string.IsNullOrEmpty(Model.UserTypeColorSource) ? "#eee" : Model.UserTypeColorSource) ; padding-left: 3px;"
+     itemprop="review" itemscope="" itemtype="http://schema.org/Review">
+    @if (Model.Author != null)
+    {
+        <a href="@(String.IsNullOrEmpty(Model.Author.Slug) ? "/authors/details/" + Model.Author.Id: "/authors/profile/" + Model.Author.Slug)" class="pull-left">
+            <img src="@Model.Author.PreviewAvatar" alt="" class="media-object">
+        </a>
+    }
+    else
+    {
+        <p class="pull-left">
+            <img src="@SW.Shared.Constants.DefaultImages.NoAvatar" alt="" class="media-object">
+        </p>
+    }
+    <div class="media-body">
+        <h4 class="media-heading" style="display: inline-block;">
+            @if (!Model.IsReply)
+            {
+                <b class="rating rating-review" data-rating="@Model.Rating"></b>
+            }
+            @{ var author = string.Empty;}
+            @if (Model.Author != null)
+            {
+                @MyHelpers.AuthorLink(Model.Author.UserName, Model.Author.Id, Model.Author.Slug, "username")
+                author = Model.Author.UserName;
+            }
+            else
+            {
+                @Model.AuthorTitle
+                author = Model.AuthorTitle;
+            }
+            <meta itemprop="author" content="@author" />
+            <meta itemprop="itemReviewed" content="@Model.ItemReviewed" />
+            <div itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating">
+                <meta content="0" itemprop="worstRating">
+                <meta content="@Model.Rating" itemprop="ratingValue">
+                <meta content="5" itemprop="bestRating">
+            </div>
+        </h4>
+        @if (!string.IsNullOrEmpty(Model.UserType))
+        {
+            <span class="badge badge-@Model.UserTypeColor">@Model.UserType</span>
+        }
+        <div style="float:right">
+            <span class="sw-datetime" itemprop="datePublished">@Model.PostedAt.ToString("yyyy-MM-ddTHH:mm:ssZ")</span>
+            <a class="reply" title="ответить" data-commentId="@Model.CommentId" data-commentAuthor="@Model.AuthorTitle" style="cursor:pointer; @(string.IsNullOrEmpty(User.Identity.Name)?" display:none;":"")" @*onclick="$('#parentComment').val('@Model.CommentId');$('.new-message').val('Ответ для @Model.AuthorTitle:');$('.new-message').focus();"*@><i class="fa fa-reply"></i>Ответить</a>
+        </div>
+        <p itemprop="reviewBody">
+            @*@if (Model.IsReply)
+                {
+                    <span>
+                        Ответ для
+                        @if (string.IsNullOrEmpty(Model.RepliedTo.Slug))
+                        {
+                            <span title="@Model.RepliedTo.FirstName" style="font-weight: bold;cursor: pointer;">@(Model.RepliedTo.UserName)</span><span>:</span>
+                        }
+                        else
+                        {
+                            <a rel="nofollow" href="/Authors/Profile/@Model.RepliedTo.Slug" title="@Model.RepliedTo.FirstName">@Model.RepliedTo.UserName</a><span>:</span>
+                        }
+                    </span>
+                }*@
+            @Model.Message
+        </p>
+        <p class="pull-right">Полезный: <a href="javascript:void(0);" class="like font-green @(Model.Liked == true ? "liked bold" : "")" data-id="@Model.CommentId">Да (<span class="like-count">@Model.Likes</span>)</a> / <a href="javascript:void(0);" class="dislike font-red @(Model.Liked == false ? "liked bold" : "" )" data-id="@Model.CommentId">Нет (<span class="like-count">@Model.Dislikes</span>)</a></p>
+    </div>
+</div>
+@**@
+@foreach (var comment in Model.ChildComments)
+{
+    <div style="@(comment.ParentId!=0?"margin-left:70px;":"")">
+        @Html.Partial("_ReviewPartial", comment)
+    </div>
+}

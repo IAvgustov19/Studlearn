@@ -1,0 +1,30 @@
+﻿@model SW.Shared.Models.Documents.SimilarDocument
+
+
+<li class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 10px;">
+    @if (String.IsNullOrEmpty(@Model.DocumentSlug))
+    {
+        <a href="@Url.Action("Index", "Works", new { id = @Model.DocumentId })" style="display:inline-block;width:100%;white-space: nowrap;overflow:hidden !important;text-overflow: ellipsis;">
+            <i class="fa fa-angle-right"></i>@Model.DocumentTitle
+        </a>
+    }
+    else
+    {
+        <a href="@Url.Action("Details", "Works", new { id = @Model.DocumentSlug })" style="display:inline-block;width:100%;white-space: nowrap;overflow:hidden !important;text-overflow: ellipsis;">
+            <i class="fa fa-angle-right"></i>@Model.DocumentTitle
+        </a>
+    }
+    <br />
+    <span title="рейтинг" style="margin: 0 0 0 15px;"><i class="fa fa-star"></i> @Model.Rating</span> |
+    <span title="цена">
+        <i class="fa @SW.Shared.Constants.Application.DefaultCurrencyIconClass"></i>
+        @if (Model.Price.HasValue && Model.Price > 0)
+        {
+            @Model.Price
+        }
+        else
+        {
+            @:бесплатно
+                                    }
+    </span>
+</li>

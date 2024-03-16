@@ -1,0 +1,60 @@
+﻿@model SW.Shared.Models.Emails.InvoiceEmail
+
+@{
+    Layout = "~/Views/Emails/_Layout.cshtml";
+}
+
+<!--content 1 -->
+@section Content {
+    <tr>
+        <td align="center" bgcolor="#fbfcfd">
+            <table width="90%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td align="center">
+                            <!-- padding --><div style="height: 60px; line-height: 60px; font-size: 10px;">&nbsp;</div>
+                            <div style="line-height: 44px;">
+                                <font face="Arial, Helvetica, sans-serif" size="5" color="#57697e" style="font-size: 34px;">
+                                    <span style="font-family: Arial, Helvetica, sans-serif; font-size: 34px; color: #57697e;">
+                                        @SW.Resources.Frontend.Mail.InvoiceEmailHeader <b>@Model.DocumentTitle</b>
+                                    </span>
+                                </font>
+                            </div>
+                            <!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;">&nbsp;</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <div style="line-height: 24px;">
+                                @*<font face="Arial, Helvetica, sans-serif" size="4" color="#57697e" style="font-size: 15px;">
+                                        <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #57697e;">
+                                            @SW.Resources.Frontend.Mail.InvoiceEmailBody
+                                        </span>
+                                        <a href="@Model.InvoiceUrl">
+                                            Продолжить оплату
+                                        </a>
+                                    </font>*@
+                                <a id="continue" href="@Model.InvoiceUrl" style="height: 56px;font-size: 15px;-webkit-appearance: none;-moz-appearance: none;appearance: none;padding: 0;border: 0;background: 0 0;font-size: 13px;font-family: Arial, Helvetica, sans-serif;line-height: 20px;color: #333;position: relative;display: inline-block;flex-shrink: 0;vertical-align: top;border-radius: 4px;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;text-decoration: none;font-weight: 700;outline: 0;">
+                                    <span style="padding: 20px 70px; display: flex; align-items: center; justify-content: center; text-align: center; background: #35aa47; color: white; font-weight: 400 !important; font-size: 20px !important; line-height: 24px !important;">Купить @Model.DocumentPrice Р</span>
+                                </a>
+                            </div>
+                            <!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;">&nbsp;</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <div style="line-height: 44px;">
+                                <font face="Arial, Helvetica, sans-serif" size="5" color="#57697e" style="font-size: 34px;">
+                                    <span style="font-family: Arial, Helvetica, sans-serif; font-size: 22px; color: #57697e;">
+                                        После оплаты отправим Вам работу на электронную почту
+                                    </span>
+                                </font>
+                            </div>
+                            <!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;">&nbsp;</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+}

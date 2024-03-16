@@ -1,0 +1,241 @@
+@media screen and (max-width: 1175px) {
+    .btn-user-chat {
+        width: 40px;
+        height: 40px;
+        padding: 4px;
+    }
+
+    .btn-user-chat-container {
+        padding: 6px;
+        margin-right: 7%;
+    }
+
+    .benefit-item {
+        width: 256px;
+        padding-top: 117px;
+        background-size: 120px 120px;
+    }
+
+    .more-products-list {
+        flex-wrap: wrap;
+    }
+
+
+    .developers-container {
+        gap: 16px;
+    }
+
+    .profile-card-image img {
+        height: 176px;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    .developers-container {
+        flex-wrap: wrap;
+    }
+
+    .dev-profile {
+        flex-basis: 25%;
+    }
+
+    .profile-card-image img {
+        height: 216px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .scroll-down {
+        margin-right: 28%;
+    }
+
+    .main-section-container {
+        padding: 194px 0 126px 0;
+    }
+
+    .main-section-mouseOutline {
+        padding-bottom: 94px;
+    }
+
+    .main-section-container {
+        max-width: 580px;
+    }
+
+    .our-benefits-container {
+        flex-wrap: wrap;
+    }
+
+    .benefit-item {
+        flex-basis: 47%;
+    }
+
+    .product-box {
+        width: 336px;
+        height: 352px;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    .product-box-image {
+        width: 336px;
+        height: 220px;
+        background-size: cover;
+
+        border-radius: 12px;
+        position: relative;
+        margin-bottom: 12px;
+    }
+
+    .product-box-title p {
+        font-size: 16px;
+    }
+
+    .product-box-title {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .watch-more {
+        font-size: 12px;
+        line-height: 16px;
+        padding: 12px 0;
+        text-align: center;
+        border-radius: 8px;
+        border: 1px solid #969FA8
+    }
+
+    .watch-more:hover {
+        border: 1px solid #4AB22D;
+    }
+
+    .more-products-list {
+        justify-content: center;
+    }
+
+    .dev-profile {
+        flex-basis: 39%;
+    }
+
+    .profile-card-image img {
+        height: 312px;
+    }
+
+    .article-box {
+        align-items: center;
+    }
+
+}
+
+@media screen and (max-width: 720px) {
+
+    .main-section-container {
+        max-width: 430px;
+    }
+
+    .section-title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .benefit-item {
+        width: 158px;
+    }
+
+    .watch-catalog-btn {
+        width: 100%;
+    }
+
+    .category-block-body {
+        display: block;
+    }
+
+    .dev-profile {
+        flex-basis: 43%;
+    }
+
+    .developers-container {
+        justify-content: center;
+    }
+
+    .articles-container {
+        justify-content: center;
+    }
+
+    .article-box {
+        flex-basis: 80%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .dev-profile {
+        flex-basis: 60%;
+    }
+
+    .all-devs-btn {
+        width: 95%;
+    }
+
+    .best-developers {
+        margin-bottom: 80px;
+    }
+
+    .article-box {
+        flex-basis: 100%;
+    }
+
+    .article-text{
+
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .main-section-container {
+        max-width: 336px;
+    }
+
+    .main-section-mouseOutline {
+        justify-content: end;
+    }
+
+    .btn-user-chat-container {
+        margin-right: 0;
+    }
+
+    .main-categories-container {
+        padding: 12px;
+    }
+
+    .dev-profile {
+        flex-basis: 69%;
+    }
+
+    .article-text {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .article-box:nth-child(n+4) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    .popular-works {
+        margin-bottom: 60px;
+    }
+
+    .main-section-search input {
+        width: 93%;
+    }
+
+    .dev-profile {
+        flex-basis: 85%;
+    }
+}
+
+

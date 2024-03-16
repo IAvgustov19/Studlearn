@@ -1,0 +1,907 @@
+﻿.main-style {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    line-height: 24px;
+    color: #36383F;
+    font-size: 14px;
+    font-weight: 400;
+    background: #FFFFFF;
+    min-width: 360px;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.product-main-container {
+    background: url("/Metronic/assets/frontend/pages/img/products/product_bg.svg") no-repeat;
+    background-size: contain;
+    padding-bottom: 40px;
+}
+
+.comeback-to-page {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0;
+    padding: 4px 8px 4px 36px;
+    text-decoration: none;
+    background: #FFF url("/Metronic/assets/frontend/pages/img/products/arrow.svg") top 2px left 8px no-repeat;
+    border-radius: 30px;
+    color: #677685;
+    max-height: 35px;
+}
+
+.nav-breadcrumb-list {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    margin:0px;
+}
+
+.nav-breadcrumb-item {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #677685;
+    cursor: pointer;
+}
+
+    .nav-breadcrumb-item:hover {
+        color: #272F37;
+    }
+
+.product-breadcrumb {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.benefit-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    gap: 8px;
+}
+
+.benefit-item {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0;
+    padding: 4px 8px;
+    background: #FFFFFF;
+    border-radius: 4px !important;
+    color: #5D638E;
+}
+
+.first-sale {
+    background: #FFF url("/Metronic/assets/frontend/pages/img/products/new.svg") top 4px left 8px no-repeat;
+    padding: 6px 8px 6px 36px;
+}
+
+.rate {
+    background: #FFF url("/Metronic/assets/frontend/pages/img/products/star.svg") top 4px left 8px no-repeat;
+    padding: 4px 8px 4px 32px;
+}
+
+.product-block1 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.product-title {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 36px;
+    letter-spacing: 0;
+    color: #272F37;
+    text-transform: uppercase;
+}
+
+.product-demonstration-block {
+    flex-basis: 45%;
+}
+
+.product-demonstration-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    justify-content: space-between;
+    padding-bottom: 80px;
+}
+
+.product-block2 {
+    padding: 20px;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7F2;
+    border-radius: 12px;
+}
+
+.discount-price {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.02em;
+    color: #272F37;
+}
+
+.product-price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.old-price {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #969FA8;
+    text-decoration: line-through;
+}
+
+.guarantee {
+    background: url("/Metronic/assets/frontend/pages/img/products/checkmark.svg") no-repeat;
+    padding: 2px 5px 2px 28px;
+}
+
+.product-text {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #5D638E;
+}
+
+.product-price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-buy {
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0;
+    border: none;
+    color: #FFFFFF;
+    background: #4AB22D;
+    cursor: pointer;
+    padding: 16px 0;
+    border-radius: 8px;
+    flex-basis: 90%;
+}
+
+    .btn-buy:hover {
+        box-shadow: 0 4px 12px 0 #38CF0070;
+    }
+
+.btn-buy-telegram {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    border: none;
+    background: #2086FF url("/Metronic/assets/frontend/pages/img/products/telegram.svg") center no-repeat;
+    cursor: pointer;
+}
+
+.product-buy-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.btn-buy-telegram-on-hover {
+    display: none;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 24px;
+    letter-spacing: 0;
+    border: none;
+    border-radius: 8px;
+    background: #2086FF url("/Metronic/assets/frontend/pages/img/products/telegram.svg") top 22px left 20px no-repeat;
+    padding: 16px 16px 16px 48px;
+}
+
+    .btn-buy-telegram-on-hover:hover {
+        box-shadow: 0 8px 24px 0 #2086FF52;
+    }
+
+.product-block2:hover .btn-buy {
+    flex-basis: 40%;
+}
+
+.product-block2:hover .btn-buy-telegram {
+    display: none;
+}
+
+.product-block2:hover .btn-buy-telegram-on-hover {
+    display: block;
+    flex-basis: 60%;
+}
+
+.product-slider {
+    display: flex;
+    flex-direction: column;
+    width: 640px;
+}
+
+
+.slider {
+    max-width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+    .slider img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        border-radius: 12px !important;
+        border: 1px solid #E5E7F2;
+    }
+
+        .slider img.active {
+            opacity: 1;
+        }
+
+    .slider button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        cursor: pointer;
+    }
+
+        .slider button:hover {
+            transition: transform 0.3s ease;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+
+    .slider .prev {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        background: transparent url("/Metronic/assets/frontend/pages/img/products/slide-left-icon.svg");
+        border: none;
+    }
+
+    .slider .next {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        background: transparent url("/Metronic/assets/frontend/pages/img/products/slide-right-icon.svg");
+        border: none;
+    }
+
+.thumbnail-slider {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.thumbnail-slider-container {
+    display: flex;
+    overflow: scroll;
+    max-width: 640px;
+    gap: 12px;
+}
+
+    .thumbnail-slider-container img {
+        width: 133px;
+        height: 80px;
+        cursor: pointer;
+        border-radius: 12px;
+        border: 1px solid #E5E7F2;
+    }
+
+.thumbnail-slider img.active {
+    border: 1px solid #4AB22D
+}
+
+.slide-btn-left {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    border-radius: 30px;
+    border: 1px solid #4AB22D;
+    gap: 10px;
+    cursor: pointer;
+    background: #FFFFFF url("/Metronic/assets/frontend/pages/img/products/slide-left.svg") center no-repeat;
+}
+
+.slide-btn-right {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    border-radius: 30px;
+    border: 1px solid #4AB22D;
+    gap: 10px;
+    cursor: pointer;
+    background: #FFFFFF url("/Metronic/assets/frontend/pages/img/products/slide-right.svg") center no-repeat;
+}
+
+.title-description {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.02em;
+}
+
+.work-description-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    gap: 40px;
+}
+
+.product-description {
+    width: 65%;
+}
+
+.author-work {
+    flex-basis: 35%;
+    padding: 20px;
+    border-radius: 12px;
+    gap: 20px;
+    border: 1px solid #E5E7F2;
+    background-color: #FFFFFF;
+    box-shadow: 4px 0 20px 0 #272F371F;
+}
+
+.work-text {
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #272F37;
+    margin: 20px 0;
+}
+
+.author-section-text {
+    font-weight: 600;
+    line-height: 20px;
+    color: #272F37;
+}
+
+.author-info .author-section-text {
+    font-weight: 600;
+    line-height: 20px;
+    color: #272F37;
+    margin: 0 0 8px 0;
+}
+
+.author-benefits {
+    padding: 2px 4px 2px 24px;
+    border-radius: 4px;
+    gap: 4px;
+}
+
+    .author-benefits.stars {
+        background: #F0F1F8 url("/Metronic/assets/frontend/pages/img/products/star.svg") top 3px left 2px no-repeat;
+    }
+
+    .author-benefits.works {
+        background: #F0F1F8 url("/Metronic/assets/frontend/pages/img/products/mdi_work.svg") top 3px left 4px no-repeat;
+    }
+
+.author-stroke {
+    height: 2px;
+    border-radius: 2px;
+    background: #E5E7F2;
+    border: none;
+}
+
+.author-profile {
+    display: flex;
+    gap: 20px;
+}
+
+    .author-profile img {
+        width: 76px;
+        height: 76px;
+    }
+
+.author-info {
+    flex-basis: 70%;
+}
+
+.work-file-text {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #272F37;
+    padding-left: 30px;
+    background: url("/Metronic/assets/frontend/pages/img/products/directory-icon.svg") top left no-repeat;
+}
+
+.file-list {
+    list-style: none;
+    padding-left: 14px;
+    height: 90px;
+    overflow: scroll;
+}
+
+.file-list-item {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #677685;
+    padding: 4px 15px 4px 28px;
+}
+
+    .file-list-item.txt {
+        background: url("/Metronic/assets/frontend/pages/img/products/txt-icon.svg") top 50% left no-repeat;
+    }
+
+    .file-list-item.doc {
+        background: url("/Metronic/assets/frontend/pages/img/products/doc-icon.svg") top 50% left no-repeat;
+    }
+
+    .file-list-item.jpg {
+        background: url("/Metronic/assets/frontend/pages/img/products/jpg-icon.svg") top 50% left no-repeat;
+    }
+
+    .file-list-item.vsd {
+        background: url("/Metronic/assets/frontend/pages/img/products/vsd-icon.svg") top 50% left no-repeat;
+    }
+
+    .file-list-item.xlsx {
+        background: url("/Metronic/assets/frontend/pages/img/products/excel-icon.svg") top 50% left no-repeat;
+    }
+
+.rate-work-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+    .rate-work-title .stars {
+        height: 24px;
+        padding: 4px 4px 4px 32px;
+        background: #F0F1F8 url("/Metronic/assets/frontend/pages/img/products/star.svg") top 50% left 20% no-repeat;
+    }
+
+.rate-stars {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.rate-stars-container {
+    display: flex;
+    align-items: center;
+}
+
+.rate-star {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/Metronic/assets/frontend/pages/img/products/rate-star.svg") center no-repeat;
+    cursor: pointer;
+}
+
+    .rate-star.active {
+        background-image: url("/Metronic/assets/frontend/pages/img/products/star.svg"); /* Change background to yellow star */
+    }
+
+.rate-text {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0;
+    color: #5D638E;
+}
+
+.buy-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+    .buy-buttons-container button {
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 0;
+        text-align: center;
+        color: #FFFFFF;
+        padding: 16px 0;
+        border-radius: 8px;
+        border: none;
+    }
+
+.buy-button {
+    background: #4AB22D;
+}
+
+    .buy-button:hover {
+        box-shadow: 0 4px 12px 0 #38CF0070;
+    }
+
+.buy-button-telegram {
+    background: #2086FF url("/Metronic/assets/frontend/pages/img/products/telegram.svg") top 50% left 18% no-repeat;
+}
+
+    .buy-button-telegram:hover {
+        box-shadow: 0 8px 24px 0 #2086FF52;
+    }
+
+.author-work-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.report-text {
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #969FA8;
+    padding: 4px 36px;
+    background: url("/Metronic/assets/frontend/pages/img/products/report-icon.svg") top 50% left no-repeat;
+}
+
+.product-work-list {
+    list-style: none;
+    padding: 0;
+}
+
+.product-work-item {
+    position: relative;
+    padding: 4px 4px 4px 30px;
+}
+
+    .product-work-item:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 7px;
+        width: 20px;
+        height: 20px;
+        background-image: url("/Metronic/assets/frontend/pages/img/products/green-dot.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+.archive-slider-container {
+    max-width: 64%;
+    border-bottom: 2px solid #E5E7F2;
+}
+
+.archive-slider {
+    max-width: 100%;
+    height: 440px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #E5E7F2;
+    border-radius: 12px;
+    margin-bottom: 40px;
+}
+
+    .archive-slider img {
+        width: 100%;
+        height: 330px;
+        position: absolute;
+        top: 12%;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        border-radius: 12px;
+        border: 1px solid #E5E7F2;
+    }
+
+        .archive-slider img.active {
+            opacity: 1;
+        }
+
+    .archive-slider button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        cursor: pointer;
+    }
+
+        .archive-slider button:hover {
+            transition: transform 0.3s ease;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+.next-slide {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    background: transparent url("/Metronic/assets/frontend/pages/img/products/slide-left-icon.svg");
+    border: none;
+}
+
+.prev-slide {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    background: transparent url("/Metronic/assets/frontend/pages/img/products/slide-right-icon.svg");
+    border: none;
+}
+
+.archive-slider-container-mobile {
+    display: none;
+}
+
+.title-description.number {
+    color: #4AB22D;
+    margin-left: 20px;
+}
+
+.users-comments {
+    max-width: 64%;
+    margin-bottom: 40px;
+}
+
+.comment-item {
+    margin-bottom: 40px;
+}
+
+.comment-author {
+    display: flex;
+    gap: 12px;
+    align-items: end;
+}
+
+    .comment-author img {
+        width: 60px;
+        height: 60px;
+    }
+
+.user-role {
+    padding: 4px 8px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0;
+    text-align: center;
+    background: #E5E7F2;
+    border-radius: 4px;
+}
+
+.icons {
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+}
+
+.clock-icon {
+    background: url("/Metronic/assets/frontend/pages/img/products/clock.svg") center no-repeat;
+}
+
+.minus-icon {
+    background: url("/Metronic/assets/frontend/pages/img/products/minus.svg") center no-repeat;
+}
+
+.plus-icon {
+    background: url("/Metronic/assets/frontend/pages/img/products/plus.svg") center no-repeat;
+}
+
+.comment-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.comment-likes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.created-at {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title-section {
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #272F37;
+    margin-bottom: 20px;
+}
+
+.comment-input-name {
+    padding: 12px;
+    border-radius: 12px;
+    gap: 10px;
+    border: 1px solid #E5E7F2;
+    width: 64%;
+    margin-bottom: 12px;
+}
+
+.comment-input-text {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #E5E7F2;
+    width: 66.5%;
+    height: 144px;
+    box-sizing: border-box;
+}
+
+.comment-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.send-comment-btn {
+    padding: 8px 16px;
+    border: 1px solid #4AB22D;
+    border-radius: 8px;
+    gap: 8px;
+    background: #4AB22D;
+    margin-top: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.letter-length {
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #AEB1CE;
+    position: absolute;
+    bottom: 10%;
+    right: 35%;
+}
+
+.text-container {
+    position: relative;
+}
+
+.add-comment-form {
+    margin-bottom: 80px;
+}
+
+.title-more-products {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.02em;
+    color: #272F37;
+}
+
+.product-box {
+    width: 256px;
+    height: 260px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.product-box-image {
+    width: 256px;
+    height: 140px;
+    background: url("/Metronic/assets/frontend/pages/img/products/product-image1.png") no-repeat;
+    background-size: cover;
+    border-radius: 12px;
+    position: relative;
+    margin-bottom: 12px;
+}
+
+    .product-box-image:hover {
+        background: linear-gradient(180deg, rgba(23, 29, 35, 0) 63.54%, rgba(23, 29, 35, 0.192) 100%), url("/Metronic/assets/frontend/pages/img/products/product-image1.png") no-repeat;
+        background-size: cover;
+        box-shadow: 2px 2px 0 0 #6FC727;
+    }
+
+.product-box-image2 {
+    background: url("/Metronic/assets/frontend/pages/img/products/product-image2.png") no-repeat;
+    background-size: cover;
+}
+
+    .product-box-image2:hover {
+        background-image: url("/Metronic/assets/frontend/pages/img/products/product-image2.png");
+    }
+
+.product-box-image4 {
+    background: url("/Metronic/assets/frontend/pages/img/products/product-image3.jpeg") no-repeat;
+    background-size: cover;
+}
+
+    .product-box-image4:hover {
+        background-image: url("/Metronic/assets/frontend/pages/img/products/product-image3.jpeg");
+    }
+
+.product-box-items {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+}
+
+.product-box-image-item {
+    padding: 2px 4px;
+    border-radius: 4px;
+    background: #F0F1F8;
+    margin-right: 4px;
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 12px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #5D638E;
+}
+
+.rating {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 2px 14px 2px 4px;
+    background: #F0F1F8 url("/Metronic/assets/frontend/pages/img/products/small-star.svg") top 50% right no-repeat;
+}
+
+.product-box-info span {
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #272F37;
+}
+
+.views {
+    padding: 5px 5px 5px 25px;
+    background: url("/Metronic/assets/frontend/pages/img/products/views.svg") top 50% left no-repeat;
+    margin-right: 20px;
+}
+
+.product-box-price {
+    padding: 5px 5px 5px 18px;
+    background: url("/Metronic/assets/frontend/pages/img/products/ruble.svg") top 50% left no-repeat;
+}
+
+.product-box-title p {
+    color: #272F37;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0;
+}
+
+.watch-more {
+    color: #969FA8;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+
+    .watch-more:hover {
+        color: #4AB22D;
+    }
+
+.more-products-list {
+    width: 100%;
+    height: 300px;
+    overflow: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 68px;
+}

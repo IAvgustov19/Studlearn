@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SW.Frontend.Models.TopWorkMenuItem>
+@using SW.Frontend.Helpers;
+@{
+    Layout = null;
+}
+
+@(Html.TreeView(Model)
+    .EmptyContent("No data")
+    .Children(m => m.Children)
+    .HtmlAttributes(new { id = "TopWorksMenu" })
+    .ChildrenHtmlAttributes(new { @class = "topWorkMenuItem" })
+    .ItemText(m => m.Title)
+    .ItemTemplate(
+    @<text>
+        <a href="@Url.Action( ViewBag.OnlyFree ? "free" : "paid", "TopWorks", new { y = item.Year, m = item.Month  })" class="@(!item.Active ? "" : "active")">
+            @item.Title
+        </a>
+    </text>)
+)
+
+<style>
+    #TopWorksMenu a {
+        font-size:1.25em;
+    }
+
+    a.active {
+        color: #e02222;
+    }
+</style>

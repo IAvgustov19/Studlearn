@@ -1,0 +1,15 @@
+﻿@model IEnumerable<SW.Shared.Models.Documents.CommentPreview>
+
+@if (Model.Any())
+{
+    <div class="comments">
+        @foreach (var comment in Model)
+        {
+            @Html.Partial("_CommentPartial", comment)
+        }
+    </div>
+}
+else
+{
+    <p>@SW.Resources.Frontend.General.LabelNoData</p>
+}

@@ -1,0 +1,27 @@
+﻿@using System.Web.Mvc.Html
+@using SW.Frontend.Helpers
+@model SW.Frontend.Models.SearchViewModel
+@{
+    ViewBag.Title = "Последние Загруженные Работы | Studlearn.com";
+    ViewBag.Description = "Сюда попадают работы сразу после модерации. Здесь можно найти новые лабораторные, курсовые и дипломные, которых еще не было на ресурсе.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <h1>@Html.Encode(SW.Resources.Frontend.General.HomeFeaturedNew)</h1>
+            <div class="content-page">
+                <div class="row">
+                    <ul class="list-unstyled">
+                        @foreach (var document in Model.Documents)
+                        {
+                            @Html.Partial("_DocumentFeaturedPartial", document)
+                        }
+                    </ul>
+                </div>
+                @Html.Pager("Index", "Recent", Model.PagerModel)
+            </div>
+        </div>
+    </div>
+</div>

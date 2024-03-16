@@ -1,0 +1,61 @@
+﻿@model SW.Frontend.Models.AuthorsViewModel
+@using SW.Frontend.Helpers
+@using SW.Frontend.Utilities;
+
+@{
+    ViewBag.Title = "Список Авторов | Studlearn.com";
+    ViewBag.Description = SW.Resources.Frontend.General.AuthorsDescription;
+
+    if (Model.PagerModel.CurrentPage != 1)
+    {
+        ViewBag.Title += "Страница " + Model.PagerModel.CurrentPage;
+        ViewBag.Description += " - Страница " + Model.PagerModel.CurrentPage;
+    }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    @*@if (Model.PagerModel.CurrentPage != Model.PagerModel.LastPage)
+        {
+            <link rel="next" href="https://studlearn.com/authors?page=@(Model.PagerModel.CurrentPage + 1)" />
+        }
+        @if (Model.PagerModel.CurrentPage == 2)
+        {
+            <link rel="prev" href="https://studlearn.com/authors" />
+            <meta name="robots" content="noindex, follow" />
+        }
+        @if (Model.PagerModel.CurrentPage != 2)
+        {
+            <link rel="prev" href="https://studlearn.com/authors?page=@(Model.PagerModel.CurrentPage-1)" />
+            <meta name="robots" content="noindex, follow" />
+        }*@
+    @if (Model.PagerModel.CurrentPage != 1)
+    {
+        <link rel="canonical" href="https://studlearn.com/authors" />
+    }
+}
+
+@section styles {
+    <link href="~/metronic/assets/frontend/pages/css/authors/Media.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/frontend/pages/css/authors/Authors.css" rel="stylesheet" type="text/css" />
+};
+
+<div class="workers-block">
+    <div class="workers custom-container ">
+        <div class="navigation">
+            <a href="#" class="back-link"><span>Вернуться назад</span></a>
+            <div class="navigraton-directory">
+                <span class="navigation-item">Главная страница</span> / <span class="navigation-item current">Исполнители</span>
+            </div>
+        </div>
+        <h1>ИСПОЛНИТЕЛИ</h1>
+        <div class="workers-container">
+            @foreach (var author in Model.Authors.Where(x => x.WorksPublishedCount > 0))
+            {
+                    @Html.Partial("_AuthorPreviewPartial", author)
+            }
+        </div>
+        <br />
+        @Html.Pager("Index", "Authors", Model.PagerModel)
+        <br />
+    </div>
+</div>

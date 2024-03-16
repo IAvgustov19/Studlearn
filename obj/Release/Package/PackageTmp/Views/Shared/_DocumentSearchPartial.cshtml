@@ -1,0 +1,34 @@
+﻿@model SW.Shared.Models.Documents.SimilarDocument
+
+<div class="search-result-item">
+    @if (String.IsNullOrEmpty(Model.DocumentSlug))
+    {
+        <h4>
+            <a href="@Url.Action("Index", "Works", new { id = @Model.DocumentId })">@Model.DocumentTitle</a>
+        </h4>
+    }
+    else
+    {
+        <h4>
+            <a href="@Url.Action("Details", "Works", new { id = @Model.DocumentSlug })">@Model.DocumentTitle</a>
+        </h4>
+    }
+    <p>@Model.BriefDescription</p>
+    <span title="цена">
+        <i class="fa @SW.Shared.Constants.Application.DefaultCurrencyIconClass"></i>
+        @if (Model.Price.HasValue && Model.Price > 0)
+        {
+            @Model.Price
+        }
+        else
+        {
+            <span class="badge">бесплатно</span>
+        }
+    </span> |
+    <span title="рейтинг">
+        <i class="fa fa-star"></i> @Model.Rating
+    </span> |
+    <a class="search-link" href="@Url.Action("Details", "Category", new {id = @Model.CategoryId })">@Model.Category</a> |
+    @*<a class="search-link" href="@Url.Action("Profile", "Authors", new {id = @Model.AuthorSlug })">@Model.AuthorUsername</a>*@
+    @MyHelpers.AuthorLink(Model.AuthorUsername, Model.AuthorId, Model.AuthorSlug, "search-link")
+</div>

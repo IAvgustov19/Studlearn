@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34114.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SW.Frontend", "SW.Frontend.csproj", "{8B8A1697-4228-4E18-980F-B0C4A7C07F6A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		BrainAcademySubscription|Any CPU = BrainAcademySubscription|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Development|Any CPU = Development|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B8A1697-4228-4E18-980F-B0C4A7C07F6A}.BrainAcademySubscription|Any CPU.ActiveCfg = BrainAcademySubscription|Any CPU
+		{8B8A1697-4228-4E18-980F-B0C4A7C07F6A}.BrainAcademySubscription|Any CPU.Build.0 = BrainAcademySubscription|Any CPU
+		{8B8A1697-4228-4E18-980F-B0C4A7C07F6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B8A1697-4228-4E18-980F-B0C4A7C07F6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B8A1697-4228-4E18-980F-B0C4A7C07F6A}.Development|Any CPU.ActiveCfg = Development|Any CPU
+		{8B8A1697-4228-4E18-980F-B0C4A7C07F6A}.Development|Any CPU.Build.0 = Development|Any CPU
+		{8B8A1697-4228-4E18-980F-B0C4A7C07F6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B8A1697-4228-4E18-980F-B0C4A7C07F6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DFF20973-F736-4E30-806D-CE3E278F157C}
+	EndGlobalSection
+EndGlobal

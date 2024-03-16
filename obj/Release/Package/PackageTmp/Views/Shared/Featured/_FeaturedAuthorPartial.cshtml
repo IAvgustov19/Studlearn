@@ -1,0 +1,15 @@
+﻿@model SW.Core.DataLayer.FeaturedAuthor
+
+<div class="recent-work-item"
+     onclick="javascript: window.location = '@Model.ProfileUrl'"
+     style="cursor: pointer;">
+    <em>
+        <img data-src="@(Model.AvatartUrl??Model.AvatarUrlAdapted)" width="150" height="150"  src="/images/loading-150-1.gif" alt="@Model.UserName" class="img-responsive  lazy-load">
+    </em>
+    <a class="recent-work-description" href="@Model.ProfileUrl">
+        <strong title="@Model.UserName" style="overflow:hidden; white-space: nowrap; ">@Model.UserName</strong>
+        <b>
+            <span class="glyphicon glyphicon-star font-yellow-gold"></span>&nbsp;@Model.Rating
+        </b>
+    </a>
+</div>

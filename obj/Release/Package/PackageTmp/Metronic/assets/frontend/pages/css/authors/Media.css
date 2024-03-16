@@ -1,0 +1,31 @@
+﻿@media screen and (max-width:1152px) {
+    .worker-card {
+        max-width: 200px !important;
+        max-height: 308px !important;
+    }
+
+    .worker-image {
+        width: 176px;
+        height: 176px;
+    }
+
+
+}
+
+@media screen and (max-width:500px) {
+    .worker-card {
+        flex-direction: row !important;
+        max-width: 100% !important;
+        margin-bottom: 16px;
+    }
+
+    .worker-image {
+        width: 76px !important;
+        height: 76px !important;
+        margin-right: 12px;
+    }
+
+    .worker-name {
+        margin-top: 0px !important;
+    }
+}

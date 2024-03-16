@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Заработай Онлайн На Своих Знаниях | Studlearn.com";
+    ViewBag.Description = "Описание реферальной программы Studlearn.com. Теперь можно забыть о поиске вакансий «Курьер» и «Промоутер» на частичную занятость.";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section PreHeader{
+    <div class="pre-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 additional-shop-info">
+                    <ul class="list-unstyled list-inline">
+                        <li><i class="fa fa-shield"></i> @SW.Resources.Frontend.General.Moderation</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-sm-6 additional-nav">
+                    @Html.Action("HeaderView", "Shared", false)
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section RichHeader {
+    <!-- BEGIN SLIDER -->
+}
+
+<div class="main" style="min-height: 600px;">
+    <div class="container">
+        <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+                <h1>@SW.Resources.Frontend.About.Income</h1>
+                <div class="content-page">
+                    <div class="row">
+                        <!-- START TAB 5 -->
+                        <div id="income" class="tab-pane">
+                            @Html.Partial("Rules/_IncomePartial")
+                            @Html.Partial("CallToAction/_AuthorRegistration")
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+    </div>
+</div>

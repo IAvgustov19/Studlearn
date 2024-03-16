@@ -1,0 +1,392 @@
+﻿@model SW.Shared.Models.Account.UserDetails
+@using Labels = SW.Resources.Frontend.Authors
+@using SW.Frontend.Utilities;
+
+@{
+    ViewBag.Title = Seo.GetAuthorTitle(Model.UserName);
+    ViewBag.Description = Seo.GetAuthorMetaDescription(Model.UserName);
+    ViewBag.Image = Model.PreviewAvatar;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var unbuyed = false;
+    bool.TryParse((Request["unbuyed"] ?? "false"), out unbuyed);
+}
+
+@section Styles {
+    <link href="/metronic/assets/frontend/pages/css/blog.css" rel="stylesheet" type="text/css" />
+    <style>
+        .blog-raw {
+            -moz-column-width: 18em;
+            -webkit-column-width: 18em;
+            -moz-column-gap: 1em;
+            -webkit-column-gap: 1em;
+        }
+
+        .blog-content-1 .blog-img-thumb img {
+            position: static !important;
+        }
+
+        .dataTable a, .dataTable a:hover {
+            color: #2165df;
+        }
+    </style>
+
+    @*for search checkboxes*@
+    <link href="~/metronic/assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.css" rel="stylesheet" type="text/css">
+    <link href="~/metronic/assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.Metronic.css" rel="stylesheet" type="text/css">
+    <link href="~/metronic/assets/global/plugins/icheck/skins/flat/_all.css" rel="stylesheet" type="text/css">
+    <link href="~/metronic/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
+    <style>
+        .dataTable a, .dataTable a:hover {
+            color: #2165df;
+        }
+    </style>
+}
+
+@section RichHeader {
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a title="Главная" href="/">Главная</a>
+            </li>
+            <li>
+                <a title="Авторы" href="/authors">Авторы</a>
+            </li>
+            <li class="active">
+                <text title="@Model.UserName">@Model.UserName</text>
+            </li>
+        </ul>
+    </div>
+}
+
+<div class="main">
+    <div class="container">
+        <div class="row front-team">
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6 col-sm-3 col-xs-4">
+                        <img class="img-responsive" alt="@Model.UserName" src="@Model.PreviewAvatar">
+                    </div>
+                    <div class="col-md-6 col-sm-9 col-xs-8">
+                        <h3>
+                            <a href="javascript:void(0);">@Model.UserName</a>
+                        </h3>
+                        <p>
+                            @(String.IsNullOrEmpty(Model.Fullname) ? String.Empty : Model.Fullname + ".")
+                            @(String.IsNullOrEmpty(Model.Description) ? Labels.NoDescription : Model.Description)
+                        </p>
+                        <p>
+                            На сайте с @Model.StartYear года
+                        </p>
+                    </div>
+                </div>
+                <div class="panel">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            Рейтинг <h4 class="stat-label">@Model.Rating<i class="fa fa-star font-yellow-gold"></i></h4>
+                        </li>
+                        @*<li class="list-group-item">
+                                Порядочность <i class="fa fa-info-circle" title="@Labels.DecencyDescription" data-toggle="tooltip" data-placement="top"></i>
+                                <h4 class="stat-label">@Model.DecencyLabel</h4>
+                            </li>*@
+                    </ul>
+                </div>
+                <div class="panel" style="margin: 7px 0;">
+                    @foreach (var a in Model.Achivments)
+                    {
+                        <div class="label" style="line-height: 20px; display: inline-block; background-color: #3d3d3d; margin-bottom: 4px;">
+                            <div title="@a.Description" style="display: inline;">@a.Title</div>
+                            <span style="display: inline;">@Html.Raw(a.Icon)</span>
+                        </div>
+                    }
+                </div>
+
+                <h3>Статистика</h3>
+                <div class="panel">
+                    <!-- List group -->
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            Бесплатных работ <h4 class="stat-label">@Model.FreeWorksCount</h4>
+                        </li>
+                        <li class="list-group-item">
+                            Платных работ <h4 class="stat-label">@Model.PaidWorksCount</h4>
+                        </li>
+                        <li class="list-group-item">
+                            В песочнице <h4 class="stat-label">@Model.NewWorksCount</h4>
+                        </li>
+                        <li class="list-group-item">
+                            Всего работ <h4 class="stat-label">@Model.WorksTotal</h4>
+                        </li>
+                    </ul>
+                </div>
+                @*<h3>Репутация</h3>*@
+                @*<div id="RatingChart"></div>*@
+            </div>
+            <div class="col-md-8">
+                <h1 class="category-rightbar-h3">Список работ автора</h1>
+                <div class="container-fluid">
+                    @{
+                        Html.RenderAction("_ThemesListPartial", "Themes", new { authorId = Model.Id });
+                    }
+                </div>
+                <div class="input-group" style="padding: 5px 0">
+                    <div class="icheck-list">
+                        <label style="position: relative;">
+                            <input class="icheck" type="checkbox" id="recent" name="recent" data-checkbox="icheckbox_flat-orange" value="true" /> Только Новые
+                        </label>
+                    </div>
+                </div>
+                <div class="input-group" style="padding: 5px 0">
+                    <div class="icheck-list">
+                        <label style="position: relative;">
+                            <input class="icheck" type="checkbox" id="unbuyed" name="unbuyed" data-checkbox="icheckbox_flat-orange" value="true" checked="@unbuyed" /> Только Непокупавшиеся
+                        </label>
+                    </div>
+                </div>
+                @Html.Action("AuthorFeaturedWorks", new { id = Model.Id, userName = Model.UserName, userSlug = Model.Slug, unbuyed= unbuyed })
+                @*<div class="pull-right">
+            <a href="@Url.Action("Index", "Search", new { q = "author:" + Model.UserName })">@SW.Resources.Frontend.General.ShowAllWorks</a>
+            <i class="fa fa-arrow-circle-o-right "></i>
+        </div>*@
+            </div>
+
+        </div>
+        <div class="margin-top-20"></div>
+    </div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+@section JsCode {
+    @*перенесено из \SW.Frontend\Views\Authors\AuthorFeaturedWorks.cshtml, т.к. секции не работают внутри PartialView*@
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+    @*для поиска по новым*@
+    <script src="~/metronic/assets/global/plugins/icheck/icheck.min.js" type="text/javascript"></script>
+    <script src="~/metronic/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.js" type="text/javascript"></script>
+
+    <script>
+            $(document).ready(function () {
+            // $('#DataTables_Table_0_paginate').parent().css("width", "100%");
+            var table = $('.table').DataTable({
+                searching: true,
+                info: false,
+                lengthChange: false,
+                order: [2, "desc"],
+                pageLength: 50,
+                language: {
+                    search: "",
+                    paginate: {
+                        previous: "Назад",
+                        next: "Вперед"
+                    }
+                }
+            });
+           $('#DataTables_Table_0_paginate').parent().css("width", "100%");
+            $('#DataTables_Table_0_wrapper').prepend($('#DataTables_Table_0_filter'));
+
+            $('#DataTables_Table_0_filter').css("float", "left");
+            $('#DataTables_Table_0_filter input').attr("placeholder", "поиск по работам автора");
+
+            @if(Request.Browser.IsMobileDevice){
+                <text>
+                $('#DataTables_Table_0_filter').attr("style","width:100% !important");
+                $('#DataTables_Table_0_filter input').attr("style","width:100% !important");
+                $('#DataTables_Table_0_filter label').css("width", "100%");
+                </text>
+            }else {
+                <text>
+                $('#DataTables_Table_0_filter input').css("width", "450px");
+                </text>
+            }
+
+                $("#themes a").click(function (e) {
+                    var targetClass = e.target.getAttribute("class");
+                    var alreadySelected = $(this).attr("class").indexOf("selected") != -1;
+                    if ((targetClass != "" && targetClass != null && targetClass.indexOf('delete') != -1) || alreadySelected) {
+                        $(this).removeClass("selected");
+                        $(this).find(".delete").remove();
+                        table.columns(4).search("").draw();
+                    } else {
+                        if (!alreadySelected) {
+                            var otherSelected = $("#themes a.selected");
+                            if (otherSelected.length > 0) {
+                                $(otherSelected).removeClass("selected");
+                                $(otherSelected).find(".delete").remove();
+                            }
+                            var name = $(this).data("name");
+                            table.columns(4).search(name).draw();
+                            $(this).addClass("selected");
+                            $(this).append('<i class="delete fa fa-times" aria-hidden="true"></i>');
+                        }
+                    }
+                    e.stopPropagation();
+                    e.preventDefault();
+                });
+
+                $('.icheck').each(function () {
+                    var checkboxClass = $(this).attr('data-checkbox') ? $(this).attr('data-checkbox') : 'icheckbox_minimal-grey';
+                    var radioClass = $(this).attr('data-radio') ? $(this).attr('data-radio') : 'iradio_minimal-grey';
+
+                    if (checkboxClass.indexOf('_line') > -1 || radioClass.indexOf('_line') > -1) {
+                        $(this).iCheck({
+                            checkboxClass: checkboxClass,
+                            radioClass: radioClass,
+                            insert: '<div class="icheck_line-icon"></div>' + $(this).attr("data-label")
+                        });
+                    } else {
+                        $(this).iCheck({
+                            checkboxClass: checkboxClass,
+                            radioClass: radioClass
+                        });
+                    }
+                });
+
+                $("#recent").on('ifChanged', function () {
+                    var recent = $(this).prop('checked') == true;
+                    if (recent) {
+                        table.columns(6).search("Новая").draw();
+                    } else {
+                        table.columns(6).search("").draw();
+                    }
+                });
+                $("#unbuyed").on('ifChanged', function () {
+                    var unbuyed = $(this).prop('checked') == true;
+                    if (unbuyed) {
+                         window.location = '@(Url.Action("Profile", "Authors", new { id = Model.Slug }))?unbuyed=true';
+                    } else {
+                        window.location = '@(Url.Action("Profile", "Authors", new { id = Model.Slug }))';
+                    }
+                });
+            });
+    </script>
+}
+
+<script type="application/ld+json">
+    {
+    "@@context": "http://schema.org",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [
+
+    {
+    "@@type": "ListItem",
+    "position": 1,
+    "item": {
+    "@@id": "/authors",
+    "name": "Авторы"
+    }
+    }
+    ,
+    {
+    "@@type": "ListItem",
+    "position": 2,
+    "item": {
+    "@@id": "@Request.Url.AbsolutePath",
+    "name": "@Model.UserName"
+    }
+    }
+    ]
+    }
+</script>
+@*
+    <script src="~/metronic/assets/global/plugins/amcharts/amcharts/amcharts.js"></script>
+    <script src="~/metronic/assets/global/plugins/amcharts/amcharts/serial.js"></script>
+    <script src="~/metronic/assets/global/plugins/amcharts/amcharts/themes/light.js"></script>
+
+    <style>
+                #RatingChart {
+                    width: 100%;
+                    height: 200px;
+                }
+            </style>
+        <script type="text/javascript">
+            var chartData = generateChartData();
+            var chart = AmCharts.makeChart("RatingChart", {
+                "type": "serial",
+                "theme": "light",
+                "marginRight": 0,
+                "autoMarginOffset": 0,
+                "marginTop": 0,
+                "dataProvider": chartData,
+                "pathToImages": "/metronic/assets/global/plugins/amcharts/amcharts/images/",
+                "zoomOutText": "Полностью",
+                "valueAxes": [{
+                    "axisAlpha": 0.2,
+                    "dashLength": 1,
+                    "position": "left"
+                }],
+                "mouseWheelZoomEnabled": true,
+                "graphs": [{
+                    "id": "g1",
+                    "balloonText": "[[category]]<br/><b><span style='font-size:12px;'>Рейтинг: [[value]]</span></b>",
+                    "bullet": "none",
+                    "bulletBorderAlpha": 1,
+                    "bulletColor": "#FFFFFF",
+                    "hideBulletsCount": 50,
+                    "title": "red line",
+                    "valueField": "DataOrigin",
+                    "useLineColorForBulletBorder": true,
+                    "lineColor": "#E6400C"
+                }],
+                "chartScrollbar": {
+                    "autoGridCount": true,
+                    "graph": "g1",
+                    "scrollbarHeight": 40
+                },
+                "chartCursor": {
+
+                },
+                "categoryField": "DateOrigin",
+                "categoryAxis": {
+                    "parseDates": true,
+                    "axisColor": "#DADADA",
+                    "dashLength": 1,
+                    "minorGridEnabled": true
+                },
+                "export": {
+                    "enabled": false
+                }
+            });
+
+            chart.addListener("rendered", zoomChart);
+            zoomChart();
+
+            AmCharts.checkEmptyData = function (chart) {
+                if (0 == chart.dataProvider.length) {
+                    // set min/max on the value axis
+                    chart.valueAxes[0].minimum = 0;
+                    chart.valueAxes[0].maximum = 100;
+
+                    // add dummy data point
+                    var dataPoint = {
+                        DataOrigin: 0,
+                        DateOrigin: new Date()
+                    };
+                    dataPoint[chart.categoryField] = '';
+                    chart.dataProvider = [dataPoint];
+
+                    // add label
+                    chart.addLabel(0, '50%', 'Нет данных для отображения', 'center');
+
+                    // set opacity of the chart div
+                    chart.chartDiv.style.opacity = 0.75;
+
+                    // redraw it
+                    chart.validateNow();
+                }
+            }
+
+            AmCharts.checkEmptyData(chart);
+
+            // this method is called when chart is first inited as we listen for "rendered" event
+            function zoomChart() {
+                // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
+                chart.zoomToIndexes(chartData.length - 40, chartData.length - 1);
+            }
+
+            // generate some random data, quite different range
+            function generateChartData() {
+                var chartData = eval(@(Html.Raw(Json.Encode(ViewBag.RatingItems))))
+                return chartData || [];
+            }
+        </script>*@

@@ -1,0 +1,364 @@
+﻿@model SW.Shared.Models.Documents.DocumentPublic
+@using SW.Shared.Constants.Storage
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Предпросмотр";
+    Layout = "~/Views/Shared/_TwoColumnsLayout.cshtml";
+}
+
+@section Styles {
+
+    <link href="/metronic/assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        .comment.bad {
+            opacity: 0.5;
+        }
+
+            .comment.bad:hover {
+                opacity: 1;
+            }
+
+        .dislike {
+            cursor: pointer;
+            opacity: 0.7;
+            display: inline-block;
+        }
+
+            .dislike.font-red:hover {
+                color: #333333 !important;
+                opacity: 0.7;
+            }
+
+            .dislike i:hover {
+                opacity: 1;
+                color: #d84a38 !important;
+            }
+
+        .like {
+            cursor: pointer;
+            opacity: 0.7;
+            display: inline-block;
+        }
+
+            .like.font-green:hover {
+                color: #333333 !important;
+                opacity: 0.7;
+            }
+
+            .like i:hover {
+                opacity: 1;
+                color: #35aa47 !important;
+            }
+
+        .font-black {
+            color: #000000 !important;
+            opacity: 1 !important;
+        }
+
+        .dislike-black {
+            cursor: pointer;
+            opacity: 0.6;
+            display: inline-block;
+        }
+
+            .dislike-black i:hover {
+                opacity: 0.5 !important;
+            }
+
+        .like-black {
+            cursor: pointer;
+            opacity: 0.6;
+            display: inline-block;
+        }
+
+            .like-black i:hover {
+                opacity: 0.5 !important;
+            }
+
+        /*riboon*/
+        .corner-ribbon {
+            width: 400px;
+            background: #e43;
+            position: absolute;
+            top: 25px;
+            left: -50px;
+            text-align: center;
+            line-height: 100px;
+            letter-spacing: 1px;
+            color: #f0f0f0;
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            z-index: 1001;
+            font-size: 2em;
+        }
+
+            /* Custom styles */
+
+            .corner-ribbon.sticky {
+                position: fixed;
+            }
+
+            .corner-ribbon.shadow {
+                box-shadow: 0 0 3px rgba(0,0,0,.3);
+            }
+
+            /* Different positions */
+
+            .corner-ribbon.top-left {
+                top: 50px;
+                left: -100px;
+                transform: rotate(-45deg);
+                -webkit-transform: rotate(-45deg);
+            }
+
+            .corner-ribbon.blue {
+                background: #39d;
+            }
+
+        /* Carousel customizing*/
+        .carousel-inner {
+            border: 1px solid #D6D6D6;
+            height: 300px;
+            overflow: hidden;
+            background: url('/Images/backgrounds/logo_x_pattern.png');
+            line-height: 100px;
+            text-align: center;
+        }
+
+            .carousel-inner .item {
+                margin: 0 auto;
+                height: 100%;
+            }
+
+                .carousel-inner .item img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    display: block;
+                    margin: 0 auto;
+                    vertical-align: middle;
+                }
+    </style>
+}
+
+@section Title {
+    <div class="corner-ribbon top-left sticky blue shadow">Предпросмотр</div>
+    <h1>@Model.Title <span style="font-size: 0.5em">@Model.Type</span></h1>
+}
+
+@section LeftSidebar {
+    <div class="blog-item" id="">
+        @if (Model.HasImages || Model.HasVideo)
+        {
+            <div class="blog-item-img">
+                <!-- BEGIN CAROUSEL -->
+                <div class="front-carousel">
+                    <div id="myCarousel" class="carousel slide">
+                        <!-- Carousel items -->
+                        <div class="carousel-inner" style="">
+                            @if (Model.HasVideo)
+                            {
+                                <div class="item active ">
+                                    <!-- BEGIN VIDEO -->
+                                    <iframe src="//www.youtube.com/embed/@Model.YoutubeId"
+                                            width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+                                    <!-- END VIDEO -->
+                                </div>
+                            }
+                            @if (Model.HasImages)
+                            {
+                                for (Int32 i = 0; i < Model.Images.Count; i++)
+                                {
+                                    <div class="item @(i==0 && !Model.HasVideo ? "active" : "")">
+                                        <a href="@Model.Images[i]" class="fancybox-button" title="Нажми чтоб увеличить" data-rel="fancybox-button">
+                                            <img src="@Model.Images[i]" alt="Закрепленное изображение">
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        @if (Model.ShowSliderButtons)
+                        {
+                            <!-- Carousel nav -->
+                            <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        }
+                    </div>
+                </div>
+                <!-- END CAROUSEL -->
+            </div>
+        }
+        <div style="font-size: 1.15em;">
+            @Html.Raw(Model.Content)
+        </div>
+        <ul class="blog-info">
+            <li><i class="fa fa-user"></i> <a href="@Url.Action("Details", "Authors", new {id = @Model.Author.Id})">@Model.Author.UserName</a></li>
+            <li><i class="fa fa-calendar"></i> @Model.CreatedAt.ToShortDateString()</li>
+            @*<li><i class="fa fa-comments"></i> @Model.Comments</li>*@
+            <li><i class="fa fa-cube"></i> <a href="@Url.Action("Details", "Category", new {id = @Model.Category.CategoryId})">@Model.Category.Title</a></li>
+        </ul>
+
+        @*<div class="portlet-body" id="SwCommentsWrapper" data-bind="with: vmComments">
+                <h2>Комментарии</h2>
+                <div class="comments">
+                    <div data-bind="foreach: comments">
+                        <div class="media comment" data-bind="css: rating<= -5 ? 'bad' : ''">
+                            <a data-bind="attr: {href: '/Authors/Details/' + author.id }" class="pull-left">
+                                <img alt="" class="media-object" data-bind="attr: { src : author.avatarThumbnail }">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading" style="display: inline-block;">
+                                    <a class="username" data-bind="text: author.username, attr: {href: '/Authors/Details/' + author.id }">@Model.Author.UserName</a>
+                                </h4>
+                                <div style="float:right">
+                                    <div class="dislike" style="font-size: 18px !important;" data-bind="css: isUserVoted && !isPositive ? 'font-red' : '', click: $parent.negative.bind($data, '@User.Identity.GetUserId()')">
+                                        <i class="fa fa-thumbs-down"></i>
+                                    </div>
+                                    <div style="width: 30px; display: inline-block; text-align:center;" data-bind="text: rating"></div>
+                                    <div class="like" style="font-size: 18px !important;" data-bind="css: isUserVoted && isPositive ? 'font-green' : '', click: $parent.positive.bind($data, '@User.Identity.GetUserId()')">
+                                        <i class="fa fa-thumbs-up"></i>
+                                    </div>
+                                    / <span class="sw-datetime" data-bind="text: postedAt"></span>
+                                    / <a class="reply" style="cursor:pointer;" data-bind="click: $parent.click">Reply</a>
+                                </div>
+                                <p>
+                                    <!-- ko ifnot: repliedTo == null -->
+                                    <a data-bind="text: repliedTo.username + ',', attr: {href: '/Authors/Details/' + repliedTo.id }"></a>
+                                    <!-- /ko -->
+                                    <span data-bind="text: message"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin: auto; width: 20%;">
+                        <button data-bind="click: showMore, visible: showMoreAvailable" class="btn btn-default"><i class="fa fa-arrow-down"></i> Показать больше</button>
+                    </div>
+                </div>
+                <div class="post-comment padding-top-40">
+                    <h3>Оставить комментарий</h3>
+                    @if (string.IsNullOrEmpty(@User.Identity.Name))
+                    {
+                        <div class="well bg-red-intense">
+                            <h4>Ты не можешь комментировать</h4>
+                            Только зарегестрированые пользователи имеют возможность комментировать работы
+                        </div>
+                    }
+                    else
+                    {
+                        <div data-bind="with: model">
+                            <div class="form-group">
+                                <label>Имя</label>
+                                <input class="form-control" type="text" value="@User.Identity.Name" name="Author.Name" readonly="readonly">
+                            </div>
+
+                            <div class="form-group" data-bind="validationElement: message">
+                                <label>Сообщение</label>
+                                <textarea class="form-control new-message" placeholder="Ваш комментарий..." rows="8" name="Message" data-bind="value: message, executeOnEnter: $parent.post"></textarea>
+                            </div>
+                            <p><button class="btn btn-primary" data-bind="click: $parent.post">Опубликовать</button></p>
+                        </div>
+                    }
+                </div>
+            </div>*@
+    </div>
+}
+
+@section RightSidebar {
+    <h2>Инфо</h2>
+    @if (!Model.IsPurchased)
+    {
+        <div class="service-box-v1 bg-green @(Model.IsFree ? "positive" : "")"
+             style="cursor: @(Model.IsPayed ? "pointer" : "help");"
+             onclick="javascript: if('@Model.IsPayed.ToString().ToLower()' === 'true') { window.location = '@Url.Action("Payment", "Works", new { id = Model.DocumentId })'}">
+            <div>
+                <i class="fa @SW.Shared.Constants.Application.DefaultCurrencyIconClass"></i>
+            </div>
+            <h2>
+                @Html.Raw(Model.Price.HasValue
+                ? Model.Price.ToString() //+ "&nbsp;<span style='font-size:0.75em'>" + SW.Shared.Constants.Application.DefaultCurrency + "</span>"
+                : "free")
+            </h2>
+
+            @if (Model.IsPayed)
+            {
+                <p>
+                    КУПИТЬ
+                    <br />
+                    @if (SW.Shared.Constants.Application.FeeUserPercentages > 0)
+                    {
+                        <span style="font-size:.75em">(без учета комиссии @SW.Shared.Constants.Application.FeeUserPercentages %)</span>
+                    }
+                </p>
+
+            }
+            else
+            {
+                <p>Работа не трубует оплаты</p>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success">
+            <strong>Куплено!</strong> Ранее вы покупали эту работу
+        </div>
+    }
+
+    <div id="workrating" class="service-box-v1">
+        <div>
+            <div class="like-black" data-bind="css: isUserVoted() && isPositive() ? 'font-black' : ''">
+                <i class="fa fa-thumbs-up color-grey"></i>
+            </div>
+            <div class="dislike-black" data-bind="css: isUserVoted() && !isPositive() ? 'font-black' : ''">
+                <i class="fa fa-thumbs-down color-grey"></i>
+            </div>
+        </div>
+        <h2 data-bind="text: rating">0</h2>
+        <p>Рейтинг</p>
+    </div>
+    <h2>Файлы</h2>
+    <ul class="nav nav-tabs">
+        @for (Int32 i = 0; i < Model.Files.Count; i++)
+        {
+            <li class="@(i == 0 ? " active" : "" )"><a data-toggle="tab" href="#tab-@(i+1)">@(i + 1)</a></li>
+        }
+    </ul>
+    <div class="tab-content">
+        @for (Int32 i = 0; i < Model.Files.Count; i++)
+        {
+            <div id="tab-@(i+1)" class="tab-pane row fade @(i == 0 ? " active in" : "" )">
+                <div class="well">
+                    <div style="margin: 25px 15px 10px 0; float:left;">
+                        <i class="fa fa-3x @(FileTypeExtensions.ToIcon((FileType)Model.Files[i].Type)) color-grey"></i>
+                    </div>
+                    <h4>@Model.Files[i].Title</h4>
+                    <div class="clearfix"></div>
+                </div>
+                <ul class="list-unstyled margin-bottom-20">
+                    <li><i class="fa fa-shield"></i> @(Model.Files[i].IsPublic ? "Публичный" : "Скрытый") </li>
+                </ul>
+                @if (Model.Files[i].IsPublic || Model.IsPurchased)
+                {
+                    <a href="javascript:;" class="btn btn-lg green">
+                        Скачать файл <i class="fa fa-download"></i>
+                    </a>
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        Для скачивания файла необходимо <a href="javascript:;"><strong>купить работу</strong></a>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+}
+
+@section JsCode {
+    <script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>
+}

@@ -1,0 +1,9 @@
+﻿@model IEnumerable<SW.Core.DataLayer.FeaturedAuthor>
+
+<div class="no-top-space category-rightbar-h3">@SW.Resources.Frontend.General.MenuAuthors</div>
+<div class="recent-news margin-bottom-10">
+    @foreach(var user in Model)
+    {
+        @Html.Partial("_AuthorPreviewPartial", user)       
+    }
+</div>

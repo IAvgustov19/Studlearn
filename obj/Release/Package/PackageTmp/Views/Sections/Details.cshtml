@@ -1,0 +1,399 @@
+﻿@using System.Web.Mvc.Html
+@using SW.Frontend.Helpers
+@using SW.Frontend.Utilities;
+@model SW.Frontend.Models.SectionsViewModel
+@{
+    int type; int.TryParse(Request.QueryString["type"] ?? "0", out type);
+    ViewBag.Title = (Model.Title == "Программирование" ? "Курсовые и дипломные работы по программированию" : Model.Title) + (Model.PagerModel.CurrentPage > 1 ? " Страница " + Model.PagerModel.CurrentPage : "") + " – купить, скачать | Studlearn.com";// Seo.GetCategoryTitle(ViewBag.CategoryTitle, Model.PagerModel.CurrentPage, type);
+    ViewBag.Description = ViewBag.SectionSEODescription + (Model.PagerModel.CurrentPage > 1 ? " Страница " + Model.PagerModel.CurrentPage : "");//Seo.GetCategoryDescription(ViewBag.CategoryTitle, Model.PagerModel.CurrentPage, type);
+    Layout = "~/Views/Shared/_TwoColumnsLayout.cshtml";
+}
+@section Title {
+    <h1>@ViewBag.CategoryTitle</h1>
+    @if (Model.PagerModel.CurrentPage == 1)
+    {
+        @Html.Raw(ViewBag.CategoryDescription)
+    }
+}
+@section RichHeader {
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a title="Главная" href="/">Главная</a>
+            </li>
+            <li>
+                <a title="Каталог" href="/sections">Каталог</a>
+            </li>
+            <li class="active">
+                <text title="@Model.Title">@Model.Title</text>
+            </li>
+        </ul>
+    </div>
+}
+@section Styles {
+    @{
+        string Url = "https://studlearn.com/sections/" + Model.Slug;
+        <link rel="canonical" href=@Html.Raw(Url) />
+    }
+    <link href="~/metronic/assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.css" rel="stylesheet" type="text/css">
+    <link href="~/metronic/assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.Metronic.css" rel="stylesheet" type="text/css">
+    <link href="~/metronic/assets/global/plugins/icheck/skins/flat/_all.css" rel="stylesheet" type="text/css">
+    <link href="~/metronic/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
+    <style>
+        .dataTable a, .dataTable a:hover {
+            color: #2165df;
+        }
+    </style>
+    @* @Html.PrevNextLinksBlock(null, "Category", Model.PagerModel, (Model.Filter.ToString() + "&" + Model.SorterModel.ToString()).Trim('&'))*@
+}
+@section LeftSidebar {
+    <div>
+        <p>Всего работ <strong>@Model.Documents.Count()</strong></p>
+    </div>
+
+    <div class="recent-work margin-bottom-40">
+        @{
+            Html.RenderAction("_ThemesListPartial", "Themes", new { sectionId = ViewBag.SectionId });
+        }
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <div class="blog-posts">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="border-bottom:0px;@(Request.Browser.IsMobileDevice?"display:none;":"")">Тип</th>
+                    <th style="border-bottom:0px;">Название</th>
+                    <th style="border-bottom:0px;@(Request.Browser.IsMobileDevice?"display:none;":"")">Рейтинг</th>
+                    <th style="border-bottom:0px;@(Request.Browser.IsMobileDevice?"display:none;":"")">Категория</th>
+                    <th style="border-bottom:0px">Стоимость</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var minDate = DateTime.UtcNow.Subtract(TimeSpan.FromDays(90));
+                }
+                @foreach (var document in Model.Documents)
+                {
+                    var color = string.IsNullOrEmpty(document.Color) ? string.Empty : "label-" + document.Color;
+                    <tr>
+                        <td style="@(Request.Browser.IsMobileDevice?"display:none;":"")"><span class="label @(color)">@document.TypeTitle</span></td>
+                        <td>
+                            <a href="@document.Url" target="_blank">@document.Title</a>
+                            @if (document.CreatedAt >= minDate)
+                            {
+                                <span class="badge badge-success" style="margin-left: 5px;">new</span>
+                            }
+                        </td>
+                        <td style="min-width: 50px;@(Request.Browser.IsMobileDevice?"display:none;":"")"><i class="fa fa-star"></i> @document.Rating</td>
+                        <td style="@(Request.Browser.IsMobileDevice?"display:none;":"")">@document.CategoryTitle</td>
+                        <td data-order="@(document.Price)">
+                            @if (document.Price.HasValue)
+                            {
+                                @(document.PriceLabel) <i class="fa @SW.Shared.Constants.Application.DefaultCurrencyIconClass"></i>
+                            }
+                            else
+                            {
+                                @document.PriceLabel
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+@section RightSidebar {
+    @*<div class="no-top-space category-rightbar-h2">Фильтр</div><br />*@
+    <form action="/sections/@Model.Slug" id="search-form" class="content-search-view2 hidden-xs @(Request.Browser.IsMobileDevice?"display-none":"")" style="padding: 10px;">
+        <div class="input-group" style="display:block;">
+            @*<div class="category-rightbar-h3">Период</div>
+                <div class="row" style="margin:0;">
+                    <select class="form-control" name="period" id="period">
+                        @foreach (var period in Model.Filter.Periods)
+                        {
+                            <option value="@period" selected="@(period == @Model.Filter.SelectedPeriod)">@Html.Encode(SW.Resources.Frontend.Filter.ResourceManager.GetString(period.ToString()))</option>
+                        }
+                    </select>
+                </div>*@
+            <div class="category-rightbar-h3">Цена</div>
+            <div class="input-group" style="padding: 5px 0 0 0;">
+                <div class="icheck-list">
+                    <label style="position: relative;">
+                        <input class="icheck" type="checkbox" id="free" name="free" data-checkbox="icheckbox_flat-orange" value="true" checked="@Model.Filter.Free" /> Только Бесплатные
+                    </label>
+                </div>
+            </div>
+            <div class="price" style="margin-top: 5px;">
+                <input type="text" id="min" name="minmax" class="form-control range" value="@Html.Raw(Model.Filter.PriceRangeMin + ";" + Model.Filter.PriceRangeMax)" />
+            </div>
+            <div class="input-group" style="padding: 5px 0 0 0;">
+                <div class="icheck-list">
+                    <label style="position: relative;">
+                        <input class="icheck" type="checkbox" id="recent" name="recent" data-checkbox="icheckbox_flat-orange" value="true" checked="@Model.Filter.Recent" /> Только Новые
+                    </label>
+                </div>
+            </div>
+            <div class="input-group" style="padding: 5px 0 0 0;">
+                <div class="icheck-list">
+                    <label style="position: relative;">
+                        <input class="icheck" type="checkbox" id="unbuyed" name="unbuyed" data-checkbox="icheckbox_flat-orange" value="true" checked="@Model.Filter.Unbuyed" /> Только Непокупавшиеся
+                    </label>
+                </div>
+            </div>
+            <div style="display:none;">
+                <input type="text" id="theme" name="theme" value="@Model.Filter.Theme" />
+            </div>
+            @if (Model.Categories.Count() > 0)
+            {
+                <div class="category-rightbar-h3">Языки программирования</div>
+                <div class="input-group">
+                    <select class="form-control" name="category">
+                        <option value="0">Все</option>
+                        @foreach (var t in Model.Categories.OrderBy(x => x.Title))
+                        {
+                            <option value="@t.CategoryId" @(Model.Filter.Category != null && Model.Filter.Category.Contains(t.CategoryId) ? "selected" : "")>@t.Title</option>
+                        }
+                    </select>
+                </div>
+            }
+            @if (Model.Types.Count() > 0)
+            {
+                <div class="category-rightbar-h3">По типу</div>
+                <div class="input-group">
+                    <div class="icheck-list">
+                        @foreach (var t in Model.Types.OrderBy(x => x.Title))
+                        {
+                            var color = "icheckbox_flat";
+                            color += string.IsNullOrEmpty(t.Color) || t.Color == "black" ? string.Empty : "-" + t.Color;
+                            <label style="position: relative;">
+                                <input class="icheck" type="checkbox" data-checkbox="@(color)" name="type" value="@t.TypeId" checked="@(Model.Filter.Types != null ? Model.Filter.Types.Contains(t.TypeId) : true)" /> @t.Title (@t.DocumentsCount)
+                            </label>
+                        }
+                    </div>
+                </div>
+            }
+            <div class="row" style="margin:10px 0 0 0 ;">
+                <div class="col-md-6" style="padding: 0 5px 0 0;">
+                    <button type="submit" class="btn btn-primary btn-block">@Html.Encode(SW.Resources.Frontend.General.Apply)</button>
+                </div>
+                <div class="col-md-6" style="padding: 0 0 0 5px;">
+                    <a type="button" id="reset" class="btn btn-default btn-block">
+                        @Html.Encode(SW.Resources.Frontend.General.Reset)
+                    </a>
+                </div>
+            </div>
+            @if (Model.SorterModel.SortedField != SW.Frontend.Models.SortFieldsEnum.Category)
+            {
+                <input id="sort" name="sort" type="hidden" value="@Model.SorterModel.SortedField" />
+            }
+            @if (Model.SorterModel.Ascending)
+            {
+                <input id="direct" name="direct" type="hidden" value="@Model.SorterModel.Ascending.ToString()" />
+            }
+        </div>
+    </form>
+    @*@Html.Action("Siblings", new { id = Model.Filter.Category.FirstOrDefault() })
+        @if (!Request.Browser.IsMobileDevice)
+        {
+            <div class="hidden-xs">
+                @Html.Action("PopularAuthors", new { id = Model.Filter.Category.FirstOrDefault() })
+            </div>
+        }*@
+}
+
+@section JsCode {
+    <script src="~/metronic/assets/global/plugins/ion.rangeslider/js/ion-rangeSlider/ion.rangeSlider.min.js" type="text/javascript"></script>
+    <script src="~/metronic/assets/global/plugins/icheck/icheck.min.js" type="text/javascript"></script>
+    <script src="~/metronic/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $(".range").ionRangeSlider({
+            min: 0,
+            max: 10000,
+            from: @Model.Filter.PriceRangeMin,
+            to: @Model.Filter.PriceRangeMax,
+            type: 'double',
+            step: 100,
+            suffix: "",
+            prettify: false,
+            hasGrid: true
+        });
+
+
+        if ( $("#free").prop('checked') == true)
+            $('.price').hide();
+        else
+            $('.price').show();
+
+        $("#free").on('ifChanged', function()
+        {
+            if ($(this).prop('checked') == true)
+                $('.price').hide();
+            else
+                $('.price').show();
+        });
+
+        $('.icheck').each(function() {
+            var checkboxClass = $(this).attr('data-checkbox') ? $(this).attr('data-checkbox') : 'icheckbox_minimal-grey';
+            var radioClass = $(this).attr('data-radio') ? $(this).attr('data-radio') : 'iradio_minimal-grey';
+
+            if (checkboxClass.indexOf('_line') > -1 || radioClass.indexOf('_line') > -1) {
+                $(this).iCheck({
+                    checkboxClass: checkboxClass,
+                    radioClass: radioClass,
+                    insert: '<div class="icheck_line-icon"></div>' + $(this).attr("data-label")
+                });
+            } else {
+                $(this).iCheck({
+                    checkboxClass: checkboxClass,
+                    radioClass: radioClass
+                });
+            }
+        });
+
+        $('.make-switch').bootstrapSwitch();
+
+        $('#sort').change(function()
+        {
+            var filter = '@Html.Raw(Model.Filter.ToString())';
+            var page = @((Model.PagerModel.CurrentPage == 1).ToString().ToLower()) ? '' : ('&page=' + '@(Model.PagerModel.CurrentPage)');
+            var sort = this.value == 'Category' ? '' : ('&sort=' + this.value);
+            var direct = $('#direct')[0].checked == false ? '' : ('&direct=' + $('#direct')[0].checked);
+
+            var query = filter + page + sort + direct;
+            if (query != '')
+                query = '?'+ (query.indexOf('&') == 0 ? query.substring(1) : query);
+
+            window.location =  '/sections/@Model.Slug' + query;
+        });
+
+        $('#reset').click(function()
+        {
+            var sort = '@Html.Raw(Model.SorterModel.ToString())';
+            var query = sort;
+            if (query != '')
+                query = '?'+ (query.indexOf('&') == 0 ? query.substring(1) : query);
+
+            window.location = '/sections/@Model.Slug' + query;
+        });
+
+
+        $("form").submit(function() {
+            var periodValue = $('#period').val();
+            if (periodValue == 'Any')
+                $('#period').remove();
+
+            var free = $('#free')[0].checked;
+            if (!free)
+                $('#free').remove();
+            else
+                $('#min').remove();
+
+            var unbuyed = $('#unbuyed')[0].checked;
+            if (!unbuyed)
+                $('#unbuyed').remove();
+
+            var recent = $('#recent')[0].checked;
+            if (!recent)
+                $('#recent').remove();
+
+            var minmaxvalue = $('#min').val();
+            if (minmaxvalue == '@Model.Filter.PriceRangeMin' + ';' + '@Model.Filter.PriceRangeMax')
+                $('#min').remove();
+        });
+
+        @if (Model.Filter.Theme != 0) {
+        <text>
+        $("#themes a[data-id=@Model.Filter.Theme]").addClass('selected').append('<i class="delete fa fa-times" aria-hidden="true"></i>');
+        </text>
+        }
+
+    });
+
+    function DirectChange(checked)
+    {
+        var filter = '@Html.Raw(Model.Filter.ToString())';
+        var page = @((Model.PagerModel.CurrentPage == 1).ToString().ToLower()) ? '' : ('&page=' + '@(Model.PagerModel.CurrentPage)');
+        var sort = $('#sort')[0].value == 'Category' ? '' : ('&sort=' + $('#sort')[0].value);
+        var direct = checked == false ? '' : ('&direct=' + checked);
+
+        var query = filter + page + sort + direct;
+        if (query != '')
+            query = '?'+ (query.indexOf('&') == 0 ? query.substring(1) : query);
+
+        window.location = '@(Url.Action(null, "Category", new { id = ViewBag.CategorySlug }))' + query;
+    };
+
+        $("#themes a").click(function (e) {
+            //delete ico click
+            var targetClass = e.target.getAttribute("class");
+            var alreadySelected = $(this).attr("class").indexOf("selected") != -1;
+            if ((targetClass != "" && targetClass != null && targetClass.indexOf('delete') != -1) || alreadySelected) {
+                $(this).removeClass("selected");
+                $(this).find(".delete").remove();
+                $("#search-form #theme").val("");
+            } else {
+                if (!alreadySelected) {
+                    var otherSelected = $("#themes a.selected");
+                    if (otherSelected.length > 0) {
+                        $(otherSelected).removeClass("selected");
+                        $(otherSelected).find(".delete").remove();
+                    }
+
+                    var id = $(this).data("id");
+                    $(this).addClass("selected");
+                    $(this).append('<i class="delete fa fa-times" aria-hidden="true"></i>');
+                    $("#search-form #theme").val(id);
+                }
+            }
+            e.stopPropagation();
+            e.preventDefault();
+            $("#search-form").submit();
+        });
+    </script>
+
+
+
+
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+    <script>
+            $(document).ready(function () {
+                var table = $('.table').DataTable({
+                    searching: true,
+                    info: false,
+                    lengthChange: false,
+                    order: [3, "asc"],
+                    pageLength: 50,
+                    language: {
+                        search: "",
+                        paginate: {
+                            previous: "Назад",
+                            next: "Вперед"
+                        }
+                    }
+                });
+                $('#DataTables_Table_0_paginate').parent().css("width", "100%");
+                $('#DataTables_Table_0_wrapper').prepend($('#DataTables_Table_0_filter'));
+
+                $('#DataTables_Table_0_filter').css("float", "left");
+                $('#DataTables_Table_0_filter input').attr("placeholder", "поиск");
+
+                @if(Request.Browser.IsMobileDevice){
+                    <text>
+                    $('#DataTables_Table_0_filter').attr("style","width:100% !important");
+                    $('#DataTables_Table_0_filter input').attr("style","width:100% !important");
+                    $('#DataTables_Table_0_filter label').css("width", "100%");
+                    </text>
+                }else {
+                    <text>
+                    $('#DataTables_Table_0_filter input').css("width", "580px");
+                    </text>
+                }
+            });
+    </script>
+}
+<div>
+    @Model.Title
+</div>

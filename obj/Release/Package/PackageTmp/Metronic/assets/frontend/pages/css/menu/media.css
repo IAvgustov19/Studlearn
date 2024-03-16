@@ -1,0 +1,25 @@
+﻿@media screen and (max-width: 770px) {
+    .nav-list {
+        gap: 3.2%;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .nav-list {
+        gap: 2.2%;
+    }
+
+    .nav-link {
+        font-size: 13px;
+    }
+
+    .products_header {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 660px) {
+    .products-header-mobile {
+        display: none;
+    }
+}

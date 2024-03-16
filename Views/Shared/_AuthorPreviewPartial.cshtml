@@ -1,0 +1,37 @@
+﻿@model SW.Core.DataLayer.FeaturedAuthor
+@using Labels = SW.Resources.Frontend.Authors
+@*<div class="row margin-bottom-10">
+    <div class="col-md-5 col-sm-5 col-xs-4">
+        <img class="img-responsive" alt="@Model.UserName" src="@(Model.AvatartUrl??Model.AvatarUrlAdapted)">
+    </div>
+    <div class="col-md-7 col-sm-7 col-xs-8 recent-news-inner">
+        <h3 style="overflow:hidden;">
+            <a href="@Model.ProfileUrl">@Model.UserName</a>
+        </h3>
+        <span>
+            Рейтинг <i class="fa fa-star font-yellow-gold"></i><b>@Model.Rating</b><br>
+            Опубликовал работ <b>@Model.WorksPublishedCount</b><br>
+            @if (!String.IsNullOrEmpty(Model.Description))
+            {
+                <span>@(Model.Description.Substring(0, Math.Min(Model.Description.Length, 35)) + (Math.Min(Model.Description.Length, 35) == Model.Description.Length ? "" : "..."))</span>
+            }
+        </span>
+    </div>
+</div>*@
+
+<div class="worker-card">
+    <img class="worker-image" src="@(Model.AvatartUrl??Model.AvatarUrlAdapted)" alt="@Model.UserName">
+    <div class="worker-content">
+        <a class="worker-name" href="@Model.ProfileUrl">@Model.UserName</a>
+        <div class="worker-feedback">
+            <span class="worker-feedback-item"> <img src="~/Metronic/assets/frontend/pages/img/common/star.png"> @Model.Rating</span>
+            <span class="worker-feedback-item"><img src="~/Metronic/assets/frontend/pages/img/common/case.png"> @Model.WorksPublishedCount</span>
+        </div>
+        <div class="worker-description">
+            @if (!String.IsNullOrEmpty(Model.Description))
+            {
+                <span>@(Model.Description.Substring(0, Math.Min(Model.Description.Length, 35)) + (Math.Min(Model.Description.Length, 35) == Model.Description.Length ? "" : "..."))</span>
+            }
+        </div>
+    </div>
+</div>

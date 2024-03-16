@@ -1,0 +1,38 @@
+User-agent: Yandex
+Disallow: /works/file
+Disallow: /works/fileslist
+Disallow: /works/index
+Disallow: /api
+Disallow: /mobile
+Disallow: /m
+Disallow: /category/*?
+Allow: /category/*?page=*
+Disallow: /search?*
+Disallow: /free
+Disallow: /paid
+Disallow: /recent
+Disallow: /works/payment
+Disallow: /writers?q=*
+ 
+Sitemap: https://studlearn.com/sitemap
+Sitemap: https://studlearn.com/sitemap/images
+Host: https://studlearn.com
+ 
+User-Agent: *
+Disallow: /works/file
+Disallow: /works/fileslist
+Disallow: /works/index
+Disallow: /api
+Disallow: /mobile
+Disallow: /m
+Disallow: /category/*?
+Allow: /category/*?page=*
+Disallow: /search?*
+Disallow: /free
+Disallow: /paid
+Disallow: /recent
+Disallow: /works/payment
+Disallow: /writers?q=*
+ 
+Sitemap: https://studlearn.com/sitemap
+Sitemap: https://studlearn.com/sitemap/images

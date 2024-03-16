@@ -1,0 +1,17 @@
+﻿@model SW.Frontend.Models.WorkPaymentModel
+
+@{
+    ViewBag.Title = "Ошибка оплаты";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>@SW.Resources.Frontend.Payment.PaymentHeader</h2>
+    <div class="note note-danger">
+        <h4 class="block">@SW.Resources.Frontend.Payment.PaymentFailedHeader</h4>
+        <p>
+            @Html.Raw(string.Format(SW.Resources.Frontend.Payment.PaymentFailedBody, Model.Title, Model.Link, SW.Shared.Constants.Application.SupportEmail, Model.PaymentId))
+        </p>
+    </div>
+</div>
+

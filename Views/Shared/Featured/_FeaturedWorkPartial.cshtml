@@ -1,0 +1,28 @@
+﻿@model SW.Core.DataLayer.FeaturedWork
+
+<div class="product-box">
+    <div class="product-box-image">
+        <div class="product-box-items">
+            <span class="product-box-image-item">
+                Алгоритм
+            </span>
+            <span class="product-box-image-item">
+                Коллекции
+            </span>
+            <span class="product-box-image-item">
+                C#
+            </span>
+        </div>
+        <span class="product-box-image-item rating">
+            @Model.Rating
+        </span>
+    </div>
+    <div class="product-box-info">
+        <span class="views">12 К</span>
+        <span class="product-box-price">@Model.PriceLabel</span>
+    </div>
+    <div class="product-box-title">
+        <p>@Model.Title</p>
+        <a href="@Model.Url" class="watch-more">Смотреть работу</a>
+    </div>
+</div>

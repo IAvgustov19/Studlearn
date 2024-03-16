@@ -1,0 +1,52 @@
+﻿@model SW.Shared.Models.Documents.CommentPreview
+@using System.Text.RegularExpressions
+
+<div class="@(Model.Rating <= -5 ? "media comment bad" : "media comment")">
+    @if (Model.Options.AvatarEnabled)
+    {
+        <a href="@Url.Action("Details", "Authors", new { id = Model.Author.Id })" class="pull-left">
+            <img src="@Model.Author.PreviewAvatar" alt="" class="media-object">
+        </a>
+    }
+    <div class="media-body">
+        <span class="badge badge-default">@Model.UserType</span>
+        <h4 class="media-heading">
+            @*<a class="username" href="@Url.Action("Details", "Authors", new { id = Model.Author.Id })">@Model.Author.UserName</a>*@
+            @MyHelpers.AuthorLink(Model.Author.UserName, Model.Author.Id, Model.Author.Slug, "username")
+            <span>
+                @if (Model.Options.RatingEnabled)
+                {
+                    <i class="fa fa-thumbs-up like @(Model.IsUserVoted && Model.IsPositive ? "font-green" : "")"></i> @Model.Rating <i class="fa fa-thumbs-down color-grey dislike @(Model.IsUserVoted && !Model.IsPositive ? "font-red" : "")"></i>
+                }
+                / @Model.PostedAt.ToShortDateString() @Model.PostedAt.ToShortTimeString()
+                @if (Model.Options.ReplyEnabled && !Model.ReplyDisabled)
+                {
+                    @("/") <a class="reply" href="javascript:;">Reply</a>
+            }
+            @if (Model.Options.EditEnabled)
+            {
+                @("/") <a class="edit" href="javascript:;"><i class="fa fa-edit"></i></a>
+            }
+            </span>
+        </h4>
+        <p>
+            @if (Model.RepliedTo != null)
+            {
+                @*<a href="@Url.Action("Details", "Authors", new { id = Model.RepliedTo.Id })">@Model.RepliedTo.UserName,</a>*@
+                @MyHelpers.AuthorLink(Model.RepliedTo.UserName + ",", Model.RepliedTo.Id, Model.RepliedTo.Slug)
+            }
+            @{ var message = Model.Message;
+                Regex regex = new Regex(@"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)");
+                MatchCollection matches = regex.Matches(message);
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches)
+                    {
+                        message=message.Replace(match.Value, "<a href=\"" + match.Value + "\">" + match.Value + "</a>");
+                    }
+                }                
+            }
+            @message
+        </p>
+    </div>
+</div>

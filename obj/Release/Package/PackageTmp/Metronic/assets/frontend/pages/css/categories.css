@@ -1,0 +1,87 @@
+﻿.categories {
+    background: linear-gradient(0deg, #272F37, #272F37), radial-gradient(31.72% 31.72% at 50% 0%, rgba(111, 199, 39, 0.12) 0%, rgba(111, 199, 39, 0) 100%), radial-gradient(50% 26.36% at 100% 100%, rgba(111, 199, 39, 0.12) 0%, rgba(111, 199, 39, 0) 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 20px !important;
+    gap: 40px;
+    text-align: center;
+    margin: 0px auto 40px auto;
+}
+
+.category:last-child {
+    margin-bottom: 0px;
+}
+
+.category {
+    margin-bottom: 40px;
+}
+
+.categories h2 {
+    margin: 0px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    .categories h2 hr {
+        width: 80px;
+        height: 2px;
+        border-radius: 4px;
+        border-color: #4AB22D;
+        margin-top: 8px;
+    }
+
+.category-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-auto-flow: column;
+    text-align: left;
+    grid-column-gap: 120px;
+    grid-row-gap: 8px;
+    padding-top: 12px;
+}
+
+.category-header {
+    background: #424D58;
+    padding: 12px;
+    border-radius: 12px !important;
+    gap: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-item {
+    text-decoration: none;
+    color: rgba(155, 159, 163, 255);
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+
+    .category-item:hover {
+        color: white;
+        background-image: url(/Metronic/assets/frontend/pages/img/ic_round-arrow-left.png);
+        background-repeat: no-repeat;
+        background-position-x: -10px;
+        background-position-y: center;
+        padding-left: 20px;
+    }
+
+@media screen and (max-width:360px) {
+    .category-content {
+        display: flex;
+        flex-direction: column;
+    }
+}

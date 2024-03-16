@@ -1,0 +1,14 @@
+﻿@model IEnumerable<SW.Shared.Models.Documents.CategoryPreview>
+
+<div class="no-top-space category-rightbar-h3">Категории</div>
+<ul class="nav sidebar-categories margin-bottom-40">
+    @foreach (var category in Model.OrderBy(x => x.Title))
+    {
+        <li class="@(category.CategoryId == ViewBag.CategoryId ? "active" : "")">
+            <a href="@category.Url">
+                @category.Title
+                <strong>(@category.Count)</strong>
+            </a>
+        </li>
+    }
+</ul>

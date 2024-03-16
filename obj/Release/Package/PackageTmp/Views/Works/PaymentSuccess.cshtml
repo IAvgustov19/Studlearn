@@ -1,0 +1,38 @@
+﻿@model SW.Frontend.Models.WorkPaymentModel
+
+@{
+    ViewBag.Title = "Оплата успешно проведена";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>@SW.Resources.Frontend.Payment.PaymentHeader</h2>
+    <div class="note note-success">
+        <h4 class="block">@SW.Resources.Frontend.Payment.PaymentSuccessHeader</h4>
+        <p>
+            @Html.Raw(string.Format(SW.Resources.Frontend.Payment.PaymentSuccessBody, Model.Title, Model.Link))
+        </p>
+        @if (ViewBag.Files != null && ViewBag.Files.Count>0)
+        {
+            <div>
+                <span>
+                    @Html.Raw(SW.Resources.Frontend.Mail.PurchaseEmaiDownloadMessage)
+                </span>
+                <ul>
+
+                    @foreach (SW.Shared.Models.Storage.FileAndToken file in ViewBag.Files)
+                    {
+                        <li style="text-align:left;">
+                            <a href="@Url.Action("File", "Works", routeValues: new { fileId = file.Id, documentId = ViewBag.DocumentId, token = file.Token }, protocol: Request.Url.Scheme)">
+                                @file.Title
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+        <span>
+            @Html.Raw(string.Format(SW.Resources.Frontend.Mail.PurchaseEmailHelpInfo, "<a href=\"https://dashboard.studlearn.com/Statistics/Purchases\">", "</a>"))
+        </span>
+    </div>
+</div>

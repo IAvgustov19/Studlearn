@@ -1,0 +1,11 @@
+﻿@model IEnumerable<SW.Shared.Models.Documents.ThemePreview>
+@{
+    Layout = null;
+}
+@if (Model.Count() > 0)
+{
+    foreach (var theme in Model)
+    {
+        <span class="main-page-category-item"><a href="~/themes/details/@theme.Id">@theme.Name</a></span>
+    }
+}

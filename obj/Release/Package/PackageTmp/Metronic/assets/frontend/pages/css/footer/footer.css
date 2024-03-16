@@ -1,0 +1,109 @@
+﻿.footer {
+    font-family: "Open Sans", sans-serif;
+    background-color: #272F37;
+    font-size: 12px;
+    color: #677685 !important;
+    padding:40px 0px 0px 0px !important;
+}
+
+.footer-content {
+    padding: 40px 40px;
+    flex-wrap: wrap;
+}
+
+.footer-container {
+    display: flex;
+}
+
+.copyright {
+    background-color: #1B2126;
+    padding: 8px 0px;
+}
+
+.juridical-info {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: left;
+    max-width: 180px;
+    margin-right: 40px;
+}
+
+.footer a {
+    color: #AEB1CE !important;
+    text-decoration: none !important;
+}
+
+.footer-logo {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.site-map {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+}
+
+.site-map-header {
+    border-bottom: 1px solid #4AB22D;
+    max-width: 245px;
+    font-size: 16px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.site-map-items {
+    display: grid;
+    grid-template-columns: repeat(2, 245px);
+    grid-template-rows: repeat(5, 32px);
+    grid-auto-flow: column;
+    grid-column-gap: 20px;
+}
+
+.footer ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.footer li {
+    list-style-type: none;
+}
+
+.copyright-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.messengers {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+}
+
+.messenger-header {
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: white;
+}
+
+.telegram-item::before {
+    content: "";
+    background-image: url(/Metronic/assets/frontend/pages/img/common/telegram-icon.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 15px 12px;
+}
+
+.whatsapp-item::before {
+    content: "";
+    background-image: url(/Metronic/assets/frontend/pages/img/common/whatsapp-logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 15px 12px;
+}

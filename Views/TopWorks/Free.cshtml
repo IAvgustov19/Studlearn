@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "Бесплатные Лабораторные И Курсовые | Studlearn.com";
+    ViewBag.Description = "Список всех работ, которые можно скачать без регистрации.";
+    Layout = "~/Views/Shared/_OneColumnLayout.cshtml";
+}
+@model IEnumerable<SW.Frontend.Models.TopWork>
+
+@section Styles {
+    <link href="/metronic/assets/frontend/pages/css/blog.css" rel="stylesheet" type="text/css" />
+    <style>
+
+        .blog-raw {
+            -moz-column-width: 18em;
+            -webkit-column-width: 18em;
+            -moz-column-gap: 1em;
+            -webkit-column-gap: 1em;
+        }
+
+        .blog-content-1 .blog-img-thumb img {
+            position: static !important;
+        }
+
+        .dataTable a, .dataTable a:hover {
+            color: #2165df;
+        }
+    </style>
+}
+@section JsCode {
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+    <script>
+                $(document).ready(function () {
+                    // $('#DataTables_Table_0_paginate').parent().css("width", "100%");
+                    var table = $('.table').DataTable({
+                        searching: true,
+                        info: false,
+                        lengthChange: false,
+                        order: [2, "desc"],
+                        pageLength: 50,
+                        paging: true,
+                        language: {
+                            search: "",
+                            paginate: {
+                                previous: "Назад",
+                                next: "Вперед"
+                            }
+                        }
+                    });
+                    $('#DataTables_Table_0_paginate').parent().css("width", "100%");
+                    $('#DataTables_Table_0_wrapper').prepend($('#DataTables_Table_0_filter'));
+
+                    $('#DataTables_Table_0_filter').css("float", "left");
+                    $('#DataTables_Table_0_filter input').attr("placeholder", "поиск");
+
+                    @if(Request.Browser.IsMobileDevice){
+                        <text>
+                        $('#DataTables_Table_0_filter').attr("style","width:100% !important");
+                        $('#DataTables_Table_0_filter input').attr("style","width:100% !important");
+                        $('#DataTables_Table_0_filter label').css("width", "100%");
+                        </text>
+                    }else {
+                        <text>
+                        $('#DataTables_Table_0_filter input').css("width", "300px");
+                        </text>
+                    }
+                });
+    </script>
+}
+@section  Title {
+    <h1>Топ @SW.Frontend.Controllers.TopWorksController.MaxTopWorkItemsPerPage самых популярных <strong>бесплатных</strong> работ для студентов</h1>
+}
+@section RichHeader {
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a title="Главная" href="/">Главная</a>
+            </li>
+            <li class="active">
+                <text title="Бесплатные">Бесплатные</text>
+            </li>
+        </ul>
+    </div>
+}
+@section Content{
+    @if (Model == null || Model.Count() == 0)
+    {
+        <div class="jumbotron">
+            <h2><b>Нет данных</b></h2>
+            <p>
+                Попробуй выбрать другую дату в меню срава
+            </p>
+        </div>
+    }
+    else
+    {
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+        <div class="blog-page blog-content-1">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="border-bottom:0px;@(Request.Browser.IsMobileDevice?"display:none;":"")">Тип</th>
+                        <th style="border-bottom:0px;">Название</th>
+                        <th style="border-bottom:0px;@(Request.Browser.IsMobileDevice?"display:none;":"")">Рейтинг</th>
+                        <th style="border-bottom:0px;@(Request.Browser.IsMobileDevice?"display:none;":"")">Категория</th>
+                        <th style="border-bottom:0px">Стоимость</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var minDate = DateTime.UtcNow.Subtract(TimeSpan.FromDays(90));
+                    }
+                    @foreach (var document in Model)
+                    {
+                        var color = string.IsNullOrEmpty(document.Color) ? string.Empty : "label-" + document.Color;
+
+                        <tr>
+                            <td style="@(Request.Browser.IsMobileDevice?"display:none;":"")"><span class="label @(color)">@document.TypeTitle</span></td>
+                            <td>
+                                <a href="@document.Url" target="_blank">@document.Title</a>
+                                @if (document.CreatedAt >= minDate)
+                                {
+                                    <span class="badge badge-success" style="margin-left: 5px;">new</span>
+                                }
+                            </td>
+                            <td style="min-width: 50px;@(Request.Browser.IsMobileDevice?"display:none;":"")"><i class="fa fa-star"></i> @document.Rating</td>
+                            <td style="@(Request.Browser.IsMobileDevice?"display:none;":"")">@document.CategoryTitle</td>
+                            <td data-order="@(document.Price)">
+                                @if (document.Price.HasValue)
+                                {
+                                    @(document.PriceLabel) <i class="fa @SW.Shared.Constants.Application.DefaultCurrencyIconClass"></i>
+                                }
+                                else
+                                {
+                                    @document.PriceLabel
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+}
+

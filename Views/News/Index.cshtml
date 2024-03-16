@@ -1,0 +1,98 @@
+﻿@model SW.Frontend.Models.NewsListModel
+@using SW.Frontend.Helpers
+@using SW.Frontend.Utilities;
+
+@{
+    ViewBag.Title = Seo.GetNewsListTitle(Model.PagerModel.CurrentPage);
+    ViewBag.Description = SW.Resources.Frontend.General.BlogDescription;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="/metronic/assets/frontend/pages/css/blog.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="container">
+    <h1>@SW.Resources.Frontend.General.BlogDescription</h1>
+    @*<hr class="blog-post-sep">*@
+    @*<div class="blog-posts">*@
+    <div class="blog-page blog-content-1">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="blog-post-sm bordered blog-container">
+                    <div class="blog-img-thumb">
+                        <a href="@Model.News.First().DetailsUrl">
+                            <img src="/images/loading-150-1.gif" class="lazy-load" data-src="@Model.News.First().LogoUrl" title="@Model.News.First().Title">
+                        </a>
+                    </div>
+                    <div class="blog-post-content">
+                        <h2 class="blog-title blog-post-title">
+                            <a href="@Model.News.First().DetailsUrl">@Model.News.First().Title</a>
+                        </h2>
+                        <div class="blog-post-desc" style="max-height: 60px; overflow: hidden; margin-bottom: 0px;">@Html.Raw(@Model.News.First().Description)</div>                        
+                        <br />
+                        <div class="blog-post-foot">
+                            <div class="blog-post-meta">
+                                <i class="fa fa-calendar"></i>
+                                @Model.News.First().CreateAt.ToShortDateString()
+                                @{
+                                    if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim(SW.Core.DataLayer.Account.ResourcesType.Type, "Moderator"))
+                                    {
+                                        @:&nbsp;
+                                        <i class="fa fa-eye" title="Количество уникальных просмотров статьи"></i>
+                                            @Model.News.First().Visits
+                                    }
+                                }
+                            </div>
+                            <a href="@Model.News.First().DetailsUrl" class="pull-right read-more">Читать далее <i class="fa fa-arrow-circle-o-right "></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @for (int i = 0; i < 3; i++)
+        {
+            <div class="row">
+                @foreach (var news in Model.News.Skip(1).Skip(i * 3).Take(3))
+                {
+                    <div class="col-md-4 col-sm-4">
+                        <div class="blog-post-sm bordered blog-container">
+                            <div class="blog-img-thumb">
+                                <a href="@news.DetailsUrl">
+                                    <img src="/images/loading-150-1.gif" class="lazy-load" data-src="@news.LogoUrl" title="@news.Title">
+                                    @*<img src="@news.LogoUrl" title="@news.Title">*@
+                                </a>
+                            </div>
+                            <div class="blog-post-content">
+                                <h2 class="blog-title blog-post-title">
+                                    <a href="@news.DetailsUrl">@news.Title</a>
+                                </h2>
+                                <div class="blog-post-desc" style="max-height: 60px; overflow: hidden; margin-bottom: 0px;">@Html.Raw(news.Description)</div>                                
+                                <br />
+                                <div class="blog-post-foot">
+                                    <div class="blog-post-meta">
+                                        <i class="fa fa-calendar"></i>
+                                        @news.CreateAt.ToShortDateString()
+                                        @{
+                                            if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim(SW.Core.DataLayer.Account.ResourcesType.Type, "Moderator"))
+                                            {
+                                                @:&nbsp;
+                                                <i class="fa fa-eye" title="Количество уникальных просмотров статьи"></i>
+                                                    @news.Visits
+
+                                            }
+                                        }
+                                    </div>
+                                    <a href="@news.DetailsUrl" class="pull-right read-more">Читать далее <i class="fa fa-arrow-circle-o-right "></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    @Html.Pager("Index", "News", Model.PagerModel)
+    <p></p>
+</div>

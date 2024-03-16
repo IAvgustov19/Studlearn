@@ -1,0 +1,22 @@
+﻿@model SW.Frontend.Models.ExternalWritersReviewModel
+@using SW.Frontend.Helpers
+
+@*<h3>Отзывы</h3>*@
+<div class="comments">
+    @if (Model.Reviews.Count() == 0)
+    {
+        <div class="note note-info" style="margin-bottom: 0px;">
+            <p>
+                Здесь пока нет отзывов. Напиши пару строк – получи плюс в карму.
+            </p>
+        </div>
+    }
+    else
+    {
+        foreach (var comment in Model.Reviews)
+        {
+            @Html.Partial("_ReviewPartial", comment)
+        }
+        @Html.Pager("Profile/" + @Model.WriterId, "Writers", Model.PagerModel)
+    }
+</div>

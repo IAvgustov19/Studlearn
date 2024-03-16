@@ -1,0 +1,82 @@
+﻿@model List<SW.Shared.Models.Profile.UserSubscription>
+@{
+    ViewBag.Title = "Управление рассылкой";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/metronic/assets/global/plugins/icheck/skins/flat/_all.css" rel="stylesheet" type="text/css">
+
+    <style>
+        .pre-header {
+            display: none;
+        }
+    </style>
+}
+
+<div class="container">
+    <h2>Управление рассылкой</h2>
+
+
+    <form action="/unsubscribe/apply" class="">
+        <div>
+            Ты получаешь рассылку от Studlearn.com на <b>@ViewBag.Email</b>.
+            Чтобы настроить, отметь ниже разделы, по которым ты хочешь получать новости.
+            Чтобы отказаться от рассылки, сними все отметки.
+
+            <fieldset>
+                <legend>Подписки</legend>
+                <p>
+                    @foreach (var t in Model)
+                    {
+                        <input class="subscr" type="checkbox" data-checkbox="" name="subscriptions" value="@t.Id" checked="@(t.Active)" /> @t.Title
+                    }
+                </p>
+            </fieldset>
+        </div>
+        <input type="hidden" name="id" value="@ViewBag.Id" />
+        <button class="btn green">Подтвердить</button>
+        <button class="btn default" id="selectAll" type="button"><i class="fa fa-check-square-o"></i> Выделить все</button>
+        <button class="btn default" id="unselectAll" type="button"><i class="fa fa-square-o"></i> Отменить все</button>
+    </form>
+    <br />
+    <form action="/unsubscribe/deactivatesubscription" class="">
+        <input type="hidden" name="id" value="@ViewBag.Id" />
+        <button class="btn red">Отписаться от всех рассылок на всегда</button>
+    </form>
+
+    <p style="height:100px;"></p>
+</div>
+
+@section JsCode {
+    <script src="~/metronic/assets/global/plugins/icheck/icheck.min.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.icheck').each(function () {
+                //var checkboxClass = $(this).attr('data-checkbox') ? $(this).attr('data-checkbox') : 'icheckbox_minimal-grey';
+                //var radioClass = $(this).attr('data-radio') ? $(this).attr('data-radio') : 'iradio_minimal-grey';
+
+                //if (checkboxClass.indexOf('_line') > -1 || radioClass.indexOf('_line') > -1) {
+                //    $(this).iCheck({
+                //        checkboxClass: checkboxClass,
+                //        radioClass: radioClass,
+                //        insert: '<div class="icheck_line-icon"></div>' + $(this).attr("data-label")
+                //    });
+                //} else {
+                //    $(this).iCheck({
+                //        checkboxClass: checkboxClass,
+                //        radioClass: radioClass
+                //    });
+                //}
+            });
+            $('#selectAll').click(function () {
+                $('.subscr').prop("checked", true);
+            });
+
+            $('#unselectAll').click(function () {
+                $('.subscr').prop("checked", false);
+            });
+        });
+    </script>
+}

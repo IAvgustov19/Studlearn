@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="Главная" controller="Home" action="Index">
+    <mvcSiteMapNode title="О Нас" controller="Home" action="About"/>
+    <mvcSiteMapNode title="Результаты поиска" controller="Search" action="Index"/>
+    <mvcSiteMapNode title="Новости" controller="News" action="Index"/>
+    <mvcSiteMapNode title="Каталог" controller="Sections" action="Index" key="sections" >
+      <mvcSiteMapNode title="Разделы1" action="Index" dynamicNodeProvider="SW.Frontend.Helpers.SectionDynamicNodeProvider, SW.Frontend" />
+    </mvcSiteMapNode>
+    <!--<mvcSiteMapNode title="Категории" controller="Category" action="Index">
+      <mvcSiteMapNode title="Категории1" action="Details" dynamicNodeProvider="SW.Frontend.Helpers.CategoryDynamicNodeProvider, SW.Frontend" />
+    </mvcSiteMapNode>
+    --><!--<mvcSiteMapNode title="Работа" controller="Works" action="Index" dynamicNodeProvider="SW.Frontend.Helpers.WorkDynamicNodeProvider, SW.Frontend" />--><!--
+    <mvcSiteMapNode title="Работа1" controller="Works" action="Details" dynamicNodeProvider="SW.Frontend.Helpers.WorkSlugDynamicNodeProvider, SW.Frontend" />
+    <mvcSiteMapNode title="Авторы" controller="Authors" action="Index" key="authors">
+      <mvcSiteMapNode title="Детали автора" action="Details" dynamicNodeProvider="SW.Frontend.Helpers.AuthorDynamicNodeProvider, SW.Frontend" />
+      <mvcSiteMapNode title="Детали автора" action="Profile" dynamicNodeProvider="SW.Frontend.Helpers.AuthorSlugDynamicNodeProvider, SW.Frontend" />
+    </mvcSiteMapNode>-->
+  </mvcSiteMapNode>
+
+</mvcSiteMap>

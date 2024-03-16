@@ -1,0 +1,334 @@
+﻿@using System.Web.Mvc.Html
+@using SW.Frontend.Helpers
+@using SW.Frontend.Utilities;
+
+@model SW.Frontend.Models.CategoryViewModel
+
+@{
+    int type; int.TryParse(Request.QueryString["type"] ?? "0", out type);
+    ViewBag.Title = Seo.GetCategoryTitle(ViewBag.CategoryTitle, Model.PagerModel.CurrentPage, type);
+    ViewBag.Description = Seo.GetCategoryDescription(ViewBag.CategoryTitle, Model.PagerModel.CurrentPage, type);
+    Layout = "~/Views/Shared/_TwoColumnsLayout.cshtml";
+}
+
+@section Title {
+    <h1>@ViewBag.CategoryTitle</h1>
+    @if (Model.PagerModel.CurrentPage == 1)
+    {
+        @Html.Raw(ViewBag.CategoryDescription)
+    }
+
+}
+@section Styles {
+    <link href="~/metronic/assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.css" rel="stylesheet" type="text/css">
+    <link href="~/metronic/assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.Metronic.css" rel="stylesheet" type="text/css">
+    <link href="~/metronic/assets/global/plugins/icheck/skins/flat/_all.css" rel="stylesheet" type="text/css">
+    <link href="~/metronic/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
+    @Html.PrevNextLinksBlock(null, "Category", Model.PagerModel, (Model.Filter.ToString() + "&" + Model.SorterModel.ToString()).Trim('&'))
+}
+
+
+<div class="container">
+    <ul class="breadcrumb">
+        <li>
+            <a title="Главная" href="/">Главная</a>
+        </li>
+        <li>
+            <a title="Каталог" href="/sections">Каталог</a>
+        </li>
+        <li class="active">
+            <text title="@ViewBag.CategoryTitle">@ViewBag.CategoryTitle</text>
+        </li>
+    </ul>
+</div>
+
+
+@section LeftSidebar {
+    @*<div class="row list-view-sorting clearfix">
+            <div class="col-md-12 col-sm-12">
+                <div class="pull-right">
+                    <div style="display: inline-block;">
+                        <label style="line-height: 34px;">Сортировать: &nbsp;</label>
+                    </div>
+                    <div style="display: inline-block;">
+                        <select class="form-control" id="sort" name="sort" value="@Model.SorterModel.SortedField">
+                            @foreach (var field in Model.SorterModel.SortFields)
+                            {
+                                <option value="@field" selected="@(field == @Model.SorterModel.SortedField)">@Html.Encode(SW.Resources.Frontend.Filter.ResourceManager.GetString(@field.ToString()))</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="pull-right">
+                        <div style="padding: 0 0 0 5px;" class="">
+                            <input type="checkbox" id="direct" name="direct" value="true" checked="@Model.SorterModel.Ascending" class="make-switch"
+                                   onchange="DirectChange(this.checked)"
+                                   data-on-text="@("<i class='fa fa-sort-numeric-asc'></i>")"
+                                   data-off-text="@("<i class='fa fa-sort-numeric-desc'></i>")" data-on-color="success" data-off-color="danger" data-on-title="По возрастанию" data-off-title="По убыванию">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />*@
+    <div class="blog-posts">
+        @foreach (var document in Model.Documents)
+        {
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    @if (!Request.Browser.IsMobileDevice)
+                    {
+                        <!-- BEGIN CAROUSEL -->
+                        <div class="front-carousel hidden-xs">
+                            <div class="carousel slide">
+                                <!-- Carousel items -->
+                                <div class="carousel-inner">
+                                    <div class="item active" style="cursor: pointer" onclick="javascript: window.location = '@document.Url'">
+                                        @if (document.IsVideoAvailable)
+                                        {
+                                            <iframe src="https://www.youtube.com/embed/@document.YoutubeId" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                                        }
+                                        else
+                                        {
+                                            <img alt="@document.Title" src="@document.PreviewImageUrl">
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END CAROUSEL -->
+
+                        <p class="margin-top-10 hidden-xs" style="font-size:1.25em">
+                            <i class="fa fa-star"></i> <span title="Рейтинг работы">@document.Rating</span>&nbsp;
+                            <i class="fa @SW.Shared.Constants.Application.DefaultCurrencyIconClass"></i> <span title="Стоимость работы">@document.PriceLabel </span>&nbsp;
+                            <i class="fa fa-user"></i>&nbsp;<a title="Автор" href="@document.Author.ProfileUrl">@document.Author.UserName</a>
+                        </p>
+                    }
+
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <div class="category-work-h2">
+                        <a href="@document.Url">@document.Title</a>
+                        <span>@document.TypeTitle</span>
+                    </div>
+                    <ul class="blog-info">
+                        <li title="создан"><i class="fa fa-calendar"></i> @document.CreatedAt.ToString("D", System.Threading.Thread.CurrentThread.CurrentUICulture)</li>
+                        <li title="комментариев"><i class="fa fa-comments"></i> @document.CommentsQuantity</li>
+                        <li title="Рейтинг работы" class="inline-visible-xs"><i class="fa fa-star"></i>@document.Rating</li>
+                        <li title="Стоимость работы" class="inline-visible-xs"><i class="fa @SW.Shared.Constants.Application.DefaultCurrencyIconClass"></i>@document.PriceLabel</li>
+                        <li title="Автор" class="inline-visible-xs"><i class="fa fa-user"></i>&nbsp;<a title="Автор" href="@document.Author.ProfileUrl">@document.Author.UserName</a></li>
+                    </ul>
+                    <p>
+                        @document.PreviewContent
+                    </p>
+                    <a href="@Url.Action("Index", "Works", new { id = @document.DocumentId })" class="more">Подробнее... <i class="icon-angle-right"></i></a>
+                </div>
+            </div>
+            <hr class="blog-post-sep">
+        }
+    </div>
+    @Html.Pager("Details", "Category", Model.PagerModel, (Model.Filter.ToString() + "&" + Model.SorterModel.ToString()).Trim('&'))
+}
+
+@section RightSidebar {
+    @if (!Request.Browser.IsMobileDevice)
+    {
+        @*<div class="no-top-space category-rightbar-h2">Фильтр</div><br />*@
+        <form action="/category/details/@(Model.Filter.Category.FirstOrDefault())" class="content-search-view2 hidden-xs" style="padding: 10px;">
+            <div class="input-group" style="display:block;">
+                @*<div class="category-rightbar-h3">Период</div>
+                    <div class="row" style="margin:0;">
+                        <select class="form-control" name="period" id="period">
+                            @foreach (var period in Model.Filter.Periods)
+                            {
+                                <option value="@period" selected="@(period == @Model.Filter.SelectedPeriod)">@Html.Encode(SW.Resources.Frontend.Filter.ResourceManager.GetString(period.ToString()))</option>
+                            }
+                        </select>
+                    </div>*@
+                <div class="category-rightbar-h3">Цена</div>
+                <div class="input-group" style="padding: 5px 0 0 0;">
+                    <div class="icheck-list">
+                        <label style="position: relative;">
+                            <input class="icheck" type="checkbox" id="free" name="free" data-checkbox="icheckbox_flat-orange" value="true" checked="@Model.Filter.Free" /> Только Бесплатные
+                        </label>
+                    </div>
+                </div>
+                <div class="price" style="margin-top: 5px;">
+                    <input type="text" id="min" name="minmax" class="form-control range" value="@Html.Raw(Model.Filter.PriceRangeMin + ";" + Model.Filter.PriceRangeMax)" />
+                </div>
+                @if (Model.Types.Count() > 0)
+                {
+                    <div class="category-rightbar-h3">По Типу</div>
+                    <div class="input-group">
+                        <div class="icheck-list">
+                            @foreach (var t in Model.Types.OrderBy(x => x.Title))
+                            {
+                                <label style="position: relative;">
+                                    <input class="icheck" type="checkbox" data-checkbox="icheckbox_flat-green" name="type" value="@t.TypeId" checked="@(Model.Filter.Types != null ? Model.Filter.Types.Contains(t.TypeId) : false)" /> @t.Title
+                                </label>
+                            }
+                        </div>
+                    </div>
+                }
+
+                <div class="row" style="margin:10px 0 0 0 ;">
+                    <div class="col-md-6" style="padding: 0 5px 0 0;">
+                        <button type="submit" class="btn btn-primary btn-block">@Html.Encode(SW.Resources.Frontend.General.Apply)</button>
+                    </div>
+                    <div class="col-md-6" style="padding: 0 0 0 5px;">
+                        <a type="button" id="reset" class="btn btn-default btn-block">
+                            @Html.Encode(SW.Resources.Frontend.General.Reset)
+                        </a>
+                    </div>
+                </div>
+
+                @if (Model.SorterModel.SortedField != SW.Frontend.Models.SortFieldsEnum.Rating)
+                {
+                    <input id="sort" name="sort" type="hidden" value="@Model.SorterModel.SortedField" />
+                }
+                @if (Model.SorterModel.Ascending)
+                {
+                    <input id="direct" name="direct" type="hidden" value="@Model.SorterModel.Ascending.ToString()" />
+                }
+            </div>
+        </form>
+    }
+
+    @Html.Action("Siblings", new { id = ViewBag.CategoryId })
+
+    @if (!Request.Browser.IsMobileDevice)
+    {
+        <div class="hidden-xs">
+            @Html.Action("PopularAuthors", new { id = ViewBag.CategoryId })
+        </div>
+    }
+}
+
+@section JsCode {
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org",
+        "@@type": "BreadcrumbList",
+        "itemListElement": [
+        {
+        "@@type": "ListItem",
+        "position": 1,
+        "item": {
+        "@@id": "/sections",
+        "name": "Каталог"
+        }
+        }
+        ]
+        }
+    </script>
+
+    <script src="~/metronic/assets/global/plugins/ion.rangeslider/js/ion-rangeSlider/ion.rangeSlider.min.js" type="text/javascript"></script>
+    <script src="~/metronic/assets/global/plugins/icheck/icheck.min.js" type="text/javascript"></script>
+    <script src="~/metronic/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $(".range").ionRangeSlider({
+            min: 0,
+            max: 10000    ,
+            from: @Model.Filter.PriceRangeMin    ,
+            to: @Model.Filter.PriceRangeMax    ,
+            type: 'double',
+            step: 100,
+            suffix: "",
+            prettify: false,
+            hasGrid: true
+        });
+
+
+        if ( $("#free").prop('checked') == true)
+            $('.price').hide();
+        else
+            $('.price').show();
+
+        $("#free").on('ifChanged', function()
+        {
+            if ($(this).prop('checked') == true)
+                $('.price').hide();
+            else
+                $('.price').show();
+        });
+
+        $('.icheck').each(function() {
+            var checkboxClass = $(this).attr('data-checkbox') ? $(this).attr('data-checkbox') : 'icheckbox_minimal-grey';
+            var radioClass = $(this).attr('data-radio') ? $(this).attr('data-radio') : 'iradio_minimal-grey';
+
+            if (checkboxClass.indexOf('_line') > -1 || radioClass.indexOf('_line') > -1) {
+                $(this).iCheck({
+                    checkboxClass: checkboxClass,
+                    radioClass: radioClass,
+                    insert: '<div class="icheck_line-icon"></div>' + $(this).attr("data-label")
+                });
+            } else {
+                $(this).iCheck({
+                    checkboxClass: checkboxClass,
+                    radioClass: radioClass
+                });
+            }
+        });
+
+        $('.make-switch').bootstrapSwitch();
+
+        $('#sort').change(function()
+        {
+            var filter = '@Html.Raw(Model.Filter.ToString())';
+            var page = @((Model.PagerModel.CurrentPage == 1).ToString().ToLower()) ? '' : ('&page=' + '@(Model.PagerModel.CurrentPage)');
+            var sort = this.value == 'Rating' ? '' : ('&sort=' + this.value);
+            var direct = $('#direct')[0].checked == false ? '' : ('&direct=' + $('#direct')[0].checked);
+
+            var query = filter + page + sort + direct;
+            if (query != '')
+                query = '?'+ (query.indexOf('&') == 0 ? query.substring(1) : query);
+
+            window.location = '@(Url.Action("Details", "Category", new { id = Model.Filter.Category.FirstOrDefault() }))' + query;
+        });
+
+        $('#reset').click(function()
+        {
+            var sort = '@Html.Raw(Model.SorterModel.ToString())';
+            var query = sort;
+            if (query != '')
+                query = '?'+ (query.indexOf('&') == 0 ? query.substring(1) : query);
+
+            window.location = '@(Url.Action("Details", "Category", new { id = Model.Filter.Category.FirstOrDefault() }))' + query;
+        });
+
+
+        $("form").submit(function() {
+            var periodValue = $('#period').val();
+            if (periodValue == 'Any')
+                $('#period').remove();
+
+            var free = $('#free')[0].checked;
+            if (!free)
+                $('#free').remove();
+            else
+                $('#min').remove();
+
+            var minmaxvalue = $('#min').val();
+            if (minmaxvalue == '@Model.Filter.PriceRangeMin' + ';' + '@Model.Filter.PriceRangeMax')
+                $('#min').remove();
+        });
+
+    });
+
+    function DirectChange(checked)
+    {
+        var filter = '@Html.Raw(Model.Filter.ToString())';
+        var page = @((Model.PagerModel.CurrentPage == 1).ToString().ToLower()) ? '' : ('&page=' + '@(Model.PagerModel.CurrentPage)');
+        var sort = $('#sort')[0].value == 'Rating' ? '' : ('&sort=' + $('#sort')[0].value);
+        var direct = checked == false ? '' : ('&direct=' + checked);
+
+        var query = filter + page + sort + direct;
+        if (query != '')
+            query = '?'+ (query.indexOf('&') == 0 ? query.substring(1) : query);
+
+        window.location = '@(Url.Action("Details", "Category", new { id = Model.Filter.Category.FirstOrDefault() }))' + query;
+    };
+    </script>
+}
+

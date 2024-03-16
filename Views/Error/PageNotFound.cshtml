@@ -1,0 +1,83 @@
+﻿@model SW.Frontend.Models.HomePageModel
+@using SW.Resources.Frontend;
+
+@{
+    ViewBag.Title = "Страница не найдена";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="@Url.Content("/metronic/assets/frontend/layout/css/themes/red.css")" rel="stylesheet">
+
+
+
+<div class="row margin-bottom-40">
+    <div class="col-md-12 col-sm-12">
+        <div class="content-page page-404">
+            <div class="number"> 404 </div>
+            <div class="details">
+                <h1 class="category-rightbar-h3">Упс!</h1>
+                <p>
+                    Страница не найдена.
+                    <br>
+                    <a class="link" href="~/">Вернуться на главную.</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="input-group recent_works404">
+    <div class="input">
+        <input id="search1" class="form-control" type="text" placeholder="Например: Курсовая win32 api" style="padding: 0 20px; font-size: 1.5em; color: #777777; height:40px;">
+    </div>
+    <span class="input-group-btn">
+        <button id="searchbtn1" class="btn btn-success" type="button" style="font-size:1.5em; padding: 13px 20px;" onclick="search1()">
+            <i class="fa fa-search fa-fw"></i>
+        </button>
+    </span>
+</div>*@
+
+<div class="container errorPage_works_authors">
+    <h2><a href="@Url.Action("Free", "TopWorks")">@General.HomeFeaturedFree</a></h2>
+    <div class="row recent-work margin-bottom-40">
+        @foreach (var work in Model.FeaturedFreeWorks)
+        {
+            <div class="col-md-2  col-sm-4  col-xs-6">
+                @Html.Partial("Featured/_FeaturedWorkPartial", work)
+            </div>
+        }
+    </div>
+    <h2><a href="@Url.Action("Index", "Authors")">@General.HomeFeaturedAuthors</a></h2>
+    <div class="row recent-work margin-bottom-40">
+        @foreach (var author in Model.FeaturedAuthors)
+        {
+            <div class="col-md-2  col-sm-4  col-xs-6">
+                @Html.Partial("Featured/_FeaturedAuthorPartial", author)
+            </div>
+        }
+    </div>
+</div>
+
+@*<script>
+        $(document).ready(function () {
+            SwInit.initLazyImages();
+
+            $('#search1').keypress(function (e) {
+                if (e.keyCode == 13)
+                    search1();
+            });
+        });
+        function search1() {
+            location.href = "@Url.Action("Index", "Search")" + "?q=" + $("#search1").val();
+        };
+</script>*@
+
+
+
+
+
+
+
+
+

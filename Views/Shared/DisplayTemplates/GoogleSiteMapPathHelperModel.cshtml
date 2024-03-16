@@ -1,0 +1,39 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.SiteMapPathHelperModel
+@using System.Web.Mvc.Html
+@using System.Linq
+@using MvcSiteMapProvider.Web.Html.Models
+
+
+<script type="application/ld+json">
+    {
+    "@@context": "http://schema.org",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [
+    @{int i = 0;}
+    @foreach (var node in Model.Nodes)
+    {
+        if (node == Model.Nodes.First())
+        {
+            continue;
+        }
+
+        if (node != Model.Nodes.Last())
+        {
+            i++;
+            if (i > 1)
+            { 
+                @:,
+            }
+            @:{
+            @:"@@type": "ListItem",
+            @:"position": @i,
+            @:"item": {
+            @:"@@id": "@node.Url",
+            @:"name": "@node.Title"
+            @:}
+            @:}
+        }
+    }
+    ]
+    }
+</script>

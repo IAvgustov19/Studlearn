@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SW.Shared.Models.Documents.ThemePreview>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section RichHeader {
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a title="Главная" href="/">Главная</a>
+            </li>
+            <li class="active">
+                <text title="Темы">Темы</text>
+            </li>
+        </ul>
+    </div>
+}
+<div class="container">
+    <div class="row margin-bottom-40">
+        <div class="col-md-12 col-sm-12">
+            <h1>Список тем</h1>
+            <div class="content-page">
+                <div class="row">
+                    <div class="col-sm-4 col-xs-12">
+                        <ul class="list-unstyled">
+                            @foreach (var theme in Model)
+                            {
+                                <li>
+                                    <i class="fa fa-angle-right"></i>
+                                    <a href="~/themes/details/@theme.Id">
+                                        @theme.Name
+                                        <strong>(@theme.DocumentsCount)</strong>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                @*<p style="text-align:right;">Всего <strong>@ViewBag.Total</strong> работ</p>*@
+            </div>
+        </div>
+    </div>
+</div>

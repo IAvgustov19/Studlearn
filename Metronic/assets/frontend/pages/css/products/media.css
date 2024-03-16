@@ -1,0 +1,228 @@
+﻿@media screen and (max-width: 1170px) {
+    .product-slider {
+        max-width: 544px;
+    }
+}
+
+@media screen and (max-width: 1075px) {
+    .btn {
+        font-size: 12px;
+    }
+
+    .product-slider {
+        max-width: 420px;
+    }
+
+    .buy-button-telegram {
+        background: #2086FF url("/Metronic/assets/frontend/pages/img/products/telegram.svg") top 50% left 6% no-repeat;
+    }
+}
+
+
+@media screen and (max-width: 980px) {
+    .btn {
+        font-size: 10px;
+    }
+
+    .product-title {
+        font-size: 24px;
+    }
+
+    .product-block2:hover .btn-buy-telegram-on-hover {
+        display: block;
+        flex-basis: 66%;
+    }
+
+    .product-block2:hover .btn-buy {
+        flex-basis: 34%;
+    }
+
+    .buy-buttons-container button {
+        font-size: 12px;
+    }
+
+    .author-section-text {
+        font-size: 16px;
+    }
+
+    .buy-button-telegram {
+        background: #2086FF url("/Metronic/assets/frontend/pages/img/products/telegram.svg") top 50% left 7% no-repeat;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .nav-breadcrumb-list {
+        flex-wrap: wrap;
+    }
+
+    .product-breadcrumb {
+        justify-content: space-between;
+    }
+
+    .comeback-to-page {
+        background: #FFF url(/Metronic/assets/frontend/pages/img/products/arrow.svg) top 11px left 8px no-repeat;
+    }
+
+    .product-demonstration-container {
+        flex-wrap: wrap;
+    }
+
+    .product-slider {
+        max-width: 90%;
+    }
+
+    .product-demonstration-block {
+        flex-basis: 90%;
+    }
+
+    .work-description-container {
+        flex-wrap: wrap;
+    }
+
+    .product-description {
+        flex-basis: 95%;
+    }
+
+    .author-work {
+        flex-basis: 80%;
+    }
+
+    .buy-button-telegram {
+        background: #2086FF url("/Metronic/assets/frontend/pages/img/products/telegram.svg") top 50% left 25% no-repeat;
+    }
+
+    .archive-slider-container {
+        max-width: 88%;
+    }
+
+    .comment-input-text {
+        width: 68%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .users-comments {
+        max-width: 96%;
+    }
+
+    .comment-input-name {
+        width: 92%;
+    }
+
+    .comment-input-text {
+        width: 96.5%;
+    }
+
+    .letter-length {
+        bottom: 10%;
+        right: 6%;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .product-breadcrumb {
+        flex-wrap: wrap;
+    }
+
+    .comeback-to-page {
+        background: #FFF url("/Metronic/assets/frontend/pages/img/products/arrow.svg") top 5px left 8px no-repeat;
+        margin-bottom: 12px;
+    }
+
+    .nav-breadcrumb-list {
+        margin: 0;
+        padding: 0;
+    }
+
+    .product-demonstration-block {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+
+    .thumbnail-slider-container img {
+        width: 57px;
+        height: 57px;
+        border-radius: 8px;
+    }
+
+    .btn-buy {
+        font-size: 12px;
+    }
+
+    .btn-buy-telegram-on-hover {
+        font-size: 12px;
+    }
+
+    .btn-buy-telegram-on-hover {
+        background: #2086FF url(/Metronic/assets/frontend/pages/img/products/telegram.svg) top 22px left 4px no-repeat;
+        padding: 16px 10px 16px 25px;
+    }
+
+    .buy-button-telegram {
+        background: #2086FF url("/Metronic/assets/frontend/pages/img/products/telegram.svg") top 50% left 9% no-repeat;
+    }
+
+    .product-demonstration-container {
+        padding-bottom: 0;
+    }
+
+    .archive-slider {
+        max-width: 100%;
+        height: 220px;
+    }
+
+    .author-work {
+        flex-basis: 95%;
+    }
+
+    .product-demonstration-block {
+        flex-basis: 100%;
+    }
+
+    .product-slider {
+        max-width: 100%;
+    }
+
+    .archive-slider img {
+        height: 160px;
+    }
+
+    .archive-slider-container {
+        max-width: 100%;
+    }
+
+    .comment-input-text {
+        width: 97.5%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .product-slider {
+        max-width: 100%;
+    }
+
+    .product-demonstration-block {
+        flex-basis: 100%;
+    }
+
+    .product-block2 {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .guarantee {
+        font-size: 12px;
+        margin-left: 12px;
+    }
+
+    .comment-input-text {
+        width: 100%;
+    }
+
+    .add-comment-form {
+        display: flex;
+        flex-direction: column;
+    }
+}

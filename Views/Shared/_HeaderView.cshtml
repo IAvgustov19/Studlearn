@@ -1,0 +1,49 @@
+﻿<div id="AccountHeader">
+    <ul class="list-unstyled list-inline pull-right logged-in" style="display: none;">
+        <li>
+            <a href="@System.Configuration.ConfigurationManager.AppSettings["dashboardUrl"]/documents#documents/0/tab_general">
+                <i class="fa fa-plus"></i>
+                @SW.Resources.Frontend.General.AddWork
+            </a>
+        </li>
+        <li>
+            <a href="javascript:document.getElementById('logoutForm').submit()">
+                <form id="logoutForm" method="post" action="@System.Configuration.ConfigurationManager.AppSettings["dashboardUrl"]/Account/LogOff?returnUrl=@Request.Url.AbsoluteUri">
+                    @Html.AntiForgeryToken()
+                    <i class="fa fa-sign-out"></i>
+                    @Html.Encode(SW.Resources.Dashboard.General.UserMenuLogout)
+                </form>
+            </a>
+        </li>
+        <li class="enter-site">
+            <a href="@System.Configuration.ConfigurationManager.AppSettings["dashboardUrl"]/Profile#general"
+               title="@SW.Resources.Frontend.General.GoToProfile" class="btn green">
+                
+                -                                
+            </a>
+        </li>
+
+    </ul>
+    <ul class="list-unstyled list-inline pull-right logged-off" style="display: none;">
+        <li>
+            <a href="@System.Configuration.ConfigurationManager.AppSettings["dashboardUrl"]/Account/Register?returnUrl=/documents%23documents/0/tab_general"
+               title="Перейти на форму создания работы">
+                <i class="fa fa-plus"></i>
+                @SW.Resources.Frontend.General.AddWork
+            </a>
+        </li>
+        <li>
+            <a href="@System.Configuration.ConfigurationManager.AppSettings["dashboardUrl"]/Account/Login?returnUrl=@Request.Url.AbsoluteUri"
+               title="Вход в личный кабинет">
+                <i class="fa fa-sign-in"></i>
+                @SW.Resources.Frontend.General.LogIn
+            </a>
+        </li>
+        <li>
+            <a href="@System.Configuration.ConfigurationManager.AppSettings["dashboardUrl"]/Account/Register?returnUrl=@Request.Url.AbsoluteUri" class="btn green"
+               title="Давай подружимся">
+                @SW.Resources.Frontend.General.Registration
+            </a>
+        </li>
+    </ul>
+</div>

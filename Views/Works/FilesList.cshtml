@@ -1,0 +1,106 @@
+﻿@model IEnumerable<SW.Shared.Models.Storage.FilePreview>
+@{
+    ViewBag.Title = "StudLearn | Скачивание файлов";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles{
+    <style>
+        .table {
+            margin-top: 50px;
+        }
+    </style>
+}
+
+<div class="container" id="PaymentWrapper">
+    <div class="row margin-bottom-40">
+        <!-- BEGIN CONTENT -->
+        <div class="col-md-12 col-sm-12">
+            <h2>Скачивание файлов</h2>
+            <div class="content-form-page">
+                <div class="row">
+                    <div class="col-md-7 col-sm-7">
+                        @if (@Model != null)
+                        {
+                            <table class="table">
+                                <tbody>
+                                    @foreach (var file in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <i style="margin-top:10px;" class="fa fa-3x @(SW.Shared.Constants.Storage.FileTypeExtensions.ToIcon((SW.Shared.Constants.Storage.FileType)file.Type)) color-grey"></i>
+                                            </td>
+                                            <td>
+                                                @file.Title
+                                            </td>
+                                            <td>
+                                                <a href="/api/file/@file.UserFileId/@ViewBag.WorkId" class="btn green">
+                                                    <i class="fa fa-download"></i>&nbsp;&nbsp;Скачать
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <div class="note note-danger">
+                                <h4 class="block">Скачивание файлов не доступно</h4>
+                                <p></p>
+                            </div>
+                        }
+                        <a href="@Url.Action("Index", "Works", new { id = @ViewBag.WorkId })">Вернуться к работе</a>
+                    </div>
+                    <div class="col-md-4 col-sm-4 pull-right">
+                        <div class="form-info">
+                            <h2><em>Важная</em> Информация</h2>                            
+                            <p>На нашем сайте можно зарабатывать деньги. <a target="_blank" href="/home/income">Подробнее...</a></p>
+                            <p>Не забудь оставить отзыв о работе. <a target="_blank" href="@Url.Action("Index", "Works", new { id = @ViewBag.WorkId })">Подробнее...</a></p>
+                            <p>Загружай свои работы и делай мир лучше ;)</p>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*@section LeftSidebar {
+        <p></p>
+        @if (@Model != null)
+        {
+            <table class="table">
+                <tbody>
+                    @foreach (var file in Model)
+                    {
+                        <tr>
+                            <td >
+                                <i style="margin-top:10px;" class="fa fa-3x @(SW.Shared.Constants.Storage.FileTypeExtensions.ToIcon((SW.Shared.Constants.Storage.FileType)file.Type)) color-grey"></i>
+                            </td>
+                            <td>
+                                @file.Title
+                            </td>
+                            <td>
+                                <a href="/api/file/@file.UserFileId/@ViewBag.WorkId" class="btn green">
+                                    <i class="fa fa-download"></i>&nbsp;&nbsp;Скачать
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="note note-danger">
+                <h4 class="block">Скачивание файлов не доступно</h4>
+                <p></p>
+            </div>
+        }
+        <a href="@Url.Action("Index", "Works", new { id = @ViewBag.WorkId })">Вернуться к работе</a>
+    }
+
+
+    @section RightSidebar {
+    @Html.Raw(SW.Resources.Frontend.Payment.PaymentImportantInfo)
+    }*@

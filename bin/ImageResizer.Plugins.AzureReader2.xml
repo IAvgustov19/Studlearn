@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ImageResizer.Plugins.AzureReader2</name>
+    </assembly>
+    <members>
+        <member name="M:ImageResizer.Plugins.AzureReader2.AzureReader2Plugin.Uninstall(ImageResizer.Configuration.Config)">
+            <summary>
+            Removes the plugin from the given configuration container
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageResizer.Plugins.AzureReader2.AzureReader2Plugin.Pipeline_PostRewrite(System.Web.IHttpModule,System.Web.HttpContext,ImageResizer.Configuration.IUrlEventArgs)">
+            <summary>
+            In case there is no querystring attached to the file (thus no operations on the fly) we can
+            redirect directly to the blob. This let us offload traffic to blob storage
+            </summary>
+            <param name="sender"></param>
+            <param name="context"></param>
+            <param name="e"></param>
+        </member>
+    </members>
+</doc>

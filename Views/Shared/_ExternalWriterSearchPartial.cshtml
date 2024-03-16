@@ -1,0 +1,11 @@
+﻿@model SW.Shared.Models.ExternalWriters.ExternalWriterModel
+
+<div class="search-result-item">
+    <h4>
+        <a href="@Url.Action("Profile", "Writers", new { id = @Model.Slug })">@Model.Title</a>
+    </h4>
+    <p>@Model.Description</p>
+    <span title="рейтинг">
+        <i class="fa fa-star"></i> @(Model.Rating == "0" ? "-" : Model.Rating.ToString())
+    </span>
+</div>

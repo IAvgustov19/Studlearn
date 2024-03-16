@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Пользовательское Соглашение | Studlearn.com";
+    ViewBag.Description = "Каждый пользователь Studlearn.com должен принять это соглашение, чтобы пользоваться ресурсом и скачивать полезные материалы для студентов.";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section PreHeader{
+    <div class="pre-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 additional-shop-info">
+                    <ul class="list-unstyled list-inline">
+                        <li><i class="fa fa-shield"></i> @SW.Resources.Frontend.General.Moderation</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-sm-6 additional-nav">
+                    @Html.Action("HeaderView", "Shared", false)
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section RichHeader {
+    <!-- BEGIN SLIDER -->
+}
+
+<div class="main" style="min-height: 600px;">
+    <div class="container">
+        <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+                <h1>@SW.Resources.Frontend.About.UserAgreement</h1>
+                <div class="content-page">
+                    <div class="row">
+                        <!-- START TAB Пользовательское соглашение -->
+                        <div id="useragree" class="tab-pane">
+                            @Html.Partial("Rules/_UserAgreePartial")
+                        </div>
+                        <!-- END TAB Пользовательское соглашение  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END CONTENT -->
+</div>

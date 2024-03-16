@@ -1,0 +1,338 @@
+﻿@model SW.Frontend.Models.ExternalWriteMvcModel
+
+@{
+    ViewBag.Title = "Добавить Исполнителя | Studlearn.com";
+    ViewBag.Description = "Позитивные и негативные отзывы об авторах и исполнителях";
+    Layout = "~/Views/Shared/_TwoColumnsLayout.cshtml";
+}
+
+@section Title{
+    <h1>Добавить нового исполнителя</h1>
+}
+
+@section RichHeader {
+    <!-- BEGIN breadcrumbs -->
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a title="Главная" href="/">Главная</a>
+            </li>
+            <li>
+                <a title="Отзывы" href="/writers">Отзывы</a>
+            </li>
+            <li class="active">
+                <text title="Новый исполнитель">Новый исполнитель</text>
+            </li>
+        </ul>
+    </div>
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org",
+        "@@type": "BreadcrumbList",
+        "itemListElement": [
+
+        {
+        "@@type": "ListItem",
+        "position": 1,
+        "item": {
+        "@@id": "/writers",
+        "name": "Отзывы"
+        }
+        }
+        ]
+        }
+    </script>
+    <!-- END breadcrumbs -->
+}
+
+@section Styles{
+    <link href="~/metronic/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css">
+    <style>
+        .required:after {
+            content: "*";
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+}
+
+@section JsCode {
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    @*<script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>*@
+    <script src="~/metronic/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var currentWebsite = null;
+        var currentVkUrl = null;
+        $(document).ready(function () {
+            $('.file-input').fileinput();
+            // website changed
+            $('input#Website').blur(function () {
+                var url = $(this).val();
+                if (url == currentWebsite)
+                    return;
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/internal/externalwriters/website',
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(url),
+                    beforeSend: function (xhr) {
+                        currentWebsite = url;
+                    }
+                }).done(receivedInfoCallback);
+            });
+            // vk url changed
+            $('input#VkUrl').blur(function () {
+                var url = $(this).val();
+                if (url == currentVkUrl)
+                    return;
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/internal/externalwriters/vk',
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(url),
+                    beforeSend: function (xhr) {
+                        currentVkUrl = url;
+                    }
+                }).done(receivedInfoCallback);
+            });
+
+            $.validator.addMethod(
+                "uniqueMail",
+                function (value, element) {
+                    var response = false;
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/public/writers/validation/uniqueemail",
+                        data: "=" + value,
+                        async: false,
+                        success: function (msg) {
+                            //If username exists, set response to true
+                            response = !msg ? true : false;
+                        }
+                    });
+                    return response;
+                },
+                "Исполнитель с таким почтовым ящиком уже существует"
+            );
+
+            $.validator.addMethod(
+               "uniqueVk",
+               function (value, element) {
+                   var response = false;
+                   $.ajax({
+                       type: "POST",
+                       url: "/api/public/writers/validation/uniquevk",
+                       data: "=" + value,
+                       async: false,
+                       success: function (msg) {
+                           //If username exists, set response to true
+                           response = !msg ? true : false;
+                       }
+                   });
+                   return response;
+               },
+               "Исполнитель с таким vk профилем уже существует"
+           );
+
+            $.validator.addMethod(
+               "uniqueWebsite",
+               function (value, element) {
+                   var response = false;
+                   $.ajax({
+                       type: "POST",
+                       url: "/api/public/writers/validation/uniquewebsite",
+                       data: "=" + value,
+                       async: false,
+                       success: function (msg) {
+                           //If username exists, set response to true
+                           response = !msg ? true : false;
+                       }
+                   });
+                   return response;
+               },
+               "Исполнитель с таким вебсайтом уже существует"
+           );
+
+            $(".newwriterform").validate({
+                rules: {
+                    Email: {
+                        uniqueMail: true
+                    },
+                    VkUrl: {
+                        uniqueVk: true
+                    },
+                    Website: {
+                        uniqueWebsite: true
+                    }
+                },
+                messages: {
+                    Email: {
+                        uniqueMail: "Исполнитель с таким почтовым ящиком уже существует"
+                    },
+                    VkUrl: {
+                        uniqueVk: "Исполнитель с таким vk профилем уже существует"
+                    },
+                    Website: {
+                        uniqueWebsite: "Исполнитель с таким сайтом уже существует"
+                    }
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).closest('.form-group').removeClass("has-error").addClass("has-error");
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).closest('.form-group').removeClass("has-error");
+                },
+                errorPlacement: function (error, element) {
+                    error.appendTo(element.next("span"));
+                }
+            });
+        })
+
+        function receivedInfoCallback(data) {
+            friendlyUpdate('Title', data.title, 'наименование');
+            friendlyUpdate('Description', data.description, 'описание');
+            if (data.imageUrl != null) {
+                $('.form .fileinput').removeClass('fileinput-new');
+                $('.form .fileinput').addClass('fileinput-exists');
+                $('.fileinput-preview').html('<img src="' + data.imageUrl + '" />');
+                $('#ImageUrl').val(data.imageUrl);
+            }
+        }
+
+        function friendlyUpdate(id, value, label) {
+            if (value != null && value != '') {
+                if ($('#' + id).val() == '') {
+                    $('#' + id).val(value);
+                }
+                else if ($('#' + id).val() != value) {
+                    var m = 'Заменить ' + label + ' "' + $('#' + id).val() + '" на "' + value + '"?';
+                    if (confirm(m)) {
+                        $('#' + id).val(value);
+                    }
+                }
+            }
+        }
+
+    </script>
+}
+
+@section LeftSidebar{
+    @using (Html.BeginForm("New", "Writers", FormMethod.Post, new { enctype = "multipart/form-data", @class = "newwriterform", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-body">
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div>@Html.Raw(HttpUtility.HtmlDecode(Html.ValidationSummary(true, "", new { @class = "text-danger" }).ToHtmlString()))</div>
+            }
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label required" })
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", placeholder = "Поле заполнится автоматически если добавить ссылку на сайт или вк" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label required" })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", placeholder = "Поле заполнится автоматически если добавить ссылку на сайт или вк" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.VkUrl, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.VkUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "Добавь ссылку на профиль или группу" } })
+                        @Html.ValidationMessageFor(model => model.VkUrl, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Website, htmlAttributes: new { @class = "control-label " })
+                        @Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control", placeholder = "Добавь ссылку на сайт исполнителя" } })
+                        @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "author@gmail.com" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Раздели номера запятой если их несколько" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label">Выбери фоточку исполнителя или логотип компании</label>
+                    <p>Мы постараемся найти фоточку, если заполнить поля: "Страница ВКонтакте" или "Адрес сайта"</p>
+                    <div class="clearfix margin-top-10" style="font-size:.75em;opacity:.75;">
+                        <span>Предварительная демонстрация изображения доступна только в последних версиях Firefox, Chrome, Opera, Safari и Internet Explorer 10+</span>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <form action="#" role="form">
+                        <div class="form-group">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail" style="width: 200px; height: 200px;">
+                                    <img src="/images/default/nopreview2.jpg" alt="Image">
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width:  200px; max-height:  200px; line-height: 10px;">
+
+                                </div>
+                                <div>
+                                    <span class="btn default btn-file">
+                                        <span class="fileinput-new">
+                                            Выбрать изображение
+                                        </span>
+                                        <span class="fileinput-exists">
+                                            Изменить
+                                        </span>
+                                        <input type="hidden" value="" name="...">
+                                        <input type="file" name="ImageFile" id="ImageFile" />
+                                    </span>
+                                    <a href="#" class="btn default fileinput-exists" data-dismiss="fileinput">
+                                        Удалить
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @Html.HiddenFor(model => model.ImageUrl)
+
+            <div class="form-group" style="text-align:right;">
+                <input type="submit" value="Сохранить" class="btn green btn-lg" />
+            </div>
+        </div>
+    }
+}
+
+@section RightSidebar{
+    <h3>Что это такое?</h3>
+    <p>Если ты хочешь написать положительный или отрицательный отзыв об исполнителе – здесь ты можешь его добавить. Кроме того, если ты сам пишешь лабораторные, курсовые или дипломные работы ты можешь добавить свой профайл сюда или зарегистрироваться на Studlearn вот здесь и выложить свои работы. </p>
+}

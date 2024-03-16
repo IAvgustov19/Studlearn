@@ -1,0 +1,434 @@
+﻿@model SW.Shared.Models.Documents.DocumentPublic
+@using SW.Shared.Helpers.Monads;
+
+@{
+    ViewBag.Title = "Купить | " + Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    //string tinkofPercentSetting = System.Configuration.ConfigurationManager.AppSettings["TinkofPercent"] ?? "0";
+    //decimal tinkofPercent = 0;
+    //if (!decimal.TryParse(tinkofPercentSetting.Replace(".", ","), out tinkofPercent))
+    //{
+    //    decimal.TryParse(tinkofPercentSetting.Replace(",", "."), out tinkofPercent);
+    //}
+    //var tinkoffPart = Model.Price.Value * tinkofPercent * 0.01M;
+    //if (tinkoffPart <= 3.49M)
+    //{
+    //    tinkoffPart = 3.49M;
+    //}
+    //var sumWithTinkoffPercent = System.Math.Round(Model.Price.Value + tinkoffPart, 2);
+
+    ViewBag.HideDevicesSearch = true;
+    var paymentSource = (Request["src"] ?? "0").ToString();
+
+    var enableCloudpayment = "1";// (Request["test"] ?? "-1").ToString();
+
+    var cloudpaymentOrderId = Guid.NewGuid();
+
+    string cloudpaymentPublicKey = System.Configuration.ConfigurationManager.AppSettings["CloudpaymentPublicKey"] ?? "";
+}
+
+<div class="container" id="PaymentWrapper">
+    <div class="row margin-bottom-40">
+        <!-- BEGIN CONTENT -->
+        <div class="col-md-12 col-sm-12">
+            <h2>@SW.Resources.Frontend.Payment.PaymentForm</h2>
+            <div class="content-form-page">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8">
+                        <div class="margin-bottom-20">
+                            <div>
+                                <h3><a href="@Url.Action("Index", "Works" ,new {id = Model.DocumentId})">@Model.Title</a></h3>
+                                <div class="blog-tags inline-block">
+                                    <ul>
+                                        <li>
+                                            <a class="disabled"
+                                               href="@(Model.Category.Url + "?type=" + Model.TypeId)">
+                                                <i class="fa fa-tags"></i>
+                                                @Model.Type
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="disabled"
+                                               href="@Model.Category.Url">
+                                                <i class="fa fa-tags"></i>
+                                                @Model.Category.Title
+                                            </a>
+                                        </li>
+                                        @if (Model.Themes != null)
+                                        {
+                                            foreach (var theme in Model.Themes)
+                                            {
+                                                <li>
+                                                    <a class="disabled"
+                                                       href="~/themes/details/@theme.ThemeId">
+                                                        <i class="fa fa-tags"></i>
+                                                        @theme.ThemeName
+                                                    </a>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                                <div class="inline-block">
+                                    <button data-target="#show-garantee-modal" data-toggle="modal" class="btn bg-green" type="button" style="text-shadow: none !important;font-size: 13px;font-weight: 300;padding: 3px 6px 3px 6px;color: #fff;font-family: ' Open Sans', sans-serif;border-width: 2px !important;">
+                                        <span class="fa fa-check"></span>Гарантия
+                                    </button>
+                                </div>
+                            </div>
+                            <div>
+                                <h3>
+                                    <b>@Model.Price</b><i class="fa @SW.Shared.Constants.Application.DefaultCurrencyIconClass" title="@SW.Shared.Constants.Application.DefaultCurrency"></i>
+                                    @if (SW.Shared.Constants.Application.FeeUserPercentages > 0)
+                                    {
+                                        <span style="font-size:.5em">&nbsp;(без учета комиссии платежной системы в @SW.Shared.Constants.Application.FeeUserPercentages %)</span>
+                                    }
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="" style="@(enableCloudpayment=="-1"?"display:none;":"")">
+                            <h4>Выберите способ оплаты</h4>
+                            <ul class="nav nav-pills nav-justified">
+                                <li role="presentation" class="active">
+                                    <a href="#one" aria-controls="one" role="tab" data-toggle="tab">Я из России</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#two" aria-controls="two" role="tab" data-toggle="tab">Я из другой страны</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active" id="one">
+                                @*<div>Отлично! Только для банковских карт, которые были выпущены на территории РФ</div>*@
+                                <div class="email-container">
+                                    <label for="firstname" class="col-lg-4 control-label">@SW.Resources.Frontend.General.Email <span class="require">*</span></label>
+                                    <div class="col-lg-8">
+                                        <input type="text" placeholder=""
+                                               class="form-control required" id="Email" name="Email"
+                                               value="@(Request.IsAuthenticated ? SW.Frontend.Utilities.FrontendUtilities.Instance.CurrentUser.Email : String.Empty)" />
+                                        <span class="help-block hidden">
+                                            <span class="field-validation-error error" data-valmsg-for="email" data-valmsg-replace="true">Введите Email</span>
+                                        </span>
+                                        <span>Сразу после оплаты Вы сможете скачать работу и мы вышлем дополнительно файл с работой на электронную почту.</span>
+                                    </div>
+                                    <input type="hidden" value="@Model.DocumentId" id="DocumentId" name="DocumentId" />
+                                </div>
+
+                                <div class="">
+                                    <button class="btn btn-primary payment" id="initialPayment" style="width:100%;@(Request.Browser.IsMobileDevice?"padding: 20px;font-size: 25px;":"margin-top: 10px;")">Оплатить онлайн</button>
+                                </div>
+
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="two">
+                                @*<div>Уважаемые клиенты! Из-за санкций, для клиентов не из России которые были выпущены на территории РФ</div>*@
+                                <div class="note note-warning">
+                                    @*<h4 class="block">Внимание</h4>*@
+                                    <p>
+                                        Если у Вас <b>не получается оплатить</b> - напишите нам в <a target="_blank" rel="nofollow" href="https://t.me/studlearn_support" title="Наш телеграм">
+                                            Телеграм <img src="/Images/logo-telegram.png" class="social-icon">
+                                        </a>
+                                    </p>
+                                </div>
+                                <button class="btn btn-primary payment" id="cloudSubmitButton" style="width:100%;@(Request.Browser.IsMobileDevice?"padding: 20px;font-size: 25px;":"")">Оплатить онлайн</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <style>
+                                    .tinkoffPayRow {
+                                        display: block;
+                                        margin: 1%;
+                                        width: 160px;
+                                    }
+                                </style>
+                                <script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
+                                <form name="TinkoffPayForm" onsubmit="pay(this); return false;" class="validate">
+                                    <input class="tinkoffPayRow" type="hidden" name="terminalkey" value="1628257385563">
+                                    <input class="tinkoffPayRow" type="hidden" name="frame" value="false">
+                                    <input class="tinkoffPayRow" type="hidden" name="language" value="ru">
+                                    <input class="tinkoffPayRow" type="hidden" name="reccurentPayment" value="false">
+                                    <input class="tinkoffPayRow" type="hidden" placeholder="Сумма заказа" name="amount" required value="@System.Math.Round(Model.Price.Value, 2)">
+                                    @*<input class="tinkoffPayRow" type="hidden" placeholder="Сумма заказа" name="amount" required value="@sumWithTinkoffPercent">*@
+                                    <input class="tinkoffPayRow" type="hidden" placeholder="Номер заказа" name="order" id="tinkOrder">
+                                    <input class="tinkoffPayRow" type="hidden" placeholder="Описание заказа" name="description" value="">
+                                    <input class="tinkoffPayRow" type="hidden" placeholder="ФИО плательщика" name="name">
+                                    <input class="tinkoffPayRow" type="text" placeholder="E-mail" name="email" id="tinkofEmail" value="@(Request.IsAuthenticated ? SW.Frontend.Utilities.FrontendUtilities.Instance.CurrentUser.Email : String.Empty)" required>
+                                    <input class="tinkoffPayRow" type="hidden" placeholder="Контактный телефон" name="phone">
+                                    <input class="tinkoffPayRow" type="hidden" placeholder="paymentSource" name="paymentSource" value="@paymentSource">
+                                    <input class="tinkoffPayRow btn btn-primary" type="submit" value="Оплатить" id="tinkofSubmitButton">
+                                </form>
+                                <script type="text/javascript">
+                                    const terminalkey = document.forms.TinkoffPayForm.terminalkey
+                                    const widgetParameters = {
+                                        container: 'tinkoffWidgetContainer',
+                                        terminalKey: terminalkey.value,
+                                        paymentSystems: {
+                                            ApplePay: {
+                                                buttonOptions: "Опции кнопки Apple Pay",
+                                                paymentInfo: function () {
+                                                    return {
+                                                        //infoEmail: "E-mail для отправки информации о платеже",
+                                                        paymentData: document.forms.TinkoffPayForm
+                                                    }
+                                                }
+                                            },
+                                        },
+                                    };
+                                    window.addEventListener('load', function () {
+                                        initPayments(widgetParameters);
+                                    });
+                                </script>
+                                <style>
+                                    #tinkofSubmitButton, #tinkofEmail {
+                                        display: none;
+                                    }
+
+                                    .has-error a {
+                                        color: #a94442;
+                                    }
+
+                                    .has-error .form-control {
+                                        border-color: #ebccd1 !important;
+                                    }
+
+                                    .content-form-page .btn {
+                                        margin-right: 10px;
+                                        padding: 12px 12px;
+                                    }
+
+                                    .has-error input {
+                                        animation: shake 0.2s ease-in-out 0s 2;
+                                        box-shadow: 0 0 0.5em red;
+                                    }
+
+                                    @@keyframes shake {
+                                        0% {
+                                            margin-left: 0rem;
+                                        }
+
+                                        25% {
+                                            margin-left: 0.5rem;
+                                        }
+
+                                        75% {
+                                            margin-left: -0.5rem;
+                                        }
+
+                                        100% {
+                                            margin-left: 0rem;
+                                        }
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 pull-right">
+                        <div class="form-info">
+                            <div class="margin-bottom-20">
+                                @Html.Raw(SW.Resources.Frontend.Payment.PaymentImportantInfo)
+                                @Html.Raw(String.Format(@SW.Resources.Frontend.Payment.PaymentAgreeRule, "<a href=\"/Files/puboferta.rtf\" target='_blank'><b>", "</b></a>"))
+                            </div>
+                            <div>
+                                <h4>
+                                    Остались вопросы?
+                                </h4>
+                                <p>
+                                    Звоните <a href="tel:+79956780607">+7(995)678-06-07</a><br />
+                                    или пишите в
+                                    <a target="_blank" rel="nofollow" href="https://t.me/studlearn_support" title="мы в Телеграм">
+                                        Телеграм <img src="/Images/logo-telegram.png" class="social-icon">
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END CONTENT -->
+    </div>
+</div>
+
+@section JsCode{
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="~/metronic/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="/metronic/assets/global/plugins/bootstrap-toastr/toastr.min.js"></script>
+    <script src="/metronic/assets/global/scripts/metronic.js" type="text/javascript"></script>
+    <script>
+		$(document).ready(function () {
+            function validateEmail(email) {
+                if (email.length < 0) {
+                    return false;
+                }
+				const re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				return re.test(email);
+			}
+
+			$("#Email").change(function() {
+				let email = $("#Email").val();
+				$("#tinkofEmail").val(email)
+
+				if(validateEmail(email)){
+                    $(this).closest('.email-container').removeClass('has-error');
+                    $(this).closest('.email-container').find('.help-block').addClass('hidden');
+				}else{
+                    $(this).closest('.email-container').addClass('has-error');
+                    $(this).closest('.email-container').find('.help-block').removeClass('hidden');
+				}
+			});
+
+            $("#initialPayment").click(function (e) {
+                var email = $("#tinkofEmail").val();
+                if (!validateEmail(email)) {
+                    $("#Email").closest('.email-container').addClass('has-error');
+                    $("#Email").closest('.email-container').find('.help-block').removeClass('hidden');
+                    e.preventDefault();
+                    return;
+                }
+
+                var url = "/api/internal/payments/@Model.DocumentId/init?email=" + email + "&orderId=" + $("#tinkOrder").val()+"&paymentSource=@paymentSource";
+                SwCore.setServerData(url, "POST", { message: "Оформляем заказ..." }, {}, function (data) {
+                    $("#tinkOrder").val(data);
+                    document.querySelector('form[name="TinkoffPayForm"] [type="submit"]').click();
+                });
+            });
+		});
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#TinkoffPayForm").validate({
+                rules: {
+                    Email: {
+                        required: true,
+                        email: true
+                    },
+                    Approved: {
+                        required: true
+                    }
+                },
+                messages: {
+                    Email: 'Введите валидный email адрес',
+                    Approved: 'Вы должны согласится с правилами'
+                },
+                submitHandler: function (form, e) {
+                    var balance = parseFloat('@SW.Frontend.Utilities.FrontendUtilities.Instance.CurrentUser.Return(x => x.Balance, 0)'.replace(',', '.'));
+                    var price = parseFloat('@Model.Price'.replace(',', '.'));
+                    var method = "2";//$(form).find('#Method').val();
+                    if (method == "1") {
+                        if (price > balance) {
+                            e.preventDefault();     // stop default behaviour
+                            e.stopPropagation();    // stop bubling
+                            alert('Недостаточно средств на личном счете');
+                        }
+                        else{
+                           // $(form).submit();
+						}
+                    }
+                    else if (method == "2") {
+                        e.preventDefault();     // stop default behaviour
+                        e.stopPropagation();    // stop bubling
+                        // создаем счет на оплату и если все успешно редиректим на него
+                        var docId = '@Model.DocumentId';
+                        var email = form.Email.value;
+                        var url = "/api/internal/payments/" + docId + "/init?email=" + email;
+                        SwCore.setServerData(url, "POST", { message: "Оформляем заказ..." }, {}, function (redirectUrl) {
+                            window.location = redirectUrl;
+                        });
+                    }
+                    else {
+                        e.preventDefault();     // stop default behaviour
+                        e.stopPropagation();    // stop bubling
+                        SwCore.showError("Ошибка", "Неизвестный метод оплаты :(");
+                    }
+                }
+            });
+        })
+    </script>
+
+    <script src="https://widget.cloudpayments.ru/bundles/cloudpayments.js"></script>
+    <script>
+        this.cloudpay = function () {
+            var widget = new cp.CloudPayments();
+            widget.pay('charge',
+                {
+                    publicId: '@cloudpaymentPublicKey',
+                    description: 'Оплата работы @Model.Title.Replace("\"","").Replace("'","") на studlearn.com',
+                    amount: @System.Math.Round(Model.Price.Value, 2).ToString().Replace(",","."),
+                    currency: 'RUB', //валюта
+                    accountId: '@(Request.IsAuthenticated ? SW.Frontend.Utilities.FrontendUtilities.Instance.CurrentUser.Id : String.Empty)',
+                    invoiceId: '@cloudpaymentOrderId',
+                    requireEmail: true,
+                    email: '@(Request.IsAuthenticated ? SW.Frontend.Utilities.FrontendUtilities.Instance.CurrentUser.Email : String.Empty)',
+                    skin: 'classic',
+                    data: {
+                        paymentSource: '@paymentSource',
+                        documentId: '@Model.DocumentId'
+                    }
+                },
+                {
+                    onSuccess: "/works/paymentsuccess?OrderId=@cloudpaymentOrderId",
+                    onFail: function (reason, options) {
+                        //действие при неуспешной оплате
+                        console.log('ФЕЙЛ');
+                        console.log(reason);
+                        console.log(options);
+                        if (reason != "User has cancelled") {
+                            window.location.assign("/works/PaymentFailed?OrderId=@cloudpaymentOrderId");
+                        }
+                    },
+                    @*onSuccess: function(options) {
+                        //действие при успешной оплате
+                        console.log('УСПЕХ');
+                        console.log(options);
+                    },*@
+                    onComplete: function (paymentResult, options) { //Вызывается как только виджет получает от api.cloudpayments ответ с результатом транзакции.
+                        //например вызов вашей аналитики Facebook Pixel
+                        console.log('ЗАВЕРШЕНО');
+                        console.log(paymentResult);
+                        console.log(options);
+                    }
+                }
+            ).then((result) => {
+                // Объект типа WidgetResult
+                console.log('result===', result);
+            });
+        };
+
+        $(document).ready(function () {
+            $('#cloudSubmitButton').click(function () {
+                cloudpay();
+            });
+        })
+    </script>
+}
+
+@section Styles {
+    <link href="/metronic/assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        label.error {
+            font-size: .9em;
+            color: red;
+        }
+
+        button.payment {
+            background-color: #10ad44;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20px;
+            border-radius: 6px !important;
+            min-height: 56px;
+            min-width: 224px;
+            padding: 0 24px;
+        }
+
+            button.payment:hover {
+                background-color: #2d9d5c;
+            }
+
+        .blog-tags a.disabled {
+            pointer-events: none;
+        }
+    </style>
+}

@@ -1,0 +1,84 @@
+﻿@Model SW.Frontend.Models.NewCommentModel
+
+@{
+    Layout = "~/Views/Emails/_Layout.cshtml";
+}
+
+<!--content 1 -->
+@section Content {
+    <tr>
+        <td align="center" bgcolor="#fbfcfd">
+            <table width="90%" border="0" cellspacing="0" cellpadding="0" style="padding-bottom: 10px;">
+                <tbody>
+                    <tr>
+                        <td align="center">
+                            <div style="line-height: 30px;">
+                                <font face="Arial, Helvetica, sans-serif" size="5" color="#57697e" style="font-size: 20px;">
+                                    <span style="font-family: Arial, Helvetica, sans-serif; font-size: 34px; color: #57697e;">
+                                        Новый ответ на Ваш комментарий
+                                    </span>
+                                </font>
+                            </div>
+                            <!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;">&nbsp;</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <span style="font-family:Arial,Helvetica,sans-serif;font-size:20px;color:#57697e">
+                                <a href="@Model.WorkLink" target="_blank">@Model.WorkName</a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <div style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; color:#57697e;padding-bottom: 10px;">
+                            </div>
+                            <table width="600px" cellspacing="0" cellpadding="0" border="0" style="height:100%;">
+                                <tbody>
+                                    <tr>
+                                        <td valign="top" class="bodyContent">
+                                            <table width="100%" cellspacing="0" cellpadding="20" border="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td valign="top" align="center" style="padding: 0px;">
+                                                            <div style="background-color: #fff; border: 1px solid #e7ecf1;">
+                                                                <table style="width: 100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td valign="top" rowspan="2" style="width: 65px;">
+                                                                                <div style="max-height: 60px; overflow: hidden; width: 60px; outline: 0 none; text-decoration: none;">
+                                                                                    <a href="@Model.UserLink">
+                                                                                        <img src="@Model.UserImageLink" style="width: 60px;height:60px">
+                                                                                    </a>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td valign="top">
+                                                                                <a href="@Model.UserLink" style="color: #767f88;font-size: 17px;outline: 0 none;text-decoration: none;font-family: 'Open Sans',sans-serif; font-weight: 300;">
+                                                                                    @Model.UserName
+                                                                                </a>
+                                                                                <div style="color: #3e4d5c;direction: ltr;font: 400 13px 'Open Sans',Arial,sans-serif;">@Model.Message</div>
+                                                                                <a style="box-shadow: none !important; -moz-user-select: none; cursor: pointer; display: inline-block; font-size: 14px; font-weight: 400; line-height: 1.2; text-align: center; white-space: nowrap; background-color: #26C281; color: rgb(255, 255, 255); border: 0px solid rgb(53, 152, 220); outline: 0px none !important; padding: 6px 12px;    text-decoration: none;float: right;width: 100px;"
+                                                                                   href="@Model.WorkLink">
+                                                                                    Просмотреть
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <!--content 1 END-->
+}

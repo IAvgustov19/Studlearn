@@ -1,0 +1,274 @@
+/* here you can put your own css to customize and override the theme */
+.service-box-v1.positive:hover {
+    background-color: #2b8b3a !important;
+    transition: all 0s ease-in-out 0s !important;
+}
+
+.service-box-v1.sw-download-or-by {
+    cursor: pointer;
+}
+.sw-download-or-by {
+    overflow: hidden;
+    position: relative;
+}
+.service-box-v1.sw-download-or-by:hover {
+    background-color: #003ead !important;
+    transition: all 0s ease-in-out 0s !important;
+}
+.bigBuyBtn::before {
+    content: '';
+    position: absolute;
+    width: 340px;
+    height: 160px;
+    right: 15%;
+    background: -webkit-gradient(linear,left top,left bottom,from(#e5ac8e),color-stop(50%,#fff),color-stop(50%,#e5ac8e));
+    background: -webkit-gradient(linear,left top,left bottom,from(rgba(229,172,142,0)),color-stop(50%,rgba(255,255,255,.7)),color-stop(50%,rgba(229,172,142,0)));
+    background: linear-gradient(to bottom, rgba(229,172,142,0),rgba(255,255,255,.7) 50%, rgba(229,172,142,0));
+    -webkit-transform: rotateZ(-5deg) translate(-14em,-2em);
+    -ms-transform: rotateZ(-5deg) translate(-14em,-2em);
+    transform: rotateZ(-5deg) translate(-14em,-2em);
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-animation: sheen 1s infinite;
+    animation: sheen2 3s infinite;
+}
+
+.smallBuyBtn {
+    overflow: hidden;
+    position: relative;
+}
+
+.smallBuyBtn::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 90px;
+    left: 35%;
+    background: -webkit-gradient(linear,left top,left bottom,from(#e5ac8e),color-stop(50%,#fff),color-stop(50%,#e5ac8e));
+    background: -webkit-gradient(linear,left top,left bottom,from(rgba(229,172,142,0)),color-stop(50%,rgba(255,255,255,.7)),color-stop(50%,rgba(229,172,142,0)));
+    background: linear-gradient(to bottom, rgba(229,172,142,0),rgba(255,255,255,.7) 50%, rgba(229,172,142,0));
+    -webkit-transform: rotateZ(-5deg) translate(-8em,-1em);
+    -ms-transform: rotateZ(-5deg) translate(-8em,-1em);
+    transform: rotateZ(-5deg) translate(-8em,-1em);
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-animation: sheen 3s infinite;
+    animation: sheen 3s infinite;
+}
+@keyframes sheen {
+    0%, 79% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: rotateZ(60deg) translate(-5em,7.5em);
+        transform: rotateZ(60deg) translate(-5em,7.5em)
+    }
+
+    80% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: rotateZ(60deg) translate(-5em,7.5em);
+        transform: rotateZ(60deg) translate(-5em,7.5em)
+    }
+
+    95% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: rotateZ(60deg) translate(1em,-11em);
+        transform: rotateZ(60deg) translate(1em,-11em)
+    }
+
+    100% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: rotateZ(60deg) translate(1em,-9em);
+        transform: rotateZ(60deg) translate(1em,-9em)
+    }
+}
+@keyframes sheen2 {
+    0%, 79% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: rotateZ(60deg) translate(-5em,17.5em);
+        transform: rotateZ(60deg) translate(-5em,17.5em)
+    }
+
+    80% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: rotateZ(60deg) translate(-5em,17.5em);
+        transform: rotateZ(60deg) translate(-5em,17.5em)
+    }
+
+    95% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: rotateZ(60deg) translate(1em,-21em);
+        transform: rotateZ(60deg) translate(1em,-21em)
+    }
+
+    100% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: rotateZ(60deg) translate(1em,-19em);
+        transform: rotateZ(60deg) translate(1em,-19em)
+    }
+}
+
+.stat-label {
+    float: right;
+    display: inline;
+    font-weight: 400;
+}
+
+pre.sw {
+    background-color: white;
+    border: none;
+    font: 400 13px 'Open Sans', Arial, sans-serif;
+    word-break: break-word;
+    white-space: pre-wrap; /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+@media (max-width: 767px) .inline-visible-xs {
+    display: inline!important;
+}
+
+.social-icons li .odnoklassniki {
+    background: url(/Images/Odnoklassniki.png) no-repeat;
+}
+
+#ctrlcopy {
+    color: transparent;
+    display: inline-block;
+    height: 1px;
+    margin-left: -1px;
+    overflow: hidden;
+    width: 1px;
+}
+
+.bg-primary {
+    border-color: #e94d1c !important;
+    background-image: none !important;
+    background-color: #e94d1c !important;
+    color: white !important;
+}
+
+.bg-reset {
+    border-color: #fff !important;
+    background-image: none !important;
+    background-color: #fff !important;
+    color: #868c93 !important;
+}
+.bg-info {
+    border: 2px solid #35aa47;
+    padding: 12px;
+    margin-top: 20px;
+    /*margin-bottom: 20px;*/
+    color: #35aa47;
+    background-color: #fff !important;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+/* SEO remove unnecesary header without style saving */
+.category-rightbar-h3 {
+    font-size: 22px;
+    color: rgb(62, 77, 92);
+    font-weight: 300;
+    font-family: "Open Sans", sans-serif;
+    line-height: 22px;
+    margin-bottom: 7px;
+    padding-top: 10px;
+}
+
+.category-rightbar-h2 {
+    font-size: 27px;
+    color: rgb(62, 77, 92);
+    font-weight: 300;
+    font-family: "Open Sans", sans-serif;
+}
+
+.category-work-h2 {
+    font-size: 27px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    margin: 0 0 10px;
+    padding-top: 0;
+    display: inline;
+    color: inherit;
+    line-height: 1.1;
+}
+
+    .category-work-h2 span {
+        font-size: 0.5em;
+    }
+
+.sections-title-h2 {
+    word-break: break-word;
+    padding-top: 10px;
+    margin: 0 0 10px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    font-size: 22px;
+}
+
+.blog-content-1 .blog-post-content {
+    min-height: 410px;
+}
+
+.blog-content-1 .blog-post-content > .blog-post-desc {
+    color: #303934 !important;
+    overflow: hidden;
+}
+
+.blog-item {
+    overflow: hidden;
+}
+
+    .blog-item > #content img, .blog-post-content img {
+        max-width: 100%;
+    }
+
+.blog-posts .table td:last-child {
+    min-width: 100px
+}
+.recent_works404 {
+    width: 70%;
+    margin: auto;
+}
+
+    .recent_works404 .img-responsive {
+        width: 70%;
+        margin: auto;
+    }
+
+    .recent_works404 .recent-work-description strong {
+        font-size: 12px;
+    }
+
+.errorPage_works_authors {
+    margin-top: 50px;
+}
+
+    .errorPage_works_authors h2 {
+        padding-left: 10%;
+    }
+
+    .errorPage_works_authors .recent-work {
+        width: 80%;
+        margin: auto;
+    }
+
+@media (max-width: 768px) {
+    .errorPage_works_authors h2 {
+        padding-left: 0;
+    }
+
+    .errorPage_works_authors .recent-work {
+        width: 100%;
+        margin: auto;
+    }
+}

@@ -1,0 +1,17 @@
+﻿@model SW.Core.DataLayer.FeaturedAuthor
+
+<div class="dev-profile" onclick="javascript: window.location = '@Model.ProfileUrl'" style="cursor: pointer;">
+    <div class="profile-card-image">
+        <em><img data-src="@(Model.AvatartUrl??Model.AvatarUrlAdapted)" alt="@Model.UserName" width="150" height="150" src="/images/loading-150-1.gif" class="img-responsive  lazy-load"></em>
+    </div>
+    <div class="profile-card-body">
+        <b class="profile-name">@Model.UserName</b>
+        <div class="profile-rating">
+            <span class="author-benefits stars">@Model.Rating</span>
+            <span class="author-benefits works">@Model.WorksPublishedCount</span>
+        </div>
+        <p class="profile-text">
+            @Model.Description
+        </p>
+    </div>
+</div>

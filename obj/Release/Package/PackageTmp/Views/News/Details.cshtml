@@ -1,0 +1,100 @@
+﻿@model SW.Shared.Models.News.NewsDetail
+@using SW.Frontend.Utilities;
+
+@{
+    ViewBag.Title = Seo.GetNewsItemTitle(Model.Title);
+    ViewBag.Description = Seo.SanitizeMetadaDescription(Model.Description);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="/metronic/assets/frontend/pages/css/blog.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="container">
+    @*<h2>@SW.Resources.Frontend.General.BlogDescription</h2>*@
+    <div class="blog-page blog-content-1">
+        <ul class="breadcrumb">
+            <li>
+                <a title="Главная" href="/">Главная</a>
+            </li>
+            <li>
+                <a title="Полезные статьи" href="/news">Полезные статьи</a>
+            </li>
+            <li class="active">
+                <text title="@Model.Title">@Model.Title</text>
+            </li>
+        </ul>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="blog-post-lg bordered blog-container">
+                    <div class="blog-img-thumb">
+                        <img src="/images/loading-150-1.gif" title="@Model.Title" data-src="@Model.LogoUrl" class="lazy-load">
+                    </div>
+                    <div class="blog-post-content">
+                        <h1 class="blog-title blog-post-title no-margin category-rightbar-h2">
+                            @Model.Title
+                        </h1>
+                        <!-- BEGIN FRIENDS SHARING -->
+                        <p>
+                            @Html.Partial("SocialSharing", new SW.Frontend.Models.SocialData { Title = ViewBag.Title, Description = ViewBag.Description, Image = Model.LogoUrl })
+                        </p>
+                        <!-- END FRIENDS SHARING -->
+                        <div class="blog-post-desc">@Html.Raw(@Model.Description.Replace("<img src", "<img data-src"))</div>
+                        <div class="blog-post-foot pull-right">
+                            <div class="blog-post-meta">
+                                <i class="fa fa-calendar"></i>
+                                @Model.CreateAt.ToShortDateString()
+                                @{
+                                    if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim(SW.Core.DataLayer.Account.ResourcesType.Type, "Moderator"))
+                                    {
+                                        @:&nbsp;
+
+                                        <i class="fa fa-eye" title="Количество уникальных просмотров статьи"></i>
+                                        @Model.Visits
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section JsCode {
+    <script type="application/ld+json">
+
+        {
+        "@@context": "http://schema.org",
+        "@@type": "BreadcrumbList",
+        "itemListElement": [
+
+        {
+        "@@type": "ListItem",
+        "position": 1,
+        "item": {
+        "@@id": "/news",
+        "name": "Полезные статьи"
+        }
+        }
+        ,
+        {
+        "@@type": "ListItem",
+        "position": 2,
+        "item": {
+        "@@id": "@Request.Url.AbsolutePath",
+        "name": "@Model.Title"
+        }
+        }
+        ]
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.post("/api/internal/news/@Model.Id/visit");
+        });
+    </script>
+}

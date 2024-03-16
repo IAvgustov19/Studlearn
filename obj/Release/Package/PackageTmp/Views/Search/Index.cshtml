@@ -1,0 +1,122 @@
+﻿@using System.Web.Mvc.Html
+@using SW.Frontend.Helpers
+@model SW.Frontend.Models.SearchViewModel
+
+@{
+    ViewBag.Title = String.Format("Результаты поиска по запросу \"{0}\"", Model.PagerModel.QueryString);
+    ViewBag.Description = String.Format("Полный список результатов по запросу поиска \"{0}\"", Model.PagerModel.QueryString);
+    ViewBag.HideDevicesSearch = true;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Q = Request.QueryString;
+    // advanced tool style
+    var ats = (Q["v"] != "any" && !String.IsNullOrEmpty(Q["v"]))
+        || (Q["i"] != "any" && !String.IsNullOrEmpty(Q["i"]))
+        || (Q["p"] != "any" && !String.IsNullOrEmpty(Q["p"]))
+        || (Q["o"] != "organic" && !String.IsNullOrEmpty(Q["o"]))
+        ? "display:block;" : "display:none;";
+}
+
+<div class="container">
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <h1>@Html.Encode(SW.Resources.Frontend.General.TitleSearchResults)</h1>
+            <div class="content-page">
+                <form action="@Url.Action("Index")" class="content-search-view2">
+                    <div class="input-group">
+                        <input type="text" id="q" name="q" class="form-control" placeholder="@Html.Encode(SW.Resources.Frontend.General.MenuSearch)..." value="@Model.PagerModel.QueryString" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary">@Html.Encode(SW.Resources.Frontend.General.MenuSearch)</button>
+                            <button type="button" class="btn" id="AdvancedToolsBtn" title="Дополнительные средства поиска">
+                                <i class="fa fa-cogs"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <div class="row margin-top-20" id="AdvancedToolsContainer" style="@ats">
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-6">
+                                <label>Изображение:</label>
+                                <select class="form-control" id="i" name="i">
+                                    <option value="any" @(Q["i"] == "any" ? "selected" : "")>Не важно</option>
+                                    <option value="yes" @(Q["i"] == "yes" ? "selected" : "")>Содержит</option>
+                                    <option value="no" @(Q["i"] == "no" ? "selected" : "")>Не содержит</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label>Видео:</label>
+                                <select class="form-control" id="v" name="v">
+                                    <option value="any" @(Q["v"] == "any" ? "selected" : "")>Не важно</option>
+                                    <option value="yes" @(Q["v"] == "yes" ? "selected" : "")>Содержит</option>
+                                    <option value="no" @(Q["v"] == "no" ? "selected" : "")>Не содержит</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label>Цена:</label>
+                                <select class="form-control" id="p" name="p">
+                                    <option value="any" @(Q["p"] == "any" ? "selected" : "")>Не важно</option>
+                                    <option value="yes" @(Q["p"] == "yes" ? "selected" : "")>Только платные</option>
+                                    <option value="no" @(Q["p"] == "no" ? "selected" : "")>Только бесплатные</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label>Сортировать:</label>
+                                <select class="form-control" id="o" name="o">
+                                    <option value="organic" @(Q["o"] == "organic" ? "selected" : "")>По релевантности</option>
+                                    <option value="rating" @(Q["o"] == "rating" ? "selected" : "")>По рейтингу</option>
+                                    <option value="price" @(Q["o"] == "price" ? "selected" : "")>По цене</option>
+                                    <option value="date" @(Q["o"] == "date" ? "selected" : "")>По дате</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
+                @if (ViewBag.SearchEnabled == false)
+                {
+                    <div class="note note-warning">
+                        <h4 class="block">Поиск временно не доступен</h4>
+                        <p>
+                            В данный момент мы работаем над улучшениям качества поиска, пожалуйста, попробуй позже и мы обязательно найдем твою работу
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    if (Model != null && Model.Documents.Any())
+                    {
+                        foreach (var document in Model.Documents)
+                        {
+                            @Html.Partial("_DocumentSearchPartial", document)
+                        }
+
+                        @Html.Pager("Index", "Search", Model.PagerModel)
+                    }
+                    else
+                    {
+                        <h3>Мы ничего не нашли по твоему запросу</h3>
+                        <ul>
+                            <li>
+                                У нас есть страница <a href="/sections">"Каталог"</a>, на ней ты сможешь выбрать категорию и найти подходящую работу там
+                            </li>
+                            <li>
+                                Менеджер поможет с поиском <a target="_blank" rel="nofollow" href="https://t.me/studlearn_support" title="Спросить у менеджера">
+                                    Спросить у менеджера <img src="/Images/logo-telegram.png" class="social-icon">
+                                </a>
+                            </li>
+                        </ul>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section JsCode{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#AdvancedToolsBtn').on('click', function () {
+                $('#AdvancedToolsContainer').toggle({ duration: 200 });
+            });
+        });
+    </script>
+}

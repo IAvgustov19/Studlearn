@@ -1,0 +1,13 @@
+﻿@media screen and (max-width:420px) {
+    .footer-content {
+        padding: 40px 12px !important;
+    }
+
+    .site-map-header {
+        margin-top: 20px !important;
+    }
+
+    .messengers {
+        margin-top: 20px !important;
+    }
+}

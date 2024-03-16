@@ -1,0 +1,765 @@
+﻿@using Microsoft.AspNet.Identity;
+@using SW.Resources.Frontend;
+@using System.Web.Optimization;
+@using SW.Frontend.Utilities;
+@using System.Web.Configuration;
+@using MyApp = SW.Shared.Constants.Application;
+@using MyAppExs = SW.Frontend.Utilities.FrontendUtilities;
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="ru">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>@(String.IsNullOrEmpty(ViewBag.Title) ? MyApp.Title : ViewBag.Title)</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    @*
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        Moved to the headers, please check global.asax
+    *@
+    @if (!String.IsNullOrEmpty(ViewBag.Description))
+    {
+        <meta name="description" content="@ViewBag.Description" />
+    }
+    @if (!String.IsNullOrEmpty(ViewBag.Author))
+    {
+        <meta name="author" content="@ViewBag.Author" />
+    }
+    <meta name="og-title" content="@(String.IsNullOrEmpty(ViewBag.Title) ? MyApp.Title : ViewBag.Title)" />
+    <meta name="og-type" content="article" />
+    <meta name="og-image" content="@(String.IsNullOrEmpty(ViewBag.Image) ? MyApp.Logo : ViewBag.Image)" />
+    <meta name="og-description" content="@(String.IsNullOrEmpty(ViewBag.Description) ? MyApp.FullDescription : ViewBag.Description)" />
+    <meta name="twitter-title" content="@(String.IsNullOrEmpty(ViewBag.Title) ? MyApp.FullDescription : ViewBag.Title)" />
+    <meta name="twitter-description" content="@(String.IsNullOrEmpty(ViewBag.Description) ? MyApp.FullDescription : ViewBag.Description)" />
+    <meta name="twitter-image" content="@(String.IsNullOrEmpty(ViewBag.Image) ? MyApp.Logo : ViewBag.Image)" />
+    <meta name="yandex-verification" content="a374ab487b2f3f23" />    
+    <meta name='wmail-verification' content='43e40902e17089ce641f2d4433ec3108' />
+    <meta name="msvalidate.01" content="4179F625CB6576A73B2D128D0BC1B2AF" />
+    <meta name="yandex-verification" content="97d6a4fc5b1e3a3d" />
+    <meta name="google-site-verification" content="udFEN311I4iiNRbqW5MAQZv4BswXXpenW9TyClqIAu8" />
+    <link rel="shortcut icon" href="/favicon2.ico">
+    <link rel="image_src" href="@(String.IsNullOrEmpty(ViewBag.Image) ? MyApp.Logo : ViewBag.Image)" />
+    <link href="~/metronic/assets/frontend/pages/css/menu/menu.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/frontend/pages/css/menu/media.css" rel="stylesheet" type="text/css" />
+    <link href="~/Metronic/assets/frontend/pages/css/footer/footer.css" rel="stylesheet" type="text/css" />
+    <link href="~/Metronic/assets/frontend/pages/css/footer/media.css" rel="stylesheet" type="text/css" />
+    <link href="~/Metronic/assets/frontend/pages/css/common.css" rel="stylesheet" type="text/css" />
+
+    @*https://web.dev/defer-non-critical-css  https://jonassebastianohlsson.com/criticalpathcssgenerator/*@
+    @*@Styles.RenderFormat(@"<link rel=""preload"" href=""{0}"" as=""style"" onload=""this.onload = null; this.rel = 'stylesheet'""><noscript><link rel=""stylesheet"" href=""{0}""></noscript>", "~/bundles/essentials/general-css")*@
+    @Styles.Render("~/bundles/essentials/general-css")
+
+    @*<link rel="stylesheet"href="https://457515.selcdn.ru/cdncontainer/general-css.css"/>*@
+
+    @RenderSection("Styles", false)
+
+    @*заранее устанавливаем соединение с *@
+    @*https://web.dev/optimize-lcp/*@
+    @*<link rel="preconnect" href="https://code.jquery.com" />
+        <link rel="preconnect" href="https://mc.yandex.ru" />
+        <link rel="preconnect" href="https://vk.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />*@
+
+    @RenderSection("Head", false)
+</head>
+<body class="corporate">
+
+    @RenderSection("PreHeader", false)
+    <div class="menu-container custom-container">
+        <header class="products_header">
+            <div class="top-header">
+                <div class="header-item-1">
+                    <a href="#" class="products-logo">
+                        <img src="~/Metronic/assets/frontend/pages/img/menu/logo_products.svg" alt="products_logo">
+                    </a>
+                    <a href="~/Catalog/Index" class="catalog-btn">
+                        <span class="catalog-title">Каталог</span>
+                    </a>
+                </div>
+                <div class="header-item-2">
+                    <div class="language-switcher">Рус</div>
+                    <a class="btn login-btn">Вход</a>
+                </div>
+            </div>
+            <div class="bottom-header">
+                <nav class="header-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Home")" class="nav-link">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("About", "Home")" class="nav-link">О нас</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Authors")" class="nav-link">Авторы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Income")" class="nav-link">Заработок</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "News")" class="nav-link">Полезные статьи</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Writers")" class="nav-link">Отзывы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Contacts", "Home")" class="nav-link">Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <header class="products-header-mobile">
+            <div class="products-header-mobile-container">
+                <a href="#" class="products-logo">
+                    <img src="~/Metronic/assets/frontend/pages/img/menu/logo_products_mobile.svg" alt="products_logo">
+                </a>
+                <button class="toggle-nav" type="button" id="navBtnOpen"></button>
+            </div>
+
+            <div class="main-nav nav-hidden" id="mainNav">
+                <div class="header-nav-active">
+                    <button class="toggle-nav-deactive" type="button" id="navBtnClose"></button>
+
+                    <a href="#" class="products-logo-mobile">
+                        <img src="~/Metronic/assets/frontend/pages/img/menu/logo_products_mobile.svg" alt="products_logo">
+                    </a>
+                </div>
+                <nav class="header-nav">
+                    <ul class="nav-list-mobile">
+                        <li class="nav-item-mobile home">
+                            <a href="@Url.Action("Index", "Home")" class="nav-link-mobile">Главная</a>
+                        </li>
+                        <li class="nav-item-mobile about-us">
+                            <a href="@Url.Action("About", "Home")" class="nav-link-mobile">О нас</a>
+                        </li>
+                        <li class="nav-item-mobile authors">
+                            <a href="@Url.Action("Index", "Authors")" class="nav-link-mobile">Авторы</a>
+                        </li>
+                        <li class="nav-item-mobile income">
+                            <a href="@Url.Action("Index", "Income")" class="nav-link-mobile">Заработок</a>
+                        </li>
+                        <li class="nav-item-mobile articles">
+                            <a href="@Url.Action("Index", "News")" class="nav-link-mobile">Полезные статьи</a>
+                        </li>
+                        <li class="nav-item-mobile feedbacks">
+                            <a href="@Url.Action("Index", "Writers")" class="nav-link-mobile">Отзывы</a>
+                        </li>
+                        <li class="nav-item-mobile contacts">
+                            <a href="@Url.Action("Home", "Contacts")" class="nav-link-mobile">Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+    @*<div class="row green">На нашем сайте Вы сможете найти готовые курсовые и дипломные работы по программированию</div>
+        <div class="header">
+            <div class="container">
+                <div>
+                    <a class="site-logo" href="@Url.Action("Index", "Home")">
+                        <img src="/Images/logo2.svg" width="176.84" height="40" onerror="this.src = '/Images/logo2.png';this.onerror = null;" alt="Наш логотип">
+                    </a>
+
+                    <div class="work-now">
+                        Сейчас работаем
+                    </div>
+                </div>
+                @if (!Request.Browser.IsMobileDevice)
+                {
+                    <div class="phone">
+                        <span class="glyphicon glyphicon-earphone"></span><a href="tel:+79956780607">+7 (995) 678-06-07</a>
+                    </div>
+                }
+                <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+                <div class="header-navigation pull-right font-transform-inherit">
+                    <ul id="menu">
+                        <li class="@(MyAppExs.IsTopMenuItemActive("home", "about") ? "active" : "")">
+                            <a data-target="@Url.Action("About", "Home")" href="@Url.Action("About", "Home")">
+                                @Html.Encode(SW.Resources.Frontend.General.MenuAbout)
+                            </a>
+                        </li>
+                        <li class="@(MyAppExs.IsTopMenuItemActive("sections", "index") ? "active" : "")">
+                            <a data-target="@Url.Action("Index", "Sections")" href="@Url.Action("Index", "Sections")">
+                                @Html.Encode(SW.Resources.Frontend.General.MenuSections)
+                            </a>
+                        </li>
+                        <li class="@(MyAppExs.IsTopMenuItemActive("authors", "index") ? "active" : "")">
+                            <a data-target="@Url.Action("Index", "Authors")" href="@Url.Action("Index", "Authors")">
+                                @Html.Encode(SW.Resources.Frontend.General.MenuAuthors)
+                            </a>
+                        </li>
+                        <li class="@(MyAppExs.IsTopMenuItemActive("home", "income") ? "active" : "")">
+                            <a data-target="@Url.Action("income", "home")" href="@Url.Action("income", "home")" style="text-decoration: underline;">
+                                @Html.Encode(SW.Resources.Frontend.About.Income)
+                            </a>
+                        </li>
+                        <li class="@(MyAppExs.IsTopMenuItemActive("news", "index") ? "active" : "")">
+                            <a data-target="@Url.Action("Index", "News")" href="@Url.Action("Index", "News")">
+                                @Html.Encode(SW.Resources.Frontend.General.MenuNews)
+                            </a>
+                        </li>
+                        @if (String.Equals(WebConfigurationManager.AppSettings["WritersServiceVisible"], "true", StringComparison.OrdinalIgnoreCase))
+                        {
+                            <li class="@(MyAppExs.IsTopMenuItemActive("Writers", "Index") ? "active" : "")">
+                                <a data-target="@Url.Action("Index", "Writers")" href="@Url.Action("Index", "Writers")">
+                                    @Html.Encode(SW.Resources.Frontend.General.MenuExternalWriters)
+                                </a>
+                            </li>
+                        }
+                        <li class="@(MyAppExs.IsTopMenuItemActive("contacts", "index") ? "active" : "")">
+                            <a data-target="@Url.Action("Contacts", "Home")" href="@Url.Action("Contacts", "Home")">
+                                @SW.Resources.Frontend.About.Contacts
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @{var isMainPage = ViewBag.IsMainPage != null && ViewBag.IsMainPage == true; }
+
+        @if (!isMainPage && (ViewBag.HideDevicesSearch == null || ViewBag.HideDevicesSearch == false))
+        {
+            @Html.Partial("~/Views/Shared/_SearchZonePartial.cshtml")
+        }
+
+        @RenderSection("RichHeader", false)*@
+
+    <div class="main">
+
+        @*@Html.MvcSiteMap().SiteMapPath()*@
+        @RenderBody()
+
+        @Html.Partial("~/Views/Shared/_OrderWorkPartial.cshtml")
+
+        @*Партнерская программа @Html.Partial("~/Views/Shared/_PartnerProgramPartial.cshtml")*@
+
+
+        @*SITE REVIEW ZONE*@
+        <!-- Button trigger modal -->
+        <!--<div class="site-review">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#site-review-modal">
+                Оценить сайт
+            </button>
+        </div>-->
+        <!-- Modal -->
+        <!--<div class="modal fade" id="site-review-modal" tabindex="-1" role="dialog" aria-labelledby="site-review-modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="post-review">
+                        <div class="smiles-panel">
+                            <h2 class="info-text" style="color: #343434;">Пожалуйста, оцените, насколько понятно мы рассказали о сайте?</h2>
+                            <ul class="smiles">
+                                <li class="item" title="Ужасно!" data-points="1">
+                                    <label>
+                                        <img src="~/images/smiles/1.svg" alt="smile"> <input type="radio" name="points" class="hidden" value="1">
+                                    </label>
+                                </li>
+                                <li class="item" title="Плохо" data-points="2">
+                                    <label>
+                                        <img src="~/images/smiles/2.svg" alt="smile"> <input type="radio" name="points" class="hidden" value="2">
+                                    </label>
+                                </li>
+                                <li class="item" title="Нейтрально" data-points="3">
+                                    <label>
+                                        <img src="~/images/smiles/3.svg" alt="smile"> <input type="radio" name="points" class="hidden" value="3">
+                                    </label>
+                                </li>
+                                <li class="item" title="Хорошо" data-points="4">
+                                    <label>
+                                        <img src="~/images/smiles/4.svg" alt="smile"> <input type="radio" name="points" class="hidden" value="4">
+                                    </label>
+                                </li>
+                                <li class="item" title="Отлично!" data-points="5">
+                                    <label>
+                                        <img src="~/images/smiles/5.svg" alt="smile"> <input type="radio" name="points" class="hidden" value="5">
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="thank-you-panel" class="text-center">
+                            <h2 class="info-text">Спасибо за Ваш отзыв</h2>
+                            <p>Вы помогаете нам стать лучше</p>
+                            <div class="panel-body">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                        <div class="comment-panel margin-top-15" style="display:none;">
+                            <h2 class="info-text"><span class="star">*&nbsp;</span><span class="question">Посоветуйте, какую информацию нам добавить?</span></h2>
+                            <textarea rows="3" name="comment"></textarea>
+                            <div class="text-right panel-body">
+                                <button type="submit" id="button-post-review" class="btn btn-primary">Отправить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        @*@Html.MvcSiteMap().Menu(0, 3)*@
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container footer-content custom-container">
+            <div class="juridical-info">
+                <a href="#" class="footer-logo"><img src="~/Metronic/assets/frontend/pages/img/common/light-logo.png" alt="logo"></a>
+                <p>@General.AboutUsTitle</p>
+                <p>@General.FooterDescription</p>
+                <p>
+                    <span>
+                        ОГРН: 00000000000000000
+                    </span>
+                    <span>
+                        ИНН: 0000000000
+                    </span>
+                    <span>КПП: 0000000000</span>
+                </p>
+            </div>
+            <div class="site-map">
+                <div class="site-map-header">
+                    Карта сайта
+                </div>
+                <ul class="site-map-items">
+                    <li>
+                        <a href="@Url.Action("Index", "Home")">Главная</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("About", "Home")">О нас</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Authors")">Авторы</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Income")">Заработок</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Home")">Полезные статьи</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Writers")">Отзывы</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Contacts", "Home")">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="messengers">
+                <div class="messenger-header">Мессенджеры</div>
+                <ul>
+                    <li><a target="_blank" rel="nofollow" href="https://t.me/studlearn_support" class="telegram-item" href="#">Telegram</a></li>
+                    <li><a target="_blank" rel="nofollow" class="whatsapp-item" href="#">Whatsapp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="footer-container d-flex copyright-content custom-container">
+                <span>
+                    Created by Yuriy Lobykin
+                </span>
+                <span>Copyright ©2022 – 2023 StudLearn</span>
+            </div>
+        </div>
+    </footer>
+
+    <!--<div class="pre-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <h2>@General.AboutUsTitle</h2>
+                    <p>@General.FooterDescription</p>
+                </div>
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <div class="pre-footer-subscribe-box pre-footer-subscribe-box-vertical">
+                        <h2>@General.NewsletterTitle</h2>
+                        <p>@General.NewsletterDescription</p>
+                        <form action="javascript:void(0);">
+                            <div class="input-group">
+                                <input type="text" placeholder="youremail@mail.com" class="form-control" id="SubscribptionEmail">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" id="Subscribe">@General.NewsletterButton</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <br />
+                </div>
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <h2>@SW.Resources.Frontend.General.ContactsTitle</h2>
+                    <address class="margin-bottom-40">
+                        @Html.Raw(SW.Resources.Frontend.General.ContactsText)<br>
+                        <div class="margin-bottom-10">
+                            <a target="_blank" rel="nofollow" href="https://vk.com/kursovye_po_programmirovaniyu" title="мы в Вконтакте">
+                                <img src="~/images/logo_vk.png" class="social-icon" />
+                                Вконтакте
+                            </a>
+                        </div>
+                        <div class="margin-bottom-10">
+                            <a target="_blank" rel="nofollow" href="https://t.me/studlearn_support" title="мы в Телеграм">
+                                <img src="~/images/logo-telegram.png" class="social-icon" />
+                                Телеграм
+                            </a>
+                        </div>
+                    </address>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <img src="/Images/achievments/bizpark_tiny.webp" width="160" height="70" alt="Наш проект получил гранд от компании Microsoft">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 padding-top-10">
+                    2015 - @DateTime.UtcNow.Year © @SW.Resources.Frontend.General.Copyright
+                </div>
+                <div class="col-md-6 col-sm-6 padding-top-10 text-right">
+                    <a href="~/Files/puboferta.rtf" class="margin-right-10">
+                        Публичная оферта
+                    </a>
+                    <a href="@Url.Action(" FAQ", "Home" )" class="margin-right-10">
+                        @SW.Resources.Frontend.About.FAQ
+                    </a>
+                    <a href="@Url.Action(" Terms", "Home" )">
+                        @SW.Resources.Frontend.About.UserAgreement
+                    </a>-->
+                    @*<ul class="social-footer list-unstyled list-inline pull-right">
+                            <li><a target="_blank" rel="nofollow" href="https://vk.com/kursovye_po_programmirovaniyu" title="мы в Вконтакте" class="social-icon social-icon-color vk"></a></li>
+                        </ul>*@
+                <!--</div>
+            </div>
+        </div>
+    </div>-->
+    <div id="subscribeCaptchaModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Докажи что не робот</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="sw_sub_captcha_container"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">я боюсь...</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="application/ld+json">
+        {
+        "@@context" : "http://schema.org",
+        "@@type" : "WebSite",
+        "name" : "StudLearn",
+        @*"alternateName" : "StudLearn",*@
+        "url" : "https://www.studlearn.com",
+        "sameAs" : [
+        "https://vk.com/kursovye_po_programmirovaniyu",
+        "https://twitter.com/studlearn"
+        ]
+        }
+    </script>
+
+    @*  <script type="text/javascript">!function () { var t = document.createElement("script"); t.type = "text/javascript", t.async = !0, t.src = "https://vk.com/js/api/openapi.js?167", t.onload = function () { VK.Retargeting.Init("VK-RTRG-344819-dDNRY"), VK.Retargeting.Hit() }, document.head.appendChild(t) }();</script>
+        <noscript><img src="https://vk.com/rtrg?p=VK-RTRG-344819-dDNRY" style="position:fixed; left:-999px;" alt="" /></noscript>
+        <!-- VK Widget -->
+
+        <div id="vk_community_messages"></div>
+        <script type="text/javascript">
+            VK.Widgets.CommunityMessages("vk_community_messages", 63641177, { tooltipButtonText: "Есть вопрос?" });
+        </script>*@
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        var fired = false;
+
+        window.addEventListener('scroll', () => {
+            if (fired === false) {
+                fired = true;
+
+                setTimeout(() => {
+                    (function (m, e, t, r, i, k, a) {
+                        m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+                        m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+                    })
+                        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+                    ym(55104793, "init", {
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true,
+                        webvisor: true
+                    });
+                }, 1000)
+            }
+        });
+
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/55104793" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D59ZJSYWPD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-D59ZJSYWPD');
+    </script>
+
+    <!--[if lt IE 9]>
+        <script src="/metronic/assets/global/plugins/respond.min.js"></script>
+    <![endif]-->
+    @*@Html.MvcSiteMap().SiteMapPath("GoogleSiteMapPathHelperModel")*@
+
+    @*<script src="https://457515.selcdn.ru/cdncontainer/jquery.js"></script>
+        <script src="https://457515.selcdn.ru/cdncontainer/metronic-js.js"></script>
+        <script src="https://457515.selcdn.ru/cdncontainer/ko-js.js"></script>
+        <script src="https://457515.selcdn.ru/cdncontainer/plugins-js.js"></script>
+        <script src="https://457515.selcdn.ru/cdncontainer/system-js.js"></script>*@
+    @Scripts.RenderFormat(@"<script src=""{0}"" ></script>", "~/bundles/essentials/jquery")
+    @Scripts.RenderFormat(@"<script src=""{0}"" ></script>", "~/bundles/essentials/metronic-js")
+    @Scripts.RenderFormat(@"<script src=""{0}"" ></script>", "~/bundles/essentials/ko-js")
+    @Scripts.RenderFormat(@"<script src=""{0}"" ></script>", "~/bundles/essentials/plugins-js")
+    @Scripts.RenderFormat(@"<script src=""{0}"" ></script>", "~/bundles/essentials/system-js")
+
+    <script src="/Metronic/assets/frontend/pages/scripts/menu.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            Layout.init();
+            Layout.initOWL();//либо не нужна вообще, либо на странице работы
+            RevosliderInit.initRevoSlider();//TODO перенесть в home
+            SwInit.initTips();
+        });
+    </script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            $.ajax({
+                url: "/api/internal/account/me",
+                accept: 'json',
+                beforeSend: function (xhr) {
+                    Metronic.blockUI({
+                        target: '#AccountHeader',
+                        animate: true,
+                    });
+                }
+            })
+                .done(function (data) {
+                    var selector = "#AccountHeader .logged-" + (data.isAuthenticated ? "in" : "off");
+                    $(selector).css("display", "block");
+                    if (data.isAuthenticated)
+                        $(selector + " .enter-site a").text(data.userName);
+                })
+                .always(function (data) {
+                    Metronic.unblockUI('#AccountHeader')
+                });
+        });
+    </script>
+
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script>
+         $(document).ready(function () {
+            $('#search1').keypress(function (e) {
+                if (e.keyCode == 13)
+                    search1();
+            });
+             $("#search1").autocomplete({
+                 source: function (request, response) {
+                     $.ajax({
+                         url: "/Search/AutoComplete",
+                         type: "POST",
+                         dataType: "json",
+                         data: { Prefix: request.term },
+                         success: function (data) {
+                             response($.map(data, function (item) {
+                                 return { label: item.DocumentTitle, value: item.DocumentTitle, url: "/works/details/" + item.Url };
+                             }))
+                         }
+                     })
+                 },
+                 select: function (event, ui) {
+                     window.location.href = ui.item.url;
+                 },
+                 messages: {
+                     noResults: "", results: ""
+                 }
+             });
+         });
+
+        function search1() {
+            location.href = "@Url.Action("Index", "Search")" + "?q=" + $("#search1").val();
+        };
+    </script>
+
+    <script>
+        if (typeof (echo) !== "undefined") {
+            echo.init({
+                offset: 100,
+                throttle: 250,
+                unload: false,
+            });
+        }
+    </script>
+    @RenderSection("JsCode", false)
+
+    <script>
+        $(document).ready(function () {
+            $('#site-order-modal').on('hidden.bs.modal', function (e) {
+                $("#post-order .order-panel").show();
+                $("#post-order #thank-you-panel").hide();
+            });
+
+            $("#button-post-order").click(function (e) {
+                var $type = $("#post-order select[name=type]");
+                var $theme = $("#post-order input[name=theme]");
+                var $email = $("#post-order input[name=email]");
+                var $phone = $("#post-order input[name=phone]");
+                var $description = $("#post-order textarea[name=description]");
+                var $telegram = $("#post-order input[name=telegram]");
+
+                var isValid = true;
+
+                var theme = $theme.val();
+                if (theme == '') {
+                    $theme.addClass("invalid");
+                    isValid = false;
+                } else {
+                    $theme.removeClass("invalid");
+                }
+
+                var email = $email.val();
+                var testEmail = /^[A-Z0-9._%+-]+@@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+                if (email == '' || !testEmail.test(email)) {
+                    $email.addClass("invalid");
+                    isValid = false;
+                } else {
+                    $email.removeClass("invalid");
+                }
+
+                var phone = $phone.val();
+                if (phone == '') {
+                    $phone.addClass("invalid");
+                    isValid = false;
+                } else {
+                    $phone.removeClass("invalid");
+                }
+
+                var telegram = $telegram.val();
+                if (telegram == '') {
+                    $telegram.addClass("invalid");
+                    isValid = false;
+                } else {
+                    $telegram.removeClass("invalid");
+                }
+
+                var type = $type.val();
+                if (type == null) {
+                    $type.addClass("invalid");
+                    isValid = false;
+                } else {
+                    $type.removeClass("invalid");
+                }
+
+                var description = $description.val();
+                if (description == '') {
+                    $description.addClass("invalid");
+                    isValid = false;
+                } else {
+                    $description.removeClass("invalid");
+                }
+
+                if (!isValid) {
+                    e.preventDefault();
+                    return false;
+                }
+
+                var data = { 'theme': theme, 'type': type, 'email': email, 'phone': phone, 'description': description, 'telegram': telegram };
+                $.ajax({
+                    url: "/api/orderwork/new-order",
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (response) {
+                        console.log(response);
+                        $("#post-order .order-panel").hide();
+                        $("#post-order #thank-you-panel").show();
+                        $theme.val('');
+                        $description.val('');
+                        $phone.val('');
+                        $telegram.val('');
+                        $email.val('');
+                    },
+                    error: function (response) {
+                        toastr.error(response);
+                    }
+                });
+            });
+        });
+    </script>
+    @*<script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
+        <script type="text/javascript">
+            VK.Widgets.Group("vk_groups", { mode: 0, width: "320", height: "320", color1: '313030', color2: 'B0B0B0', color3: '272626' }, 96598935);
+        </script>*@
+
+    @*<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">*@
+    @*<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CPT+Sans+Narrow%7CSource+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">*@
+    <script>
+        function asyncCSS(href) {
+            var css = document.createElement('link');
+            css.rel = "stylesheet";
+            css.href = href;
+            document.head.appendChild(css);
+        }
+        asyncCSS('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css');
+        asyncCSS('//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CPT+Sans+Narrow%7CSource+Sans+Pro:200,300,400,600,700,900&amp;subset=all&display=swap');
+    </script>
+
+    @*<script type="text/javascript" src="https://vk.com/js/api/openapi.js?165" async></script> вроде не нужен*@
+
+    <script src="//code-ya.jivosite.com/widget/wz6iyuZGem" async></script>
+    @*@if (!Request.Browser.IsMobileDevice)
+        {
+            <script type="text/javascript">
+                var _smartsupp = _smartsupp || {};
+                _smartsupp.key = '5b8ff9f8260e7bdac28a7aa609f804304a20f16e';
+                window.smartsupp || (function (d) {
+                    var s, c, o = smartsupp = function () { o._.push(arguments) }; o._ = [];
+                    s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+                    c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+                    c.src = '//www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+                })(document);
+            </script>
+        }*@
+
+    @*Грязный хак для редиректа*@
+    @{
+        const Int32 BufferSize = 128;
+        using (var fileStream = File.OpenRead(Server.MapPath("~/redirects.txt")))
+        {
+            using (var streamReader = new StreamReader(fileStream, System.Text.Encoding.UTF8, true, BufferSize))
+            {
+                String line;
+                while ((line = streamReader.ReadLine()) != null)
+                {
+                    var urls = line.Split('|');
+                    if (urls[0] == Request.Url.ToString())
+                    {
+                        Response.Redirect(urls[1]);
+                    }
+                }
+            }
+        }
+    }
+</body>
+</html>

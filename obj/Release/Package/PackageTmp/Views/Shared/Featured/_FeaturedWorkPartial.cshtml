@@ -1,0 +1,19 @@
+﻿@model SW.Core.DataLayer.FeaturedWork
+
+<div class="recent-work-item"
+     title="@Model.Title"
+     onclick="javascript: window.location = '@Model.Url'"
+     style="cursor: pointer;">
+    <em>
+        <img data-src="@Model.ImageUrl" width="150" height="150" src="/images/loading-150-1.gif" alt="@Model.Title" class="img-responsive lazy-load">
+        @*<a href="@Url.Action("Index", "Works", new { id = Model.DocumentId })"><i class="fa fa-link"></i></a>*@
+        @*<a href="@Model.PreviewImageUrl" class="fancybox-button" title="@Model.PreviewContent" data-rel="fancybox-button"><i class="fa fa-search"></i></a>*@
+    </em>
+    <a class="recent-work-description" href="@Model.Url">
+        <strong style="overflow:hidden; white-space: nowrap; ">@Model.Title</strong>
+        <b>
+            <span class="glyphicon glyphicon-star font-yellow-gold"></span>&nbsp;@Model.Rating
+            <span class="glyphicon glyphicon-rub"></span>&nbsp;@Model.PriceLabel
+        </b>
+    </a>
+</div>

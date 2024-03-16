@@ -1,0 +1,29 @@
+﻿@{
+    using (Html.BeginForm(null, null, FormMethod.Post, new { @action = System.Configuration.ConfigurationManager.AppSettings["dashboardUrl"] + "/Account/ExternalLogin" }))
+    {
+        <div class="social-icons">
+            <input type="hidden" id="ReturnUrl" name="ReturnUrl" value="@Request.Url.AbsoluteUri#new-message" />
+            <a class="btn green" href="@System.Configuration.ConfigurationManager.AppSettings["dashboardUrl"]/Account/Register?ReturnUrl=@Request.Url.AbsoluteUri">
+                Зарегистрируйся
+            </a> или зайди через
+            @Html.AntiForgeryToken()
+            <ul id="socialLoginList" class="social-icons" style="display: inline-table; vertical-align:middle;">
+                @*<li>
+                    <button type="submit" class="odnoklassniki social-icon-color btn-lg" id="Odnoklassniki" name="provider" value="Odnoklassniki" title="Войти с помощью Odnoklassniki аккаунта"></button>
+                </li>*@
+                <li>
+                    <button type="submit" class="vk social-icon-color btn-lg" id="ВКонтакте" name="provider" value="ВКонтакте" title="Войти с помощью ВКонтакте аккаунта"></button>
+                </li>
+                <li>
+                    <button type="submit" class="googleplus social-icon-color btn-lg" id="Google" name="provider" value="Google" title="Войти с помощью Google аккаунта"></button>
+                </li>
+                @*<li>
+                    <button type="submit" class="facebook social-icon-color btn-lg" id="Facebook" name="provider" value="Facebook" title="Войти с помощью Facebook аккаунта"></button>
+                </li>*@
+                @*<li>
+                    <button type="submit" class="twitter social-icon-color btn-lg" id="Twitter" name="provider" value="Twitter" title="Войти с помощью Twitter аккаунта"></button>
+                </li>*@
+            </ul>
+        </div>
+    }
+}

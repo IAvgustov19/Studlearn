@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    @RenderSection("Styles", false)
+}
+@section RichHeader {
+    @RenderSection("RichHeader", false)
+}
+<div class="main">
+    <div class="container">
+        @RenderSection("Breadcrumbs", false)
+        @*<ul class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Blog</a></li>
+            <li class="active">Blog Page</li>
+        </ul>*@
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+                
+                @RenderSection("Title", true)
+                <div class="content-page">
+                    <div class="row">
+                        <!-- BEGIN LEFT SIDEBAR -->
+                        <div class="col-md-12">
+                            @RenderSection("Content", true)
+                        </div>
+                        <!-- END RIGHT SIDEBAR -->
+                    </div>
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END SIDEBAR & CONTENT -->
+    </div>
+</div>
+
+@section JsCode {
+    @RenderSection("JsCode", false)
+}

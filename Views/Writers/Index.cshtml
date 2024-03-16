@@ -1,0 +1,241 @@
+﻿@using System.Web.Mvc.Html
+@using SW.Frontend.Helpers
+@model SW.Frontend.Models.ExternalWritersSearchModel
+@{
+    ViewBag.Title = "Купить Курсовую Диплом Отзывы | Studlearn.com";
+    ViewBag.Description = "Отзывы об исполнителях и сайтах, на которых можно скачать или купить лабораторные, курсовые или дипломные работы";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <h1 style="text-align:center;">База данных авторов курсовых, дипломных и лабораторных работ со всего Интернета. </h1>
+            <h2 style="text-align:center;">
+                Отзывы о <b><i class="fa fa-users" style="font-size:1.15em"></i> @Model.TotalWriters</b> исполнителях
+            </h2>
+            <div class="content-page">
+                <form action="@Url.Action("Index")" class="content-search-view2">
+                    <div class="input-group">
+                        <input type="text" id="q" name="q" class="form-control"
+                               placeholder="Ты сможешь найти исполнителя вставив сюда: ссылку на профиль ВК, e-mail, номер телефона или ФИО."
+                               value="@Model.PagerModel.QueryString" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary">@Html.Encode(SW.Resources.Frontend.General.MenuSearch)</button>
+                        </span>
+                    </div>
+                </form>
+                @if (ViewBag.SearchEnabled == false)
+                {
+                    <div class="note note-warning">
+                        <h4 class="block">Поиск временно не доступен</h4>
+                        <p>
+                            В данный момент мы работаем над улучшениям качества поиска, пожалуйста, попробуй позже
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    if (Model != null && Model.Writers.Any())
+                    {
+                        foreach (var writer in Model.Writers)
+                        {
+                            @Html.Partial("_ExternalWriterSearchPartial", writer)
+                        }
+
+                        @Html.Pager("Index", "Writers", Model.PagerModel)
+                    }
+                    else if (String.IsNullOrEmpty(Request.QueryString["q"]))
+                    {
+
+                        <div class="row margin-bottom-20">
+                            <div class="col-md-6">
+                                <h3>Как это работает?</h3>
+                                Ежедневно сотни тысяч студентов ищут на просторах сети обучающие материалы:
+                                исходники лабораторных по C#, курсовую «Игра морской бой» или дипломную работу по 1С.
+                                Некоторые даже заказывают их онлайн. К сожалению, не всегда те, кому их заказали оказываются честными людьми.
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Зачем все это нужно?</h3>
+                                Мы хотим помочь студентам найти отзывы о исполнителях, которые пишут курсовые, лабораторные и дипломные работы на заказ.
+                                Если хочешь узнать что-то об авторе – воспользуйся поиском, ведь мы постоянно добавляем в базу новых исполнителей.
+                            </div>
+                        </div>
+
+                        @*<div id="geolocator" style="height: 400px;">
+                            <div style="text-align:center; vertical-align:middle; top:50%; position: relative;">
+                                <img src="/metronic/assets/global/img/loading-spinner-default.gif" alt="loading">
+                            </div>
+                        </div>*@
+                        <div class="jumbotron" id="WeNeedYou">
+                            <span style="font: 300 63px 'Open Sans',Arial,sans-serif;">Ты нам нужен!</span>
+                            <p>
+                                Давай вместе соберем отзывы и исполнителей. Потрать пару минут и напиши отзыв (без регистрации) или добавь нового исполнителя в базу
+                            </p>
+                            <p>
+                                <a class="btn btn-lg green" href="@Url.Action("New")" role="button"><i class="fa fa-plus"></i> Добавить исполнителя</a>
+                                @*|
+                                <span id="WeNeedYouHideButton" style="text-decoration:underline;cursor:pointer;font-size:.75em;" title="После клика, ты никогда уже не увидишь это сообщение">скрыть это сообщение</span>*@
+                            </p>
+                        </div>
+                        if (Model.RandomWriters.Count() > 0)
+                        {
+                            <h3 style="text-align:center;">Исполнители</h3>
+                        }
+                        <p></p>
+                        <!-- BEGIN Random users -->
+                        <ul class="list-inline blog-images" style="text-align:center;">
+                            @foreach (var writer in Model.RandomWriters)
+                            {
+                                <li><a href="@Url.Action("Profile", "Writers", new { id = @writer.Slug })" title="@writer.Title"><img alt="@writer.Title" src="@writer.ImageLink"></a></li>
+                            }
+                            <li><a title="Добавить нового исполнителя" href="@Url.Action("New")"><img alt="Добавить нового исполнителя" src="~/images/writers/unknown-writer-2.jpg"></a></li>
+                        </ul>
+                        <!-- END Random users -->
+                        <!-- BEGIN new writer button -->
+                        <p class="text-center margin-top-20">
+                            <a href="@Url.Action("New")" title="Добавить нового исполнителя" class="btn btn-lg green">
+                                <i class="fa fa-plus"></i> добавить нового исполнителя
+                            </a>
+                        </p>
+                        <!-- END new writer button -->
+                    }
+                    else
+                    {
+                        <div class="text-center">
+                            <h3>Мы ничего не нашли по твоему запросу</h3>
+                            <!-- BEGIN new writer button -->
+                            <p class="text-center margin-top-20">
+                                <a href="@Url.Action("New")" title="Добавить нового исполнителя" class="btn btn-lg green">
+                                    <i class="fa fa-plus"></i> добавить нового исполнителя
+                                </a>
+                            </p>
+                            <!-- END new writer button -->
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section JsCode {
+  @*  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSoOkjfXtxh5RWeSAkuv5XnmPgGVaS0Jg&callback=initMap&sensor=false&libraries=geometry"
+            type="text/javascript"></script>
+    <!--<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>-->
+    <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.12/src/infobox.js"></script>
+    <script type="text/javascript" src="//googlemaps.github.io/js-marker-clusterer/src/markerclusterer.js"></script>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                $('#geolocator').hide();
+            }
+        }
+
+        var mapDiv = document.getElementById('geolocator');
+        var map;
+        var lat, lng;
+        var googleMarkers = [];
+
+        function initMap() {
+            map = new google.maps.Map(mapDiv,
+                {
+                    center: { lat: 30, lng: 0 },
+                    zoom: 2
+                });
+
+            getLocation();
+
+            $.ajax({
+                type: 'GET',
+                url: '/api/public/writers/locations',
+                dataType: "json",
+                contentType: "application/json"
+            }).done(setMarkers);
+        }
+
+        function showPosition(position) {
+            lat = position.coords.latitude;
+            lng = position.coords.longitude;
+            map.setCenter(new google.maps.LatLng(lat, lng));
+            map.setZoom(8);
+
+            var siteLatLng = new google.maps.LatLng(lat, lng);
+            var marker = new google.maps.Marker({
+                position: siteLatLng,
+                map: map,
+                title: 'Вы',
+                animation: google.maps.Animation.DROP,
+            });
+
+            if (lat != undefined && lng != undefined) {
+                var userLatLng = new google.maps.LatLng(lat, lng);
+                var bounds = new google.maps.LatLngBounds();
+                var closest = findClosestN(lat, lng, 5);
+                for (var i = 0; i < closest.length; i++) {
+                    bounds.extend(closest[i].getPosition());
+                }
+                bounds.extend(userLatLng);
+                map.fitBounds(bounds);
+            }
+        }
+
+        function createMarker(source, map) {
+            var siteLatLng = new google.maps.LatLng(source.Lat, source.Long);
+            var marker = new google.maps.Marker({
+                position: siteLatLng,
+                map: map,
+                title: source.Title,
+                animation: google.maps.Animation.DROP,
+                icon: '/images/marker.png',
+            });
+
+            var infowindow = new google.maps.InfoWindow();
+            google.maps.event.addListener(marker, "click", function (e) {
+                infowindow.setContent("<a href='/writers/profile/" + source.Slug + "'>" + marker.title + "</a>" +
+                    "<div style='text-align: center;'><span>Рейтинг: <b>" + source.Rating + "</b></span></div>");
+                infowindow.open(map, marker);
+            });
+
+            //google.maps.event.addListener(marker, "dblclick", function (e) {
+            //    window.location.href = '/writers/profile/' + source.Slug;
+            //});
+            return marker;
+        }
+
+        function setMarkers(markers) {
+            for (var i = 0; i < markers.length; i++) {
+                googleMarkers.push(createMarker(markers[i], map));
+            }
+            if (lat != undefined && lng != undefined) {
+                var closest = findClosestN(lat, lng, 5);
+                var fifth = closest.reverse().splice(0, 1)[0];
+                map.setZoom(fifth.distance * 0.000621371192);
+            }
+
+            var mc = new MarkerClusterer(map, googleMarkers);
+        }
+
+        function findClosestN(lat, lng, numberOfResults) {
+            var closest = [];
+            var userLatLng = new google.maps.LatLng(lat, lng);
+            for (var i = 0; i < googleMarkers.length; i++) {
+                googleMarkers[i].distance = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, googleMarkers[i].getPosition());
+                closest.push(googleMarkers[i]);
+            }
+            closest.sort(sortByDist);
+            return closest.splice(0, numberOfResults);
+        }
+
+        function sortByDist(a, b) {
+            return (a.distance - b.distance)
+        }
+
+        google.maps.event.addDomListener(window, 'load', initMap);
+    </script>
+      *@
+}

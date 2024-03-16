@@ -1,0 +1,92 @@
+﻿@{
+
+    var isMainPage = ViewBag.IsMainPage != null && ViewBag.IsMainPage == true;
+}
+
+<div class="input-group search-container">
+    <div class="input ui-widget">
+        <input id="search1" class="form-control" type="text" placeholder="Поиск по всем работам">
+    </div>
+    <span class="input-group-btn">
+        <button id="searchbtn1" class="btn btn-success" type="button" onclick="search1()">
+            <i class="fa fa-search fa-fw"></i>
+        </button>
+    </span>
+</div>
+@if (isMainPage)
+{
+    <style>
+        .search-container {
+            margin: auto;
+            width: 50%;
+            position: absolute;
+            left: 25%;
+            z-index: 10000;
+            top: 300px;
+        }
+
+            .search-container .form-control {
+                padding: 0 20px;
+                font-size: 1.5em;
+                color: #777777;
+                height: 61px;
+            }
+
+            .search-container .btn {
+                font-size: 1.5em;
+                padding: 23px 20px;
+            }
+    </style>
+}
+else
+{
+    <style>
+        .search-container {
+            margin: auto;
+            margin-bottom: 23px;
+            width: 50%;
+            z-index: 10000;
+        }
+
+            .search-container .form-control {
+                padding: 0 20px;
+                font-size: 1.5em;
+                color: #777777;
+                height: 35px;
+            }
+
+            .search-container .btn {
+                font-size: 1.5em;
+                padding: 10px 20px;
+            }
+    </style>
+}
+<style>
+
+@if (Request.Browser.IsMobileDevice)
+{
+    <text>
+        .search-container {
+            width: 90%;
+
+        }
+
+        #search1 {
+            font-size: inherit;
+        }
+     </text>
+
+    if (isMainPage)
+    {
+        <text>
+            .search-container {
+                margin-bottom: 23px;
+                position: relative;
+                top:0;
+                left:0;
+            }
+         </text>
+    }
+
+}
+</style>

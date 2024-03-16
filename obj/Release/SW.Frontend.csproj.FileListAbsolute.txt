@@ -1,0 +1,415 @@
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Frontend.dll.config
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Frontend.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Frontend.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Web.Administration.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Lucene.Net.Store.Azure.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Lucene.Net.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Spire.Pdf.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Lucene.Net.Contrib.Analyzers.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\UnidecodeSharpFork.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\AutoMapper.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Spire.License.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.mshtml.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Antlr3.Runtime.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\EntityFramework.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\EntityFramework.SqlServer.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\HtmlAgilityPack.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\HtmlAgilityPack.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ImageResizer.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ImageResizer.Plugins.AzureReader2.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ImageResizer.Plugins.DiskCache.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ImageResizer.Plugins.SqlReader.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ImageResizer.Storage.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ImageResizer.Storage.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\log4net.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Azure.KeyVault.Core.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Data.Edm.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Data.OData.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Data.Services.Client.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Owin.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Owin.Security.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Practices.Unity.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Practices.Unity.Mvc.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Practices.Unity.WebApi.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.Web.RedisOutputCacheProvider.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.WindowsAzure.Configuration.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.WindowsAzure.Storage.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Microsoft.WindowsAzure.Storage.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\MvcSiteMapProvider.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\MvcSiteMapProvider.WebActivator.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Newtonsoft.Json.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SimpleMvcSitemap.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SimpleMvcSitemap.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\StackExchange.Redis.StrongName.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\StackExchange.Redis.StrongName.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Core.DataLayer.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Core.DataLayer.dll.config
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Resources.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Resources.dll.config
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Shared.Constants.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Shared.Constants.dll.config
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Shared.Helpers.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Shared.Helpers.dll.config
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Shared.Models.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Shared.Models.dll.config
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Workflow.Azure.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Workflow.Azure.dll.config
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Workflow.Components.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Workflow.Components.dll.config
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Workflow.Coordinator.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\SW.Workflow.Coordinator.dll.config
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\System.Net.Http.Formatting.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\System.Spatial.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\System.Web.Http.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\System.Web.Http.Cors.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\System.Web.Http.WebHost.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\System.Web.Optimization.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\System.Web.Razor.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\System.Web.Webpages.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\System.Web.Webpages.Deployment.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\System.Web.Webpages.Razor.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\System.Web.Helpers.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\System.Web.Mvc.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Lucene.Net.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Lucene.Net.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Spire.Pdf.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Lucene.Net.Contrib.Analyzers.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Lucene.Net.Contrib.Analyzers.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\UnidecodeSharpFork.pdb
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\AutoMapper.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\Spire.License.xml
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\de\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\es\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\fr\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\it\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ja\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ko\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ru\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\de\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\es\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\fr\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\it\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ja\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ko\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\ru\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\obj\Release\SW.Frontend.csproj.AssemblyReference.cache
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\obj\Release\SW.Frontend.csproj.CoreCompileInputs.cache
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\obj\Release\SW.Frontend.csproj.CopyComplete
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\obj\Release\SW.Frontend.dll
+C:\Users\avgus\Downloads\SW.Frontend-master (2)\SW.Frontend-master\SW.Frontend-master\obj\Release\SW.Frontend.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Frontend.dll.config
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Frontend.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Frontend.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Web.Administration.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Lucene.Net.Store.Azure.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Lucene.Net.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Lucene.Net.Contrib.Analyzers.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\UnidecodeSharpFork.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Spire.Pdf.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\AutoMapper.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Spire.License.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.mshtml.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Antlr3.Runtime.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\EntityFramework.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\EntityFramework.SqlServer.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\HtmlAgilityPack.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\HtmlAgilityPack.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ImageResizer.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ImageResizer.Plugins.AzureReader2.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ImageResizer.Plugins.DiskCache.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ImageResizer.Plugins.SqlReader.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ImageResizer.Storage.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ImageResizer.Storage.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\log4net.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Azure.KeyVault.Core.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Data.Edm.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Data.OData.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Data.Services.Client.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Owin.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Owin.Security.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Practices.Unity.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Practices.Unity.Mvc.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Practices.Unity.WebApi.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.Web.RedisOutputCacheProvider.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.WindowsAzure.Configuration.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.WindowsAzure.Storage.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Microsoft.WindowsAzure.Storage.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\MvcSiteMapProvider.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\MvcSiteMapProvider.WebActivator.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Newtonsoft.Json.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SimpleMvcSitemap.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SimpleMvcSitemap.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\StackExchange.Redis.StrongName.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\StackExchange.Redis.StrongName.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Core.DataLayer.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Core.DataLayer.dll.config
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Resources.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Resources.dll.config
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Shared.Constants.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Shared.Constants.dll.config
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Shared.Helpers.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Shared.Helpers.dll.config
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Shared.Models.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Shared.Models.dll.config
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Workflow.Azure.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Workflow.Azure.dll.config
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Workflow.Components.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Workflow.Components.dll.config
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Workflow.Coordinator.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\SW.Workflow.Coordinator.dll.config
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\System.Net.Http.Formatting.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\System.Spatial.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\System.Web.Http.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\System.Web.Http.Cors.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\System.Web.Http.WebHost.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\System.Web.Optimization.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\System.Web.Razor.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\System.Web.Webpages.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\System.Web.Webpages.Deployment.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\System.Web.Webpages.Razor.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\System.Web.Helpers.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\System.Web.Mvc.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Lucene.Net.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Lucene.Net.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Lucene.Net.Contrib.Analyzers.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Lucene.Net.Contrib.Analyzers.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\UnidecodeSharpFork.pdb
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Spire.Pdf.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\AutoMapper.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\Spire.License.xml
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\de\Microsoft.Data.Services.Client.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\es\Microsoft.Data.Services.Client.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\fr\Microsoft.Data.Services.Client.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\it\Microsoft.Data.Services.Client.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ja\Microsoft.Data.Services.Client.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ko\Microsoft.Data.Services.Client.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ru\Microsoft.Data.Services.Client.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\de\System.Spatial.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\es\System.Spatial.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\fr\System.Spatial.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\it\System.Spatial.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ja\System.Spatial.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ko\System.Spatial.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\ru\System.Spatial.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\obj\Release\SW.Frontend.csproj.AssemblyReference.cache
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\obj\Release\SW.Frontend.csproj.CoreCompileInputs.cache
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\obj\Release\SW.Frontend.csproj.CopyComplete
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\obj\Release\SW.Frontend.dll
+C:\Users\aselm\OneDrive\Рабочий стол\test_11\SW.Frontend\obj\Release\SW.Frontend.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\css\menu\media.css
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\css\menu\menu.css
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\about-us.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\about-usHover.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\authors.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\authorsHover.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\burgerToggle.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\catalog.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\contacts.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\contactsHover.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\feedbacks.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\feedbacksHover.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\home.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\homeHover.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\income.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\incomeHover.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\langIcon.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\logo_products.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\logo_products_mobile.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\newspaper.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\newspaperHover.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Metronic\assets\frontend\pages\img\menu\x-icon.svg
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Frontend.dll.config
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Frontend.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Frontend.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Web.Administration.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Lucene.Net.Store.Azure.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Lucene.Net.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Lucene.Net.Contrib.Analyzers.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\UnidecodeSharpFork.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Spire.Pdf.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\AutoMapper.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Spire.License.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.mshtml.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Antlr3.Runtime.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\EntityFramework.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\EntityFramework.SqlServer.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\HtmlAgilityPack.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\HtmlAgilityPack.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ImageResizer.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ImageResizer.Plugins.AzureReader2.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ImageResizer.Plugins.DiskCache.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ImageResizer.Plugins.SqlReader.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ImageResizer.Storage.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ImageResizer.Storage.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\log4net.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Azure.KeyVault.Core.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Data.Edm.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Data.OData.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Data.Services.Client.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Owin.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Owin.Security.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Practices.Unity.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Practices.Unity.Mvc.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Practices.Unity.WebApi.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.Web.RedisOutputCacheProvider.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.WindowsAzure.Configuration.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.WindowsAzure.Storage.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Microsoft.WindowsAzure.Storage.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\MvcSiteMapProvider.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\MvcSiteMapProvider.WebActivator.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Newtonsoft.Json.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SimpleMvcSitemap.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SimpleMvcSitemap.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\StackExchange.Redis.StrongName.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\StackExchange.Redis.StrongName.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Core.DataLayer.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Core.DataLayer.dll.config
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Resources.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Resources.dll.config
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Shared.Constants.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Shared.Constants.dll.config
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Shared.Helpers.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Shared.Helpers.dll.config
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Shared.Models.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Shared.Models.dll.config
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Workflow.Azure.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Workflow.Azure.dll.config
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Workflow.Components.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Workflow.Components.dll.config
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Workflow.Coordinator.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\SW.Workflow.Coordinator.dll.config
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\System.Net.Http.Formatting.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\System.Spatial.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\System.Web.Http.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\System.Web.Http.Cors.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\System.Web.Http.WebHost.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\System.Web.Optimization.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\System.Web.Razor.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\System.Web.Webpages.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\System.Web.Webpages.Deployment.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\System.Web.Webpages.Razor.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\System.Web.Helpers.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\System.Web.Mvc.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Lucene.Net.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Lucene.Net.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Lucene.Net.Contrib.Analyzers.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Lucene.Net.Contrib.Analyzers.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\UnidecodeSharpFork.pdb
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Spire.Pdf.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\AutoMapper.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\Spire.License.xml
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\de\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\es\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\fr\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\it\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ja\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ko\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ru\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\de\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\es\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\fr\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\it\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ja\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ko\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\ru\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\obj\Release\SW.Frontend.csproj.AssemblyReference.cache
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\obj\Release\SW.Frontend.csproj.CoreCompileInputs.cache
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\obj\Release\SW.Frontend.csproj.CopyComplete
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\obj\Release\SW.Frontend.dll
+C:\Users\avgus\Downloads\Telegram Desktop\SW.Frontend (2)\SW.Frontend (2)\SW.Frontend\obj\Release\SW.Frontend.pdb

@@ -1,0 +1,27 @@
+﻿@using System.Web.Mvc.Html
+@using SW.Frontend.Helpers
+@model SW.Frontend.Models.SearchViewModel
+@{
+    ViewBag.Title = "Бесплатные Лабораторные И Курсовые | Studlearn.com";
+    ViewBag.Description = "Список всех работ, которые можно скачать без регистрации.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <h1>@Html.Encode(SW.Resources.Frontend.General.HomeFeaturedFree)</h1>
+            <div class="content-page">
+                <div class="row">
+                    <ul class="list-unstyled">
+                        @foreach (var document in Model.Documents)
+                        {
+                            @Html.Partial("_DocumentFeaturedPartial", document)
+                        }
+                    </ul>
+                </div>
+                @Html.Pager("Index", "Free", Model.PagerModel)
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+﻿<!-- Button trigger modal -->
+@*<div class="site-order">
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#site-order-modal">
+        Заказать работу
+    </button>
+</div>*@
+<!-- Modal -->
+<div class="modal fade" id="site-order-modal" tabindex="-1" role="dialog" aria-labelledby="site-order-modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Заказать работу</h4>
+            </div>
+            <div class="modal-body" id="post-order">
+                <div class="order-panel">
+                    <p>Поможем с курсовой, контрольной, дипломной, рефератом, отчетом по практике, научно-исследовательской и любой другой работой</p>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="theme" placeholder="Тема" required>
+                    </div>
+                    <div class="form-group">
+                        <select name="type" class="form-control">
+                            <option disabled selected>Тип работы</option>
+                            <option value="Дипломная работа">Дипломная работа</option>
+                            <option value="Курсовая работа">Курсовая работа</option>
+                            <option value="Другое">Другое</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="description" placeholder="Описание задания"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" name="phone" placeholder="Номер телефона" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="telegram" placeholder="Ник в Telegram" required>
+                    </div>
+                    <button type="button" id="button-post-order" class="btn btn-primary btn-block">Заказать</button>
+                </div>
+                <div id="thank-you-panel" class="text-center" style="display:none;">
+                    <h2 class="info-text">Заявка успешно отправлена</h2>
+                    @*<p>....</p>*@
+                    <div class="panel-body">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #site-order-modal input.invalid, #site-order-modal select.invalid, #site-order-modal textarea.invalid {
+        border-color: #e94d1c;
+    }
+
+    .site-order {
+        visibility: visible !important;
+        pointer-events: unset;
+        opacity: 1;
+        z-index: 99999;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+    }
+</style>

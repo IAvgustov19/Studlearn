@@ -1,0 +1,236 @@
+﻿@model SW.Frontend.Models.HomePageModel
+@using SW.Resources.Frontend;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Description = SW.Shared.Constants.Application.FullDescription;
+    ViewBag.IsMainPage = true;
+}
+
+@section RichHeader{
+    @if (!Request.Browser.IsMobileDevice)
+    {
+        @* BEGIN SLIDER *@
+        <div class="page-slider margin-bottom-40" style="z-index: 99">
+            <div class="fullwidthbanner-container">
+                <div class="fullwidthabnner">
+                    <ul id="revolutionul">
+                        @* 1 *@
+                        <li data-transition="fade" data-slotamount="8" data-masterspeed="700" data-delay="9400">
+                            <img src="~/images/slider2/1_4.webp" alt="Исходники по программированию">
+
+                            <div class="caption lft slide_title_white slide_item_left"
+                                 data-x="70"
+                                 data-y="100"
+                                 data-speed="50"
+                                 data-start="100"
+                                 data-easing="easeOutExpo">
+                                <span class="slide_title_white_bold" style="font-size: 1em">Исходники по программированию</span>
+                            </div>
+                            <div class="caption hidden-sm hidden-xs"
+                                 data-y="240"
+                                 data-speed="50"
+                                 data-start="100"
+                                 data-easing="easeOutExpo" style="width: 100%;">
+                                @*<div class="input-group" style="margin: auto; width: 50%;">
+                                        <div class="input ui-widget">
+                                            <input id="search1" class="form-control" type="text" placeholder="Например: Курсовая win32 api" style="padding: 0 20px; font-size: 1.5em; color: #777777; height:61px;">
+                                        </div>
+                                        <span class="input-group-btn">
+                                            <button id="searchbtn1" class="btn btn-success" type="button" style="font-size:1.5em; padding: 23px 20px;" onclick="search1()">
+                                                <i class="fa fa-search fa-fw"></i>
+                                            </button>
+                                        </span>
+                                    </div>*@
+                            </div>
+                        </li>
+                        @* 2 *@
+                        <li data-transition="fade" data-slotamount="8" data-masterspeed="700" data-delay="9400">
+                            <img src="~/images/slider2/1_3.webp" alt="Исходники на разных языках программирования">
+
+                            <div class="caption lft slide_title_white slide_item_left"
+                                 data-x="20"
+                                 data-y="100"
+                                 data-speed="50"
+                                 data-start="100"
+                                 data-easing="easeOutExpo">
+                                <span class="slide_title_white_bold" style="font-size: 1em">Исходники на разных языках программирования</span>
+                            </div>
+                            <div class="caption hidden-sm hidden-xs"
+                                 data-y="270"
+                                 data-speed="50"
+                                 data-start="100"
+                                 data-easing="easeOutExpo" style="width: 100%;">
+                                @*<div class="input-group" style="margin: auto; width: 50%;">
+                                        <div class="input">
+                                            <input id="search2" class="form-control" type="text" placeholder="Например: Курсовая работа треугольник паскаля" style="padding: 0 20px; font-size: 1.5em; color: #777777; height:61px;">
+                                        </div>
+                                        <span class="input-group-btn">
+                                            <button id="searchbtn2" class="btn btn-success" type="button" style="font-size:1.5em; padding: 23px 20px;" onclick="search2()">
+                                                <i class="fa fa-search fa-fw"></i>
+                                            </button>
+                                        </span>
+                                    </div>*@
+                            </div>
+                        </li>
+                        @*<li data-transition="fade" data-slotamount="8" data-masterspeed="700" data-delay="9400" data-thumb="/metronic/assets/frontend/pages/img/revolutionslider/thumbs/thumb2.jpg">
+                                <img src="~/images/slider2/2.jpg" alt="Все работы проверяются модератором" />
+                                <div class="caption lft slide_title_white slide_item_left"
+                                     data-x="60"
+                                     data-y="100"
+                                     data-speed="400"
+                                     data-start="1500"
+                                     data-easing="easeOutExpo">
+                                    Все работы проверяются <b>модератором</b>
+                                </div>
+
+                                <div class="caption hidden-sm hidden-xs"
+                                     data-y="200"
+                                     data-speed="400"
+                                     data-start="1500"
+                                     data-easing="easeOutExpo" style="width: 100%;">
+                                    <div class="input-group" style="margin: auto; width: 50%;">
+                                        <div class="input">
+                                            <input id="search2" class="form-control" type="text" name="" placeholder="Например: Основы SQL" style="padding: 0 20px; font-size: 1.5em; color: #777777; height:61px;">
+                                        </div>
+                                        <span class="input-group-btn">
+                                            <button id="searchbtn2" class="btn btn-success" type="button" style="font-size:1.5em; padding: 23px 20px;" onclick="search2()">
+                                                <i class="fa fa-search fa-fw"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>*@
+                        @* 3 *@
+                        <li data-transition="fade" data-slotamount="8" data-masterspeed="700" data-delay="9400">
+                            <img src="~/images/slider2/3.webp" alt="Лучшие работы по программированию" />
+                            <div class="caption lft slide_title_white slide_item_left"
+                                 data-x="250"
+                                 data-y="30"
+                                 data-speed="50"
+                                 data-start="100"
+                                 data-easing="easeOutExpo">
+                                Лучшие работы<br /> <b>по программированию </b>
+                            </div>
+
+                            <div class="caption hidden-sm hidden-xs"
+                                 data-y="220"
+                                 data-speed="50"
+                                 data-start="100"
+                                 data-easing="easeOutExpo" style="width: 100%;">
+                                @*<div class="input-group" style="margin: auto; width: 50%;">
+                                        <div class="input">
+                                            <input id="search3" class="form-control" type="text" placeholder="Например: Инженерный калькулятор C#, База данных кинотеатр" style="padding: 0 20px; font-size: 1.5em; color: #777777; height:61px;">
+                                        </div>
+                                        <span class="input-group-btn">
+                                            <button id="searchbtn3" class="btn btn-success" type="button" style="font-size:1.5em; padding: 23px 20px;" onclick="search3()">
+                                                <i class="fa fa-search fa-fw"></i>
+                                            </button>
+                                        </span>
+                                    </div>*@
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="tp-bannertimer tp-bottom"></div>
+                </div>
+            </div>
+        </div>
+        @*END SLIDER*@
+
+        <!--ENDSLIDER-->
+
+
+
+
+
+        @*<h2>Поиск по темам</h2>*@
+        <div class="row recent-work margin-bottom-40" style="margin: auto; width: 50%; position: absolute; left: 25%; z-index: 20; top: 400px;">
+            @{
+                Html.RenderAction("_ThemesListPartial", "Themes");
+            }
+        </div>
+    }
+
+    @if (ViewBag.HideDevicesSearch == null || ViewBag.HideDevicesSearch == false)
+    {
+        @Html.Partial("~/Views/Shared/_SearchZonePartial.cshtml")
+    }
+}
+
+<div class="container">
+    @Html.Partial("~/Views/Shared/CallToAction/_StudlearnInNumbers.cshtml")
+    <h2><a href="@Url.Action("Free", "TopWorks")">@General.HomeFeaturedFree</a></h2>
+    <div class="row recent-work margin-bottom-40">
+        @foreach (var work in Model.FeaturedFreeWorks)
+        {
+            <div class="col-md-2  col-sm-4  col-xs-6">
+                @Html.Partial("Featured/_FeaturedWorkPartial", work)
+            </div>
+        }
+    </div>
+    <h2><a href="@Url.Action("Paid", "TopWorks")">@General.HomeFeaturedPaid</a></h2>
+    <div class="row recent-work margin-bottom-40">
+        @foreach (var work in Model.FeaturedPayedWorks)
+        {
+            <div class="col-md-2  col-sm-4  col-xs-6">
+                @Html.Partial("Featured/_FeaturedWorkPartial", work)
+            </div>
+        }
+    </div>
+    <h2><a href="@Url.Action("Index", "Authors")">@General.HomeFeaturedAuthors</a></h2>
+    <div class="row recent-work margin-bottom-40">
+        @foreach (var author in Model.FeaturedAuthors)
+        {
+            <div class="col-md-2  col-sm-4  col-xs-6">
+                @Html.Partial("Featured/_FeaturedAuthorPartial", author)
+            </div>
+        }
+    </div>
+    <h2><a href="@Url.Action("Recent", "TopWorks")">@General.HomeFeaturedNew</a></h2>
+    <div class="row recent-work margin-bottom-40">
+        @foreach (var work in Model.RecentWorks)
+        {
+            <div class="col-md-2  col-sm-4  col-xs-6">
+                @Html.Partial("Featured/_FeaturedWorkPartial", work)
+            </div>
+        }
+    </div>
+
+
+    @*  @Html.Partial("CallToAction/_AuthorRegistration")*@
+</div>
+
+@section  JsCode{
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org",
+        "@@type": "WebSite",
+        "name" : "StudLearn",
+        "url": "https://studlearn.com/",
+        "potentialAction": {
+        "@@type": "SearchAction",
+        "target": "https://studlearn.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+        }
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+        "@@context" : "http://schema.org",
+        "@@type" : "Organization",
+        "name" : "StudLearn",
+        "url" : "https://studlearn.com/",
+        "logo": "https://studlearn.com/Images/logo2.svg",
+        "sameAs" : [
+        "https://vk.com/kursovye_po_programmirovaniyu",
+        "https://twitter.com/studlearn",
+        "https://www.facebook.com/pages/StudLearn/961126353939139"
+        ]
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            SwInit.initLazyImages();
+        });
+    </script>
+}

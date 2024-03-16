@@ -1,0 +1,115 @@
+﻿@model SW.Shared.Models.Storage.FilePreview
+@{
+    ViewBag.Title = "StudLearn | Скачивание файла";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    bool downloadFile = (ViewBag.StartDownloadFile ?? false) || !Model.IsPublic;//сразу скачиваем файл, если он не публичный
+}
+
+<div class="container" id="PaymentWrapper">
+    <div class="row margin-bottom-40">
+        <!-- BEGIN CONTENT -->
+        <div class="col-md-12 col-sm-12">
+            <h2>@(downloadFile?"Скачивание файла":"А Вы, случайно, не робот?")</h2>
+            <div class="content-form-page">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8">
+                        @if (Model != null)
+                        {
+                            if (!downloadFile)
+                            {
+                                using (Html.BeginForm("DownloadFile", "Works", FormMethod.Post, new { @style = "margin: 25px 0;" }))
+                                {
+                                    <div class="row">
+                                        <input name="token" value="@ViewBag.Token" class="hidden" />
+                                        <input name="fileId" value="@Model.UserFileId" class="hidden" />
+                                        <input name="documentId" value="@ViewBag.WorkId" class="hidden" />
+                                        <div class="margin-bottom-20">Чтобы скачать файл "@Model.Title" подтвердите, что Вы не робот</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group @(ViewData.ModelState[SW.Shared.Constants.Application.RecaptchaKey] != null ? "has-error" : String.Empty) ">
+                                                <div class="g-recaptcha" data-sitekey="@System.Web.Configuration.WebConfigurationManager.AppSettings["RecaptchaPublicKey"]"></div>
+                                                <span class="help-block">
+                                                    @Html.ValidationMessage(SW.Shared.Constants.Application.RecaptchaKey, new { @class = "error" }, "span")
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="submit" class="btn btn-lg btn-primary btn-block" style="margin-top:15px;">Подтвердить</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <a href="@Url.Action("Index", "Works", new { id = ViewBag.WorkId })">Вернуться к работе</a>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="row">
+                                    <div style="margin: 15px 15px 10px 0; float:left;">
+                                        <i class="fa fa-2x @(SW.Shared.Constants.Storage.FileTypeExtensions.ToIcon((SW.Shared.Constants.Storage.FileType)Model.Type)) color-grey"></i>
+                                    </div>
+                                    <div>
+                                        Скачивание "@Model.Title" начнется автоматически через <span id="timer"> 5 </span> секунд.
+                                        Если скачивание не началось, тогда <a id="download" href="/api/file/@Model.UserFileId/@ViewBag.WorkId?token=@ViewBag.Token"> нажмите здесь </a>
+                                    </div>
+                                </div>
+                                <a href="@Url.Action("Index", "Works", new { id = ViewBag.WorkId })">Вернуться к работе</a>
+                            }
+                        }
+                        else
+                        {
+                            <div class="note note-danger">
+                                <h4 class="block">Скачивание данного файла невозможно</h4>
+                                <p></p>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-4 col-sm-4 pull-right">
+                        <div class="form-info">
+                            <h2><em>Важная</em> Информация</h2>
+                            <p>На нашем сайте можно зарабатывать деньги. <a target="_blank" href="/home/income">Подробнее...</a></p>
+                            <p>Не забудь оставить отзыв о работе. <a target="_blank" href="@Url.Action("Index", "Works", new { id = @ViewBag.WorkId })">Подробнее...</a></p>
+                            <p>Загружай свои работы и делай мир лучше ;)</p>
+                        </div>
+                    </div>
+                </div>
+                @*<iframe width="728" height="200" src="https://widget.qiwi.com/widgets/big-widget-728x200?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPugdF1i9Vzmaqp2tawC2VxheG55d2krMBjdZuKzPtefPADjweLMPFkPS6j5sUYDJq4TiN6DJSgPioEB7Bopts1m1G9tPVL86LM12YmKsTg" allowtransparency="true" scrolling="no" frameborder="0"></iframe>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+@section JsCode {
+    <script type="text/javascript" src='https://www.google.com/recaptcha/api.js?hl=ru'></script>
+
+    @if (downloadFile)
+    {
+        <script>
+            var target;
+            function startTicker() {
+                var counter = 5;
+                var tickerHandler = window.setInterval(function () {
+                    if (counter > 0) {
+                        target.innerHTML = counter;
+                        counter--;
+                    }
+                    else {
+                        target.innerHTML = "0";
+                        clearInterval(tickerHandler);
+                        $('#download')[0].click();
+                    }
+                }, 1000);
+            }
+
+            $(document).ready(function () {
+                if (!target && document.getElementById('timer') != undefined) {
+                    target = document.getElementById('timer');
+
+                    startTicker();
+                }
+            });
+        </script>
+    }
+}

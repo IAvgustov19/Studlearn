@@ -1,0 +1,102 @@
+﻿@*@model IEnumerable<SW.Shared.Models.Documents.SimilarDocument>
+    @if (Model.Any())
+    {
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+        <div style="display:none;">
+
+            <table class="table">
+                @foreach (var document in Model)
+                {
+                    var color = "empty";// string.IsNullOrEmpty(document. .Color) ? string.Empty : "label-" + document.Color;
+
+                    <tr>
+                        <td><span class="label @(color)">@(document.Type)</span></td>
+                        <td><a href="@(document.DocumentSlug)">@document.DocumentTitle</a></td>
+                        <td style="min-width: 50px;"><i class="fa fa-star"></i> @document.Rating</td>
+                        <td>
+                            @if (document.Price.HasValue)
+                            {
+                                @(document.Price) <i class="fa @SW.Shared.Constants.Application.DefaultCurrencyIconClass"></i>
+                            }
+                            else
+                            {
+                                @document.Price
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div>
+            @foreach (var work in Model)
+            {
+                @Html.Partial("_DocumentSearchPartial", work)
+            }
+        </div>
+    }
+    else
+    {
+        <p>@SW.Resources.Frontend.General.LabelNoData</p>
+    }*@
+
+@model IEnumerable<SW.Shared.Models.Documents.DocumentPreviewEx>
+
+@if (Model.Any())
+{
+    <div class="blog-posts">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="border-bottom:0px;@(Request.Browser.IsMobileDevice?"display:none;":"")">Тип</th>
+                    <th style="border-bottom:0px">Название</th>
+                    <th style="border-bottom:0px;@(Request.Browser.IsMobileDevice?"display:none;":"")">Рейтинг</th>
+                    <th style="border-bottom:0px;@(Request.Browser.IsMobileDevice?"display:none;":"")">Категория</th>
+                    <th style="border-bottom:0px;@(Request.Browser.IsMobileDevice?"display:none;":"")">Темы</th>
+                    <th style="border-bottom:0px">Стоимость</th>
+                    <th style="border-bottom: 0px; display: none;">Новая</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var minDate = DateTime.UtcNow.Subtract(TimeSpan.FromDays(90));
+                }
+                @foreach (var document in Model)
+                {
+                    var color = string.IsNullOrEmpty(document.Color) ? string.Empty : "label-" + document.Color;
+
+                <tr>
+                    <td style="@(Request.Browser.IsMobileDevice?"display:none;":"")"><span class="label @(color)">@document.TypeTitle</span></td>
+                    <td>
+                        <a href="@document.Url" target="_blank">@document.Title</a>
+                        @if (document.CreatedAt >= minDate)
+                        {
+                            <span class="badge badge-success" style="margin-left: 5px;">new</span>
+                        }
+                    </td>
+                    <td style="min-width: 50px;@(Request.Browser.IsMobileDevice?"display:none;":"")"><i class="fa fa-star"></i> @document.Rating</td>
+                    <td style="@(Request.Browser.IsMobileDevice?"display:none;":"")">@document.CategoryTitle</td>
+                    <td style="@(Request.Browser.IsMobileDevice?"display:none;":"")">@string.Join(",",document.ThemesNames)</td>
+                    <td data-order="@(document.Price)">
+                        @if (document.Price.HasValue)
+                        {
+                            @(document.PriceLabel) <i class="fa @SW.Shared.Constants.Application.DefaultCurrencyIconClass"></i>
+                        }
+                        else
+                        {
+                            @document.PriceLabel
+                        }
+                    </td>
+                    <td style="display:none;">
+                        @if (document.CreatedAt >= minDate)
+                        {
+                            <text>Новая</text>
+                        }
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

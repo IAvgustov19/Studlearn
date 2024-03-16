@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Система Рейтингов И Бонусов | Studlearn.com";
+    ViewBag.Description = "Авторы, которые загружают свои работы могут получить привилегии за свою деятельность. Их действия влияют на результаты выдачи во внутреннем поиске сайта.";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main" style="min-height: 600px;">
+    <div class="container">
+        <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+                <h1>@SW.Resources.Frontend.About.Achivments</h1>
+                <div class="content-page">
+                    <div class="row">
+                        <div id="achivments" class="tab-pane">
+                            @Html.Action("AchivmentsPartial")
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+    </div>
+</div>

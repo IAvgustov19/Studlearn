@@ -1,0 +1,71 @@
+﻿.for-us {
+    background-image: url(/Metronic/assets/frontend/pages/img/backround.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    padding-bottom: 30px;
+}
+
+.for-us-images-table {
+    display:flex;
+    flex-direction:column;
+}
+
+    .for-us h1 {
+        font-size: 28px;
+        font-weight: 900;
+        line-height: 36px;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+    }
+
+.for-us-images {
+    display: flex;
+}
+
+.image-margin-right {
+    margin-right: 14px;
+}
+
+.image-margin-top {
+    margin-top: 14px;
+}
+
+.for-us-images img {
+    border-radius: 12px !important;
+}
+
+.description {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.description p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #272F37;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+.our-mission {
+    padding: 20px;
+    border-radius: 12px !important;
+    gap: 10px;
+    font-size: 14px;
+    border: 1px solid #4AB22D;
+}
+
+@media screen and (max-width:360px) {
+    .image-margin-right {
+        display: none;
+    }
+
+    .image-margin-right img:first-child{
+        width: 336px;
+        height: 220px;
+        display: block;
+    }
+}

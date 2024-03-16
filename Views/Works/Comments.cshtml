@@ -1,0 +1,10 @@
+﻿@model IEnumerable<SW.Shared.Models.Documents.CommentPreview>
+
+<h2>Комментарии</h2>
+
+<div class="comments">
+    @foreach (var comment in Model)
+    {
+        @Html.Partial("_CommentPartial", comment)
+    }
+</div>

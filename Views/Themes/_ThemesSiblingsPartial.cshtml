@@ -1,0 +1,17 @@
+﻿@model IEnumerable<SW.Shared.Models.Documents.ThemePreview>
+@{
+    Layout = null;
+
+    //var themesIds = (List<int>)ViewBag.ThemesIds;
+}
+<ul class="nav sidebar-categories margin-bottom-40">
+    @foreach (var theme in Model.OrderBy(x => x.Name))
+    {
+        <li @*class="@(themesIds.Contains(theme.Id) ? "active" : "")"*@>
+            <a href="~/themes/details/@theme.Id">
+                @theme.Name
+                <strong>(@theme.DocumentsCount)</strong>
+            </a>
+        </li>
+    }
+</ul>

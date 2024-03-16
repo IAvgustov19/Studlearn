@@ -1,0 +1,86 @@
+﻿.contacts {
+    background-image: url(/Metronic/assets/frontend/pages/img/backround.png);
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    padding-bottom: 30px;
+    background-size: cover;
+}
+
+.contact-container {
+    max-width: 1280px;
+    margin: 0px auto;
+}
+
+.contacts-blocks {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-block {
+    border: 1px solid #4AB22D;
+    width: 32%;
+    max-width: 426px;
+    min-width: 336px;
+    border-radius: 12px !important;
+    padding: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+}
+
+.email-item::before {
+    content: "";
+    background-image: url(/Metronic/assets/frontend/pages/img/common/mail-logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 15px 12px;
+}
+
+.call-item::before {
+    content: "";
+    background-image: url(/Metronic/assets/frontend/pages/img/common/call-logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 15px 12px;
+}
+
+.telegram-item::before {
+    content: "";
+    background-image: url(/Metronic/assets/frontend/pages/img/common/telegram-icon.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 15px 12px;
+}
+
+.whatsapp-item::before {
+    content: "";
+    background-image: url(/Metronic/assets/frontend/pages/img/common/whatsapp-logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 15px 12px;
+}
+
+@media screen and (max-width:360px) {
+    .contact-block {
+        width: 336px;
+        margin-bottom: 16px;
+    }
+}
+
+@media screen and (max-width:1152px) {
+    .contact-block {
+        border: 1px solid #4AB22D;
+        width: 346px;
+        border-radius: 12px !important;
+        padding: 20px;
+        margin-bottom: 16px;
+    }
+
+        .contact-block:last-child {
+            margin-bottom: 0px;
+        }
+}

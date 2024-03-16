@@ -1,0 +1,64 @@
+﻿.workers-block {
+    background-image: url(/Metronic/assets/frontend/pages/img/backround.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.workers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.worker-card {
+    border: 1px solid #E5E7F2;
+    border-radius: 12px !important;
+    max-width: 240px;
+    max-height: 328px;
+    display: flex;
+    flex-direction: column;
+   
+    text-align: left;
+    padding: 12px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.worker-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+    line-height: 20px;
+    margin-top: 12px;
+}
+
+.worker-image {
+    border: 1px solid transparent;
+    border-radius: 12px !important;
+    width: 216px;
+    height: 216px;
+}
+
+.worker-feedback {
+    display: flex;
+    margin: 8px 0px;
+}
+
+.worker-feedback-item {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    background-color: #F0F1F8;
+    padding: 2px 4px 2px 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    max-width: 45px;
+    color: #5D638E;
+    margin-right: 5px;
+}
+
+    .worker-feedback-item img {
+        margin-right: 3px;
+    }

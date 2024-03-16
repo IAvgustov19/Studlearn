@@ -1,0 +1,113 @@
+﻿.navigation {
+    margin: 50px 0px;
+    font-family: "Open Sans";
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.back-link {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #677685;
+    background-color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 30px !important;
+    padding: 4px 16px 4px 8px;
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+}
+
+
+.navigation-item {
+    color: #677685;
+}
+
+    .navigation-item + .current {
+        color: black;
+    }
+
+.back-link span::before {
+    content: "";
+    background-image: url(/Metronic/assets/frontend/pages/img/common/left-arrow.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 15px 12px;
+    margin-right: 10px;
+}
+
+.main-background {
+    background-image: url(/Metronic/assets/frontend/pages/img/backround.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media screen and (max-width:1152px) {
+    .custom-container {
+        padding: 0px 40px !important;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .custom-container {
+        padding: 0px 12px !important;
+    }
+}
+
+.custom-container {
+    padding: 0px 80px;
+    margin: 0px auto;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+}
+
+.pagination-container {
+    display: flex;
+}
+
+.pagination-list {
+    display: flex;
+    margin-left: auto;
+}
+
+    .pagination-list > li {
+        list-style-type: none;
+        padding: 8px;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 8px;
+        background-color: white;
+    }
+
+        .pagination-list > li:hover {
+            background-color: #F0F1F8 !important;
+        }
+
+            .pagination-list > li:hover > a {
+                color: black !important;
+            }
+
+        .pagination-list > li > a {
+            text-decoration: none;
+            color: black;
+        }
+
+.current-page {
+    background-color: #272F37 !important;
+    color: white;
+}
+
+    .current-page > a {
+        color: white !important;
+    }
+

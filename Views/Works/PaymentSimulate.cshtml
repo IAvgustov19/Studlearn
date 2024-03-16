@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "PaymentSimulate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Оплата работы</h2>
+    <div class="note @(ViewBag.Success ? "note-success" : "note-danger")">
+        <h4 class="block">@(ViewBag.Success ? "Симуляция успешно проведена" : "Симуляция зафейлилась, ну что ж не судьба")</h4>
+        <p>Процедура оплаты должна открыться в новом окне, если этого не произошло то перейди по <a target="_blank" href="@ViewBag.Link">ссылке</a></p>
+        <p>            
+            @(ViewBag.Success ?
+            @"Поздравляем! Чувак, ты успешно купил работу в течение часа тебе должно прийти письмо со ссылками на скрытые файлы.
+            Если ты у нас зарегистрирован, можешь просто перейти в личный кабинет либо на страницу работы и скачать файлы.
+            Успехов тебе!" : "Что-то пошло не так. Попробуй повторить покупку работы")
+        </p>
+    </div>
+</div>
+
+@section JsCode {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var link = '@ViewBag.Link'.replace(/&amp;/g, '&');;
+            var success = '@ViewBag.Success';
+            if (success == 'True') {
+                window.open(link, "_blank");
+                return;
+            }
+        });
+    </script>
+}

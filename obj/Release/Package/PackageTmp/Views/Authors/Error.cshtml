@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Автор не найден";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <h3>Автор не найден</h3>
+    <p class="lead">
+        У нас не получилось найти автора. Такое случается когда
+    </p>
+    <ul>
+        <li>Автор отстутствует в нашей БД</li>
+        <li>Автор был удален</li>
+        <li>Мы забанили автора</li>
+        <li>Не валидная ссылка</li>
+    </ul>
+    <p class="lead">
+        Можешь попробовать
+    </p>
+    <ul>
+        <li>Найди автора <a href="/Authors">на этой странице </a></li>
+        <li>Вернись на <a href="/">главную страницу</a></li>
+        <li>Напиши нам на почту о своей проблеме <a href="mailto:support@studlearn.com">support@studlearn.com</a></li>
+    </ul>
+    <p style="height:100px;"></p>
+</div>

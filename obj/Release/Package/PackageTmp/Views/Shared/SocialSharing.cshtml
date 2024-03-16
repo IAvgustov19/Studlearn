@@ -1,0 +1,30 @@
+﻿@model SW.Frontend.Models.SocialData
+@{
+    string u = Request.Url.AbsoluteUri;
+    Model.UrlNormalization();
+}
+<ul class="social-icons social-icons-color">
+    <li>
+        <a rel="nofollow" href="http://vk.com/share.php?url=@u&title=@Model.Title&description=@Model.Description.Substring(0, Model.Description.Length > 300 ? 300 : Model.Description.Length)&image=@Model.Image"
+           title="vk" class="vk"></a>
+    </li>
+    <li>
+        <a rel="nofollow" href="http://www.facebook.com/sharer.php?u=@u"
+           title="Facebook" class="facebook"></a>
+    </li>
+    <li>
+        <a rel="nofollow" href="http://twitter.com/share?url=@u&text=@Model.Title"
+           title="twitter" class="twitter"></a>
+    </li>
+    @*<li>
+            <a rel="nofollow" href="https://plus.google.com/share?url=@u"
+               title="Goole+" class="googleplus"></a>
+        </li>
+        <li>
+            <a  rel="nofollow" href="http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1&st._surl=@u"
+               data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?"
+               title="Однокласники" class="odnoklassniki"></a>
+        </li>
+        <li><a rel="nofollow" href="http://www.linkedin.com/shareArticle?url=@u" data-original-title="linkedin" class="linkedin"></a></li>
+            <i><a href="http://www.pinterest.com/pin/create/button?url=@u&media=@Model.Image&description=@Model.Description" title="pintrest" class="pintrest"></a></i>*@
+</ul>

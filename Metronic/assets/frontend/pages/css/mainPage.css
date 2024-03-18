@@ -43,6 +43,14 @@
     background: #4AB22D;
 }
 
+.main-page-category-link {
+    color: #272F37;
+}
+
+.main-page-category-link:hover {
+    color: #FFFFFF;
+}
+
 .section-title {
     font-size: 36px;
     font-weight: 800;
@@ -50,7 +58,6 @@
     letter-spacing: 0;
     text-align: center;
     color: #272F37;
-
     text-transform: uppercase;
 }
 

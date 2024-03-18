@@ -6,6 +6,6 @@
 {
     foreach (var theme in Model)
     {
-        <span class="main-page-category-item"><a href="~/themes/details/@theme.Id">@theme.Name</a></span>
+        <span class="main-page-category-item" onclick="window.location.href='../themes/details/@theme.Id'">@theme.Name</span>
     }
 }

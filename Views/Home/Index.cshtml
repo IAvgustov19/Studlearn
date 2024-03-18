@@ -75,9 +75,15 @@
         </div>
 
         <div class="more-products-list">
-            @foreach (var work in Model.RecentWorks)
+            @for (int i = 0; i < 4; i++)
             {
-                @Html.Partial("Featured/_FeaturedWorkPartial", work)
+                @Html.Partial("Featured/_FeaturedWorkPartial", Model.FeaturedFreeWorks.ElementAt(i))
+            }
+        </div>
+        <div class="more-products-list">
+            @for (int i = 0; i < 4; i++)
+            {
+                @Html.Partial("Featured/_FeaturedWorkPartial", Model.FeaturedPayedWorks.ElementAt(i))
             }
         </div>
         <div class="watch-catalog-container">

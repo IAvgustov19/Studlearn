@@ -35,8 +35,8 @@
         </div>
         <div class="main-section-mouseOutline">
             <span class="scroll-down">Листать вниз</span>
-            <div class="btn-user-chat-container">
-                <button type="button" class="btn-user-chat"></button>
+            <div class="btn-user-chat-container" style="border-radius: 14px !important;">
+                <button type="button" class="btn-user-chat" style="border-radius: 12px !important;"></button>
             </div>
         </div>
     </div>
@@ -70,15 +70,18 @@
     </div>
     <div class="popular-works container">
         <div class="main-section-title">
-            <h2>Популярные работы</h2>
+            <h2>Лучшие бесплатные работы</h2>
             <span class="title-stroke"></span>
         </div>
-
         <div class="more-products-list">
             @for (int i = 0; i < 4; i++)
             {
                 @Html.Partial("Featured/_FeaturedWorkPartial", Model.FeaturedFreeWorks.ElementAt(i))
             }
+        </div>
+        <div class="main-section-title">
+            <h2>Лучшие платные работы</h2>
+            <span class="title-stroke"></span>
         </div>
         <div class="more-products-list">
             @for (int i = 0; i < 4; i++)
@@ -87,7 +90,7 @@
             }
         </div>
         <div class="watch-catalog-container">
-            <button type="button" class="watch-catalog-btn" onclick="window.location.href='../catalog/index'">
+            <button type="button" class="watch-catalog-btn" onclick="window.location.href='../catalog/index'" style="border-radius: 8px !important;">
                 Смотреть каталог
             </button>
         </div>
@@ -266,13 +269,13 @@
             <span class="title-stroke"></span>
         </div>
         <div class="developers-container container">
-            @foreach (var author in Model.FeaturedAuthors)
+            @for (int i = 0; i < 5; i++)
             {
-                @Html.Partial("Featured/_FeaturedAuthorPartial", author)
+                @Html.Partial("Featured/_FeaturedAuthorPartial", Model.FeaturedAuthors.ElementAt(i))
             }
         </div>
         <div class="best-developers-button">
-            <button type="button" class="all-devs-btn" onclick="window.location.href='../authors'">
+            <button type="button" class="all-devs-btn" onclick="window.location.href='../authors'" style="border-radius: 8px !important;">
                 Посмотреть всех
             </button>
         </div>
@@ -369,7 +372,7 @@
             </div>
         </div>
         <div class="best-developers-button">
-            <button type="button" class="all-devs-btn all-articles" onclick="window.location.href='../news'">
+            <button type="button" class="all-devs-btn all-articles" onclick="window.location.href='../news'" style="border-radius: 8px !important;">
                 Все статьи
             </button>
         </div>

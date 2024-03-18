@@ -216,7 +216,6 @@
     height: 140px;
     background: url("/Metronic/assets/frontend/pages/img/products/product-image1.png") no-repeat;
     background-size: cover;
-
     border-radius: 12px;
     position: relative;
     margin-bottom: 12px;
@@ -489,6 +488,7 @@
     padding: 12px;
     border-radius: 12px;
     border: 1px solid #E5E7F2;
+    cursor: pointer;
 }
 
 .profile-card-image {

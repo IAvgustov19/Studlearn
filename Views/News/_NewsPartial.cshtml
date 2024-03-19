@@ -1,0 +1,32 @@
+﻿@model SW.Frontend.Models.NewsListModel
+<div class="articles-container">
+    @foreach (var news in Model.News)
+    {
+        var description = news.ShortDescription.Replace("<h4", "<p").Replace("</h4", "</p");
+        if (description.LastIndexOf("<li>") > description.LastIndexOf("</li>"))
+        {
+            description = description + "</li>";
+        }
+        if (description.LastIndexOf("<ul>") > description.LastIndexOf("</ul>"))
+        {
+            description = description + "</ul>";
+        }
+        if (description.LastIndexOf("<ol>") > description.LastIndexOf("</ol>"))
+        {
+            description = description + "</ol>";
+        }
+    <div class="article-box">
+        <div class="article-image">
+            <img src="@news.LogoUrl" alt="article-image">
+        </div>
+        <div class="article-body">
+            <p class="article-title">@news.Title</p>
+            <span class="article-created-at">@news.CreateAt.ToShortDateString()</span>
+            <p class="article-text">
+                @Html.Raw(description)
+            </p>
+            <a href="@news.DetailsUrl" class="read-more">Читать полностью</a>
+        </div>
+    </div>
+    }
+</div>

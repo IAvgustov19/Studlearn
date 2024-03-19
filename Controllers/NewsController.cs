@@ -5,9 +5,11 @@ using SW.Shared.Models.News;
 using SW.Workflow.Coordinator;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace SW.Frontend.Controllers
 {
@@ -45,6 +47,34 @@ namespace SW.Frontend.Controllers
             viewModel.PagerModel.Count = viewModel.News.Count();
 
             return View(viewModel);
+        }
+
+        [CompressContent]
+        public ActionResult _NewsPartial()
+        {
+            int rows = 6, page = 1;
+
+            var newsQuery = _newsUOW.NewsRepository.GetAll();
+
+            var news = newsQuery.OrderByDescending(x => x.CreateAt)
+                .Take(rows)
+                .ToList()
+                .Select(x => MapperManager.Map<News, NewsDetail>(x));
+
+            var viewModel = new NewsListModel()
+            {
+                News = news,
+                PagerModel = new PagerModel
+                {
+                    Rows = rows,
+                    Total = newsQuery.Count(),
+                    CurrentPage = page
+                }
+            };
+            viewModel.PagerModel.LastPage = Convert.ToInt32(Math.Ceiling(viewModel.PagerModel.Total / (decimal)viewModel.PagerModel.Rows));
+            viewModel.PagerModel.Count = viewModel.News.Count();
+
+            return PartialView(viewModel);
         }
 
         public ActionResult Details(string id)

@@ -13,6 +13,7 @@ using SW.Shared.Models.Filter;
 using System.IdentityModel.Services;
 using System.Security.Permissions;
 using SW.Shared.Models.Documents;
+using System.Web.Http.Controllers;
 
 namespace SW.Frontend.Controllers
 {
@@ -68,6 +69,48 @@ namespace SW.Frontend.Controllers
             ViewBag.Themes = themes.ToList();
 
             return View(sections);
+        }
+
+        [CompressContent]
+        public ActionResult _CatalogPartial()
+        {
+            var sections = _documentsUow.SectionsRepository.GetAll()
+                .Where(x => x.Categories.Any(c => c.Hidden == false))
+                .OrderBy(x => !x.Order.HasValue)
+                .ThenBy(x => x.Order)
+                .Select(x => new SectionModel()
+                {
+                    Title = x.Title,
+                    Slug = x.Slug,
+                    CategoriesModels = x.Categories
+                        .Where(y => y.Hidden == false)
+                        .OrderBy(y => y.Title)
+                        .Select(y => new CategoriesModel()
+                        {
+                            CategoryId = y.CategoryId,
+                            Title = y.Title,
+                            Count = y.Documents
+                              .Where(z => z.DocumentStateId == (int)Constants.Documents.DocumentState.Approved).Count(),
+                            Slug = y.Slug
+                        })
+                }).ToList();
+            ViewBag.Total = sections.Sum(x => x.CategoriesModels.Sum(y => y.Count));
+
+            var worksQuery = _documentsUow.DocumentsRepository.GetAll()
+              .Where(x => x.Category.ParentSectionId == 2)//Программирование
+            .Where(x => !x.IsDeleted && x.DocumentStateId == (int)SW.Shared.Constants.Documents.DocumentState.Approved && !x.Category.Hidden);
+            var sectionTypes = worksQuery.GroupBy(x => x.DocumentType).Select(x => new SW.Shared.Models.Documents.TypePreview() { TypeId = x.Key.DocumentTypeId, Title = x.Key.Title, DocumentsCount = x.Count(), Slug = x.Key.Slug });
+            ViewBag.SectionTypes = sectionTypes.OrderBy(x => x.Title).ToList();
+
+            var query = _documentsUow.DocumentThemesRepository.GetAll()
+                .Join(_documentsUow.DocumentsRepository.GetAll(), dt => dt.DocumentId, d => d.DocumentId, (dt, d) => new { dt = dt, d = d });
+            var themes = query
+                .Where(x => x.d.IsDeleted == false && x.d.DocumentStateId == (int)SW.Shared.Constants.Documents.DocumentState.Approved && !x.d.Category.Hidden)
+                .GroupBy(x => x.dt.Theme)
+                .Select(x => new ThemePreview() { Id = x.Key.Id, Name = x.Key.Name, Slug = x.Key.Slug, DocumentsCount = x.Count() });
+            ViewBag.Themes = themes.ToList();
+
+            return PartialView(sections);
         }
 
         [CompressContent]

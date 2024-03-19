@@ -1,0 +1,74 @@
+﻿@model IEnumerable<SW.Frontend.Models.SectionModel>
+
+@{ 
+    List<SW.Shared.Models.Documents.TypePreview> sectionTypes = ViewBag.SectionTypes;
+    List<SW.Shared.Models.Documents.ThemePreview> themes = ViewBag.Themes;
+}
+
+<div class="container">
+    <div class="categories">
+        <h2>Основные категории <hr></h2>
+        <div class="category">
+            @foreach (var parent in Model)
+            {
+                <div class="category-header">
+                    <span>
+                        @if (parent.Title == "Программирование")
+                        {
+                            <img src="~/Metronic/assets/frontend/pages/img/ph_code.png" /> <span>Языки программирования</span>
+                        }
+                        else
+                        {
+                            Html.Raw(parent.Title);
+                        }
+                    </span><span>@parent.CategoriesModels.Sum(it => it.Count)</span>
+                </div>
+                <div class="category-content" style="grid-template-rows: repeat(@(parent.CategoriesModels.Count()>10?10:parent.CategoriesModels.Count()), 1fr);">
+                    @foreach (var category in parent.CategoriesModels)
+                    {
+                        <a class="category-item" href="/catalog/@parent.Slug/@category.Url.Replace("/category/","")">
+                            <span>@category.Title</span>
+                            <span>(@category.Count)</span>
+                        </a>
+                    }
+                </div>
+            }
+        </div>
+        <div class="category">
+            <div class="category-header"><span><img src="~/Metronic/assets/frontend/pages/img/ic_round-bookmark.png" />Типы работ</span><span>@sectionTypes.Sum(it => it.DocumentsCount)</span></div>
+            <div class="category-content" style="grid-template-rows: repeat(@(sectionTypes.Count()>10?10:sectionTypes.Count()), 1fr);">
+
+                @foreach (var item in sectionTypes)
+                {
+                    var sectionTypeTitle = "";
+
+                    switch (item.Slug)
+                    {
+                        case "kursovye-raboty": sectionTypeTitle = "Курсовые работы по программированию"; break;
+                        case "diplomnye-raboty": sectionTypeTitle = "Дипломные работы по программированию"; break;
+                        case "laboratornye-raboty": sectionTypeTitle = "Лабораторные работы по программированию"; break;
+                        default: sectionTypeTitle = item.Title; break;
+                    }
+                    if (string.IsNullOrEmpty(sectionTypeTitle))
+                    {
+                        continue;
+                    }
+                    <a href="/catalog/programmirovanie/@item.Slug" class="category-item"><span class="category-name">@sectionTypeTitle</span><span class="category-count">@item.DocumentsCount</span></a>
+                }
+
+            </div>
+        </div>
+        <div class="category">
+            <div class="category-header"><span><img src="~/Metronic/assets/frontend/pages/img/ion_book-outline.png" />Темы работ</span><span>@themes.Sum(it => it.DocumentsCount)</span></div>
+            <div class="category-content" style="grid-template-rows: repeat(@(themes.Count()>10?10:themes.Count()), 1fr);">
+                @foreach (var item in themes)
+                {
+                    <a class="category-item" href="/catalog/@item.Slug">
+                        <span class="category-name">@item.Name</span><span class="category-count">(@item.DocumentsCount)</span>
+                    </a>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -133,7 +133,7 @@ namespace SW.Frontend.Controllers
 
 
         [CompressContent]
-        [HandleError(View = "Error", ExceptionType = typeof(InvalidOperationException))]
+        //[HandleError(View = "Error", ExceptionType = typeof(InvalidOperationException))]
         public ActionResult Details(int id, bool free = false, string minmax = null, int[] type = null, int category = 0, int theme = 0, TimePeriodEnum period = TimePeriodEnum.Any, int page = 1, int rows = 50, SortFieldsEnum sort = SortFieldsEnum.Rating, bool direct = false)
         {
             int min = 0;

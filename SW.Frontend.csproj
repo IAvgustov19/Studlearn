@@ -3127,6 +3127,8 @@
     <Content Include="Views\Shared\_OrderWorkPartial.cshtml" />
     <Content Include="Views\Emails\NewOrderWorkEmailView.cshtml" />
     <Content Include="Views\Works\NewIndex.cshtml" />
+    <Content Include="Views\Catalog\_CatalogPartial.cshtml" />
+    <Content Include="Views\News\_NewsPartial.cshtml" />
     <None Include="Web.BrainAcademySubscription.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,8 +1,8 @@
 ﻿@model SW.Core.DataLayer.FeaturedAuthor
 
-<div class="dev-profile" onclick="javascript: window.location = '@Model.ProfileUrl'" style="cursor: pointer; width: 238px; height: 339px; border-radius: 12px !important;">
+<div class="dev-profile" onclick="javascript: window.location = '@Model.ProfileUrl'" style="cursor: pointer; border-radius: 12px !important;">
     <div class="profile-card-image">
-        <em><img data-src="@(Model.AvatartUrl??Model.AvatarUrlAdapted)" alt="@Model.UserName" width="150" height="150" src="/images/loading-150-1.gif" class="img-responsive  lazy-load" style="border-radius: 8px !important;"></em>
+        <em><img data-src="@(Model.AvatartUrl??Model.AvatarUrlAdapted)" alt="@Model.UserName" src="/images/loading-150-1.gif" class="img-responsive  lazy-load" style="border-radius: 8px !important;"></em>
     </div>
     <div class="profile-card-body">
         <b class="profile-name">@Model.UserName</b>

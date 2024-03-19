@@ -58,7 +58,27 @@ namespace SW.Frontend.Controllers
                 ViewBag.SearchTitle = searchString;
 
                 ISearchText searchComponent = Unity.Resolve<ISearchText>("lucene");
-                var results = searchComponent.SearchByTitleAndBriefDescription(searchString, "", SearchType.Approved, take: SearchResultsLimit, userName: userName);
+                IEnumerable<SimilarDocument> results;
+                try
+                {
+                    results = searchComponent.SearchByTitleAndBriefDescription(searchString, "", SearchType.Approved, take: SearchResultsLimit, userName: userName);
+                }
+                catch (Exception)
+                {
+                    var view_model = new SearchViewModel
+                    {
+                        Documents = Enumerable.Empty<SimilarDocument>(),
+                        PagerModel = new PagerModel
+                        {
+                            QueryString = q,
+                            Rows = rows,
+                            Total = total,
+                            CurrentPage = page
+                        }
+
+                    };
+                    return View(view_model);
+                }
                 total = results.Count();
                 if (total != 0)
                 {

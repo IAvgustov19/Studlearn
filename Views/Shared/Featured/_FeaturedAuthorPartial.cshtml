@@ -7,11 +7,20 @@
     <div class="profile-card-body">
         <b class="profile-name">@Model.UserName</b>
         <div class="profile-rating">
-            <span class="author-benefits stars">@Model.Rating</span>
-            <span class="author-benefits works">@Model.WorksPublishedCount</span>
+            <span class="author-benefits stars" style="border-radius: 4px !important;">@Model.Rating</span>
+            <span class="author-benefits works" style="border-radius: 4px !important;">@Model.WorksPublishedCount</span>
         </div>
         <p class="profile-text">
-            @Model.Description
+            @{ 
+                if (string.IsNullOrWhiteSpace(Model.Description))
+                {
+                    <br />
+                }
+                else
+                {
+                    @Model.Description
+                }
+            }
         </p>
     </div>
 </div>

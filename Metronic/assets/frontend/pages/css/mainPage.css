@@ -74,8 +74,8 @@
 .main-section-search input {
     color: #AEB1CE;
     padding: 12px;
-    border-radius: 12px;
-    width: 100%;
+    border-radius: 12px !important;
+    width: 640px !important;
     border: 1px solid transparent;
 
     background: #FFFFFF url("/Metronic/assets/frontend/pages/img/main-page/search-icon.svg") no-repeat top 50% right 12px;
@@ -298,6 +298,7 @@
     font-weight: 600;
     line-height: 20px;
     letter-spacing: 0;
+    border-radius: 8px !important;
 }
 
 .watch-more {

@@ -1,17 +1,22 @@
-﻿@model SW.Shared.Models.Documents.DocumentPublic
+﻿@model SW.Frontend.Models.WorkDetailsViewModel
 @using SW.Shared.Constants.Storage
 @using Microsoft.AspNet.Identity
 @using Microsoft.Owin.Security
 @using SW.Frontend.Utilities;
 
-@{ ViewBag.Title = Seo.GetWorkTitle(Model.Title, Model.Type, Model.Category.Title);
-    ViewBag.Description = Seo.SanitizeMetadaDescription(Model.BriefDescription);
-    ViewBag.Image = Model.HasImages ? Model.Images[0] : SW.Shared.Constants.Application.Logo;
-    ViewBag.Author = Model.AuthorUserName.ToString();}
+@{
+    var model = Model.DocumentPublic;
+    ViewBag.Title = Seo.GetWorkTitle(model.Title, model.Type, model.Category.Title);
+    ViewBag.Description = Seo.SanitizeMetadaDescription(model.BriefDescription);
+    ViewBag.Image = model.HasImages ? model.Images[0] : SW.Shared.Constants.Application.Logo;
+    ViewBag.Author = model.AuthorUserName.ToString();
+}
 
 @section Styles {
     <link href="~/metronic/assets/frontend/pages/css/products/media.css" rel="stylesheet" type="text/css" />
     <link href="~/metronic/assets/frontend/pages/css/products/product.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css" rel="stylesheet" type="text/css" />
 }
 
 <div class="main main-style">
@@ -24,18 +29,20 @@
                         <li class="nav-breadcrumb-item">Главная страница /</li>
                         <li class="nav-breadcrumb-item">Каталог /</li>
                         <li class="nav-breadcrumb-item">Дипломные работы по программированию /</li>
-                        <li class="nav-breadcrumb-item">Игра 'Сражение' c#, FPW /</li>
+                        <li class="nav-breadcrumb-item">@Model.DocumentPublic.Title/</li>
                     </ul>
                 </div>
             </div>
             <div class="product-demonstration-container">
                 <div class="product-slider">
-                    <div class="slider">
-                        @if (Model.HasImages)
+                    <div class="slider" style="border-radius: 12px !important;">
+                        @if (model.HasImages)
                         {
-                            foreach (var image in Model.Images)
+                            foreach (var image in model.Images)
                             {
-                                <img src="@image" alt="@Model.Title">
+                                <a href="@image" class="fancybox-button" title="Нажми чтоб увеличить" data-rel="fancybox-button">
+                                    <img src="@image" alt="@Model.DocumentPublic.Title ">
+                                </a>
                             }
                         }
                         <button class="prev"></button>
@@ -43,44 +50,44 @@
                     </div>
                     <div class="thumbnail-slider">
                         <div class="slide-btn">
-                            <button class="slide-btn-left"></button>
+                            <button class="slide-btn-left" style="border-radius: 30px !important;"></button>
                         </div>
                         <div class="thumbnail-slider-container">
-                            @if (Model.HasImages)
+                            @if (model.HasImages)
                             {
-                                foreach (var image in Model.Images)
+                                foreach (var image in model.Images)
                                 {
 
-                                    <img src="@image" alt="@Model.Title">
+                                    <img src="@image" alt="@Model.DocumentPublic.Title " style="border-radius: 12px !important;">
                                 }
                             }
                         </div>
                         <div class="slide-btn">
-                            <button class="slide-btn-right"></button>
+                            <button class="slide-btn-right" style="border-radius: 30px !important;"></button>
                         </div>
                     </div>
                 </div>
                 <div class="product-demonstration-block">
                     <div class="product-block1">
-                        <h1 class="product-title">@Model.Title</h1>
+                        <h1 class="product-title">@Model.DocumentPublic.Title</h1>
                         <div class="product-benefits">
                             <div class="benefit-list">
                                 @if (!ViewBag.HasSales)
                                 {
                                     <span class="benefit-item first-sale">Покупается впервые</span>
                                 }
-                                <span class="benefit-item rate">@Model.Rating</span>
+                                <span class="benefit-item rate">@Model.DocumentPublic.Rating</span>
                                 <a class="benefit-item"
-                                   href="@(Model.Category.Url + "?type=" + Model.TypeId)"
-                                   title="Посмотреть все @Model.Type в категории @Model.Category.Title">
-                                    @Model.Type
+                                   href="@(Model.DocumentPublic.Category.Url + "?type=" + Model.DocumentPublic.TypeId)"
+                                   title="Посмотреть все @Model.DocumentPublic.Type в категории @Model.DocumentPublic.Category.Title">
+                                    @Model.DocumentPublic.Type
                                 </a>
                                 <span class="benefit-item">Курсовые работы</span>
                                 <span class="benefit-item">Сети: Cisko</span>
                             </div>
                         </div>
                     </div>
-                    <div class="product-block2">
+                    <div class="product-block2" style="border-radius: 12px !important;">
                         <p class="product-text">
                             Сразу после завершения оплаты вы получите доступ к скачиванию работы,
                             и мы также отправим файл с работой на вашу электронную почту. Исходные файлы программы будут
@@ -89,28 +96,25 @@
                         <div class="mobile-container">
                             <div class="product-price-container">
                                 <div class="product-price">
-                                    <span class="discount-price">@Model.Price</span>
-                                    <span class="old-price">@Model.Price @Model.Profit</span>
+                                    <span class="discount-price">@Model.DocumentPublic.Price</span>
+                                    <span class="old-price">@Model.DocumentPublic.Price @Model.DocumentPublic.Profit</span>
                                 </div>
                                 <span class="guarantee">Гарантия качества</span>
                             </div>
                             <div class="product-buy-buttons">
                                 @{
                                     var buyLink = (IHtmlString)null;
-                                    if (Model.Files.Count == 1)
+                                    if (Model.DocumentPublic.Files.Count == 1)
                                     {
-                                        buyLink = Html.Raw(Url.Action("File", "Works", new { fileId = @Model.Files.Count != 0 ? @Model.Files[0].UserFileId : 0, documentId = @ViewBag.WorkId }));
+                                        buyLink = Html.Raw(Url.Action("File", "Works", new { fileId = @Model.DocumentPublic.Files.Count != 0 ? @Model.DocumentPublic.Files[0].UserFileId : 0, documentId = @ViewBag.WorkId }));
                                     }
                                     else
                                     {
                                         buyLink = Html.Raw(Url.Action("FilesList", "Works", new { documentId = @ViewBag.WorkId }));
                                     }
-                                    <a href="@buyLink" class="btn btn-buy">Купить работу</a>
+                                    <a href="@buyLink" class="btn btn-buy" style="border-radius: 12px !important;">Купить работу</a>
                                 }
-                                <a href="https://t.me/studlearn_support" class="btn btn-buy-telegram"></a>
-                                <a href="https://t.me/studlearn_support" class="btn btn-buy-telegram-on-hover">
-                                    Заказать через Telegram
-                                </a>
+                                <a href="https://t.me/studlearn_support" class="btn btn-buy-telegram" style="border-radius: 12px !important;"></a>
                             </div>
                         </div>
                     </div>
@@ -119,21 +123,21 @@
             <div class="work-description-container">
                 <div class="product-description">
                     <h2 class="title-description">Описание работы:</h2>
-                    @Html.Raw(Model.Content)
+                    @Html.Raw(Model.DocumentPublic.Content)
                 </div>
 
-                <div class="author-work">
+                <div class="author-work" style="border-radius: 12px !important;">
                     <div class="author-name">
                         <p class="author-section-text">
                             Автор работы
                         </p>
                         <div class="author-profile">
-                            <img src="@Model.AuthorSlug" alt="author-profile-img">
+                            <img src="@Model.AuthorImageUrl" alt="author-profile-img">
                             <div class="author-info">
                                 <p class="author-section-text">
-                                    @Model.AuthorUserName
+                                    @Model.DocumentPublic.AuthorUserName
                                 </p>
-                                <span class="author-benefits stars">@Model.Rating</span>
+                                <span class="author-benefits stars">@Model.DocumentPublic.Rating</span>
                                 <span class="author-benefits works">???</span>
                                 <p class="author-text">
                                     ??
@@ -181,12 +185,19 @@
                     </div>
                     <div class="buy-work-buttons">
                         <div class="buy-buttons-container">
-                            <button type="button" class="buy-button">
-                                Купить 2500₽
-                            </button>
-                            <button type="button" class="buy-button-telegram">
+                            <a class="btn buy-button" style="border-radius: 12px !important;" href="@buyLink">
+                                @{
+                                    decimal price = 0;
+                                    if (Model.DocumentPublic.Price.HasValue)
+                                    {
+                                        price = Model.DocumentPublic.Price.Value;
+                                    }
+                                }
+                                Купить @price₽
+                            </a>
+                            <a class="btn buy-button-telegram" style="border-radius: 12px !important;" href="https://t.me/studlearn_support">
                                 Заказать через Telegram
-                            </button>
+                            </a>
                         </div>
                         <hr class="author-stroke" />
 
@@ -198,7 +209,7 @@
             </div>sssss
             <div class="users-comments">
                 <h3 class="title-description">
-                    Комментарии @Model.CommentsNumber
+                    Комментарии @Model.DocumentPublic.CommentsNumber
                     <span class="title-description number">2</span>
                 </h3>
                 <div class="comment-item">
@@ -265,23 +276,25 @@
                 </h4>
                 <div class="comment-inputs">
                     <label>
-                        <input type="text" class="comment-input-name" placeholder="Ваше имя">
+                        <input type="text" class="comment-input-name" placeholder="Ваше имя" style="border-radius: 12px !important;">
                     </label>
                     <div class="text-container">
-                        <label>
+                        <label style="width: 100%;">
                             <textarea type="text" class="comment-input-text" placeholder="Комментарий"
-                                      maxlength="300"></textarea>
+                                      maxlength="300" style="border-radius: 12px !important;"></textarea>
                             <span class="letter-length"><span>0</span>/300</span>
                         </label>
                     </div>
                 </div>
-                <button type="submit" class="send-comment-btn">Опубликовать комментарий</button>
+                <button type="submit" class="send-comment-btn" style="border-radius: 12px !important;">Опубликовать комментарий</button>
             </div>
             <div class="more-products">
                 <h4 class="title-more-products">Похожие работы</h4>
                 <div class="more-products-list">
+                    @foreach (var work in Model.FeaturedWorks)
+                    {
                     <div class="product-box">
-                        <div class="product-box-image">
+                        <div class="product-box-image" style="border-radius: 12px !important; background-image: url('@work.ImageUrl');">
                             <div class="product-box-items">
                                 <span class="product-box-image-item">
                                     Алгоритм
@@ -298,92 +311,15 @@
                             </span>
                         </div>
                         <div class="product-box-info">
-                            <span class="views">12 К</span>
-                            <span class="product-box-price">640 руб</span>
+                            <span class="views">12 K</span>
+                            <span class="product-box-price">@work.PriceLabel</span>
                         </div>
                         <div class="product-box-title">
-                            <p>Диагональ матрицы C#</p>
-                            <a href="#" class="watch-more">Смотреть работу</a>
+                            <p>@work.Title</p>
+                            <a href="@work.Url" class="watch-more">Смотреть работу</a>
                         </div>
                     </div>
-                    <div class="product-box">
-                        <div class="product-box-image product-box-image2">
-                            <div class="product-box-items">
-                                <span class="product-box-image-item">
-                                    Алгоритм
-                                </span>
-                                <span class="product-box-image-item">
-                                    Коллекции
-                                </span>
-                                <span class="product-box-image-item">
-                                    C#
-                                </span>
-                            </div>
-                            <span class="product-box-image-item rating">
-                                5.0
-                            </span>
-                        </div>
-                        <div class="product-box-info">
-                            <span class="views">12 К</span>
-                            <span class="product-box-price">Бесплатно</span>
-                        </div>
-                        <div class="product-box-title">
-                            <p>C++ cловесный эквивалент числа</p>
-                            <a href="#" class="watch-more">Смотреть работу</a>
-                        </div>
-                    </div>
-                    <div class="product-box">
-                        <div class="product-box-image">
-                            <div class="product-box-items">
-                                <span class="product-box-image-item">
-                                    Алгоритм
-                                </span>
-                                <span class="product-box-image-item">
-                                    Коллекции
-                                </span>
-                                <span class="product-box-image-item">
-                                    C#
-                                </span>
-                            </div>
-                            <span class="product-box-image-item rating">
-                                5.0
-                            </span>
-                        </div>
-                        <div class="product-box-info">
-                            <span class="views">967</span>
-                            <span class="product-box-price">Бесплатно</span>
-                        </div>
-                        <div class="product-box-title">
-                            <p>Шифр Цезаря и Виженера C#</p>
-                            <a href="#" class="watch-more">Смотреть работу</a>
-                        </div>
-                    </div>
-                    <div class="product-box">
-                        <div class="product-box-image product-box-image4">
-                            <div class="product-box-items">
-                                <span class="product-box-image-item">
-                                    Алгоритм
-                                </span>
-                                <span class="product-box-image-item">
-                                    Коллекции
-                                </span>
-                                <span class="product-box-image-item">
-                                    C#
-                                </span>
-                            </div>
-                            <span class="product-box-image-item rating">
-                                5.0
-                            </span>
-                        </div>
-                        <div class="product-box-info">
-                            <span class="views">115</span>
-                            <span class="product-box-price">Бесплатно</span>
-                        </div>
-                        <div class="product-box-title">
-                            <p>Инженерный калькулятор v 1.0 на C#</p>
-                            <a href="#" class="watch-more">Смотреть работу</a>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>

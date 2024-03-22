@@ -374,6 +374,7 @@
     <Compile Include="Models\SorterModel.cs" />
     <Compile Include="Models\TopWork.cs" />
     <Compile Include="Models\TopWorkMenuItem.cs" />
+    <Compile Include="Models\WorkDetailsViewModel.cs" />
     <Compile Include="Models\WriterModel.cs" />
     <Compile Include="Models\WorkPaymentModel.cs" />
     <Compile Include="Optimization\AsIsBundleOrderer.cs" />

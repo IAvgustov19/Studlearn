@@ -198,7 +198,6 @@
 }
 
 .btn-buy-telegram-on-hover {
-    display: none;
     font-weight: 600;
     color: #FFFFFF;
     line-height: 24px;
@@ -212,19 +211,6 @@
     .btn-buy-telegram-on-hover:hover {
         box-shadow: 0 8px 24px 0 #2086FF52;
     }
-
-.product-block2:hover .btn-buy {
-    flex-basis: 40%;
-}
-
-.product-block2:hover .btn-buy-telegram {
-    display: none;
-}
-
-.product-block2:hover .btn-buy-telegram-on-hover {
-    display: block;
-    flex-basis: 60%;
-}
 
 .product-slider {
     display: flex;
@@ -364,6 +350,7 @@
     border: 1px solid #E5E7F2;
     background-color: #FFFFFF;
     box-shadow: 4px 0 20px 0 #272F371F;
+    height: 750px;
 }
 
 .work-text {
@@ -434,7 +421,6 @@
 .file-list {
     list-style: none;
     padding-left: 14px;
-    height: 90px;
     overflow: scroll;
 }
 
@@ -475,7 +461,7 @@
 
     .rate-work-title .stars {
         height: 24px;
-        padding: 4px 4px 4px 32px;
+        padding: 1px 4px 4px 32px;
         background: #F0F1F8 url("/Metronic/assets/frontend/pages/img/products/star.svg") top 50% left 20% no-repeat;
     }
 
@@ -508,6 +494,7 @@
     line-height: 16px;
     letter-spacing: 0;
     color: #5D638E;
+    margin: 0 0 0px;
 }
 
 .buy-buttons-container {
@@ -530,6 +517,12 @@
 
 .buy-button {
     background: #4AB22D;
+    padding: 16px 0;
+    flex-basis: 90%;
+    color: #FFFFFF;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0;
 }
 
     .buy-button:hover {
@@ -538,6 +531,12 @@
 
 .buy-button-telegram {
     background: #2086FF url("/Metronic/assets/frontend/pages/img/products/telegram.svg") top 50% left 18% no-repeat;
+    padding: 16px 0;
+    flex-basis: 90%;
+    color: #FFFFFF;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0;
 }
 
     .buy-button-telegram:hover {
@@ -740,7 +739,7 @@
     padding: 12px;
     border-radius: 12px;
     border: 1px solid #E5E7F2;
-    width: 66.5%;
+    width: 64%;
     height: 144px;
     box-sizing: border-box;
 }

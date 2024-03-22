@@ -40,6 +40,9 @@ using SW.Frontend.Microdata.Products.Models;
 using SW.Frontend.Models;
 using SW.Shared.Models.Filter;
 using SW.Frontend.Utilities.Filters;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Data.SqlClient;
+using System.Web.UI;
 
 namespace SW.Frontend.Controllers
 {
@@ -84,10 +87,17 @@ namespace SW.Frontend.Controllers
                 return HttpNotFound();// RedirectToAction("Error", "Works");
             var dtoWork = MapperManager.Map<DB.Document, DocumentPublic>(dbWork);
             SetupWorkAfterMapping(ref dtoWork, dbWork);
+            var author = _accountUOW.UsersRepository.GetByID(dtoWork.AuthorId);
+            var model = new WorkDetailsViewModel();
+            model.DocumentPublic = dtoWork;
+            model.AuthorImageUrl = author.AvatartUrl;
+            model.FeaturedWorks = _documentsUOW.DocumentsRepository
+                ._context.Database
+                .SqlQuery<Core.DataLayer.FeaturedWork>("GetFeaturedNewWorks").Take(5);
             ViewBag.WorkId = dbWork.Id;
             ViewBag.MicrodataProductSnippet = GetWorkMicroData(dtoWork, dbWork);
             ViewBag.HasSales = _documentsUOW.DocumentSalesRepository.GetAll().Count(x => x.IsCompleted && x.DocumentId == dbWork.DocumentId) > 0;
-            return View("NewIndex", dtoWork);
+            return View("NewIndex", model);
         }
 
         public void SetupWorkAfterMapping(ref DocumentPublic dtoWork, Document dbWork)

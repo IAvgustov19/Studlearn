@@ -29,7 +29,7 @@
     padding: 4px 8px 4px 36px;
     text-decoration: none;
     background: #FFF url("/Metronic/assets/frontend/pages/img/products/arrow.svg") top 2px left 8px no-repeat;
-    border-radius: 30px;
+    border-radius: 30px !important;
     color: #677685;
     max-height: 35px;
 }

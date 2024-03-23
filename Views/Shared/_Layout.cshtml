@@ -114,7 +114,7 @@
         </header>
         <header class="products-header-mobile">
             <div class="products-header-mobile-container">
-                <a href="#" class="products-logo">
+                <a href="@Url.Action("Index", "Home")" class="products-logo">
                     <img src="~/Metronic/assets/frontend/pages/img/menu/logo_products_mobile.svg" alt="products_logo">
                 </a>
                 <button class="toggle-nav" type="button" id="navBtnOpen"></button>
@@ -225,9 +225,9 @@
         @if (!isMainPage && (ViewBag.HideDevicesSearch == null || ViewBag.HideDevicesSearch == false))
         {
             @Html.Partial("~/Views/Shared/_SearchZonePartial.cshtml")
-        }
+        }*@
 
-        @RenderSection("RichHeader", false)*@
+    @RenderSection("RichHeader", false)
 
     <div class="main">
 
@@ -433,10 +433,10 @@
                     <a href="@Url.Action(" Terms", "Home" )">
                         @SW.Resources.Frontend.About.UserAgreement
                     </a>-->
-                    @*<ul class="social-footer list-unstyled list-inline pull-right">
-                            <li><a target="_blank" rel="nofollow" href="https://vk.com/kursovye_po_programmirovaniyu" title="мы в Вконтакте" class="social-icon social-icon-color vk"></a></li>
-                        </ul>*@
-                <!--</div>
+    @*<ul class="social-footer list-unstyled list-inline pull-right">
+            <li><a target="_blank" rel="nofollow" href="https://vk.com/kursovye_po_programmirovaniyu" title="мы в Вконтакте" class="social-icon social-icon-color vk"></a></li>
+        </ul>*@
+    <!--</div>
             </div>
         </div>
     </div>-->

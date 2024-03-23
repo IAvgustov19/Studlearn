@@ -1,4 +1,5 @@
 ﻿@model SW.Core.DataLayer.FeaturedAuthor
+@using Labels = SW.Resources.Frontend.Authors
 
 <div class="dev-profile" onclick="javascript: window.location = '@Model.ProfileUrl'" style="cursor: pointer; border-radius: 12px !important;">
     <div class="profile-card-image">
@@ -8,10 +9,10 @@
         <b class="profile-name">@Model.UserName</b>
         <div class="profile-rating">
             <span class="author-benefits stars" style="border-radius: 4px !important;">@Model.Rating</span>
-            <span class="author-benefits works" style="border-radius: 4px !important;">@Model.WorksPublishedCount</span>
+            @*<span class="author-benefits works" style="border-radius: 4px !important;">@Model.WorksPublishedCount</span>*@
         </div>
         <p class="profile-text">
-            @{ 
+            @{
                 if (string.IsNullOrWhiteSpace(Model.Description))
                 {
                     <br />

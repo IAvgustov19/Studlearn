@@ -59,6 +59,7 @@
     text-align: center;
     color: #272F37;
     text-transform: uppercase;
+    text-align: center !important;
 }
 
 .section-title span {
@@ -72,7 +73,7 @@
 }
 
 .main-section-search input {
-    color: #AEB1CE;
+    color: black;
     padding: 12px;
     border-radius: 12px !important;
     width: 640px !important;

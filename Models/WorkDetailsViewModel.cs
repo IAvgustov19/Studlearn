@@ -14,5 +14,11 @@ namespace SW.Frontend.Models
         public IEnumerable<FeaturedWork> FeaturedWorks { get; set; }
 
         public string AuthorImageUrl { get; set; }
+
+        public int WorksCount { get; set; }
+
+        public int AuthorRating { get; set; }
+
+        public string AuthorDescription { get; set; }
     }
 }

@@ -179,6 +179,7 @@
 
     .btn-buy:hover {
         box-shadow: 0 4px 12px 0 #38CF0070;
+        color: #FFFFFF;
     }
 
 .btn-buy-telegram {
@@ -189,6 +190,11 @@
     background: #2086FF url("/Metronic/assets/frontend/pages/img/products/telegram.svg") center no-repeat;
     cursor: pointer;
 }
+
+    .btn-buy-telegram:hover {
+        background: #2086FF url("/Metronic/assets/frontend/pages/img/products/telegram.svg") center no-repeat;
+        box-shadow: 0 4px 12px 0 #2086FF52;
+    }
 
 .product-buy-buttons {
     display: flex;
@@ -276,6 +282,42 @@
         border: none;
     }
 
+.slider-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    left: 20px;
+    background: transparent url("/Metronic/assets/frontend/pages/img/products/slide-left-icon.svg");
+    border: none;
+}
+
+    .slider-prev:hover {
+        transition: transform 0.3s ease;
+        transform: translateY(-50%) scale(1.05);
+    }
+
+.slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    right: 20px;
+    background: transparent url("/Metronic/assets/frontend/pages/img/products/slide-right-icon.svg");
+    border: none;
+}
+
+    .slider-next:hover {
+        transition: transform 0.3s ease;
+        transform: translateY(-50%) scale(1.05);
+    }
+
 .thumbnail-slider {
     margin-top: 20px;
     display: flex;
@@ -350,7 +392,7 @@
     border: 1px solid #E5E7F2;
     background-color: #FFFFFF;
     box-shadow: 4px 0 20px 0 #272F371F;
-    height: 750px;
+    height: fit-content;
 }
 
 .work-text {
@@ -527,6 +569,7 @@
 
     .buy-button:hover {
         box-shadow: 0 4px 12px 0 #38CF0070;
+        color: #FFFFFF;
     }
 
 .buy-button-telegram {
@@ -541,6 +584,8 @@
 
     .buy-button-telegram:hover {
         box-shadow: 0 8px 24px 0 #2086FF52;
+        background: #2086FF url("/Metronic/assets/frontend/pages/img/products/telegram.svg") top 50% left 18% no-repeat;
+        color: #FFFFFF;
     }
 
 .author-work-footer {

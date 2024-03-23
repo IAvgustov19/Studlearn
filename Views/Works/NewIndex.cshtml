@@ -23,30 +23,50 @@
     <div class="product-main-container">
         <div class="custom-container">
             <div class="product-breadcrumb">
-                <a href="#" class="comeback-to-page">Вернуться назад</a>
+                <a href="@Url.Action("Index", "Home")" class="comeback-to-page" style="border-radius: 8px !important;">Вернуться назад</a>
                 <div class="nav-breadcrumb">
                     <ul class="nav-breadcrumb-list">
                         <li class="nav-breadcrumb-item">Главная страница /</li>
                         <li class="nav-breadcrumb-item">Каталог /</li>
                         <li class="nav-breadcrumb-item">Дипломные работы по программированию /</li>
-                        <li class="nav-breadcrumb-item">@Model.DocumentPublic.Title/</li>
+                        <li class="nav-breadcrumb-item">@Model.DocumentPublic.Title</li>
                     </ul>
                 </div>
             </div>
             <div class="product-demonstration-container">
                 <div class="product-slider">
-                    <div class="slider" style="border-radius: 12px !important;">
-                        @if (model.HasImages)
-                        {
-                            foreach (var image in model.Images)
-                            {
-                                <a href="@image" class="fancybox-button" title="Нажми чтоб увеличить" data-rel="fancybox-button">
-                                    <img src="@image" alt="@Model.DocumentPublic.Title ">
-                                </a>
-                            }
-                        }
-                        <button class="prev"></button>
-                        <button class="next"></button>
+                    <div class="blog-item-img">
+                        <div class="front-carousel">
+                            <div id="myCarousel" class="carousel slide">
+                                <div class="carousel-inner" style="border-radius: 12px !important;">
+                                    @if (model.HasVideo)
+                                    {
+                                        <div class="item active">
+                                            <iframe src="//www.youtube.com/embed/@Model.DocumentPublic.YoutubeId?rel=0&showinfo=0"
+                                                    width="100%" frameborder="0" allowfullscreen style="height: 100%;"></iframe>
+                                        </div>
+                                    }
+                                    @if (model.HasImages)
+                                    {
+                                        for (Int32 i = 0; i < model.Images.Count; i++)
+                                        {
+                                            <div class="item @(i==0 && !model.HasVideo ? "active" : "")">
+                                                <a href="@Model.DocumentPublic.Images[i]" class="fancybox-button" title="Нажми, чтобы увеличить" data-rel="fancybox-button">
+                                                    <img src="@Model.DocumentPublic.Images[i]" alt="@Model.DocumentPublic.Title" style="width: 100%; height: 100%;">
+                                                </a>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                                @if (model.ShowSliderButtons)
+                                {
+                                    <a class="slider-prev" href="#myCarousel" data-slide="prev">
+                                    </a>
+                                    <a class="slider-next" href="#myCarousel" data-slide="next">
+                                    </a>
+                                }
+                            </div>
+                        </div>
                     </div>
                     <div class="thumbnail-slider">
                         <div class="slide-btn">
@@ -137,10 +157,10 @@
                                 <p class="author-section-text">
                                     @Model.DocumentPublic.AuthorUserName
                                 </p>
-                                <span class="author-benefits stars">@Model.DocumentPublic.Rating</span>
-                                <span class="author-benefits works">???</span>
+                                <span class="author-benefits stars">@Model.AuthorRating</span>
+                                <span class="author-benefits works">@Model.WorksCount</span>
                                 <p class="author-text">
-                                    ??
+                                    @Model.AuthorDescription
                                 </p>
                             </div>
                         </div>
@@ -155,11 +175,10 @@
                                 HomeNameFile.zip
                             </p>
                             <ul class="file-list">
-                                <li class="file-list-item txt">fileName.txt</li>
-                                <li class="file-list-item doc">fileName.doc</li>
-                                <li class="file-list-item jpg">fileName.jpg</li>
-                                <li class="file-list-item vsd">fileName.vsd</li>
-                                <li class="file-list-item xlsx">fileName.xlsx</li>
+                                @foreach (var file in Model.DocumentPublic.Files)
+                                {
+                                <li class="file-list-item txt">@file.Title</li>
+                                }
                             </ul>
                         </div>
                         <hr class="author-stroke" />

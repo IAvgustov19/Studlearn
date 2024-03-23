@@ -91,6 +91,10 @@ namespace SW.Frontend.Controllers
             var model = new WorkDetailsViewModel();
             model.DocumentPublic = dtoWork;
             model.AuthorImageUrl = author.AvatartUrl;
+            model.WorksCount = _documentsUOW.DocumentsRepository.GetAll()
+                .Count(x => x.AuthorId == author.Id && !x.IsDeleted && x.DocumentStateId == (int)Shared.Constants.Documents.DocumentState.Approved);
+            model.AuthorRating = author.Rating;
+            model.AuthorDescription = author.Description;
             model.FeaturedWorks = _documentsUOW.DocumentsRepository
                 ._context.Database
                 .SqlQuery<Core.DataLayer.FeaturedWork>("GetFeaturedNewWorks").Take(5);

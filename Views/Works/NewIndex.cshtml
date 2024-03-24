@@ -22,16 +22,19 @@
 <div class="main main-style">
     <div class="product-main-container">
         <div class="custom-container">
-            <div class="product-breadcrumb">
-                <a href="@Url.Action("Index", "Home")" class="comeback-to-page" style="border-radius: 8px !important;">Вернуться назад</a>
-                <div class="nav-breadcrumb">
-                    <ul class="nav-breadcrumb-list">
-                        <li class="nav-breadcrumb-item">Главная страница /</li>
-                        <li class="nav-breadcrumb-item">Каталог /</li>
-                        <li class="nav-breadcrumb-item">Дипломные работы по программированию /</li>
-                        <li class="nav-breadcrumb-item">@Model.DocumentPublic.Title</li>
-                    </ul>
+            <div class="more-products-list-container">
+                <div class="product-breadcrumb">
+                    <a href="@Url.Action("Index", "Home")" class="comeback-to-page" style="border-radius: 8px !important;">Вернуться назад</a>
+                    <div class="nav-breadcrumb">
+                        <ul class="nav-breadcrumb-list">
+                            <li class="nav-breadcrumb-item">Главная страница /</li>
+                            <li class="nav-breadcrumb-item">Каталог /</li>
+                            <li class="nav-breadcrumb-item">Дипломные работы по программированию /</li>
+                            <li class="nav-breadcrumb-item">@Model.DocumentPublic.Title</li>
+                        </ul>
+                    </div>
                 </div>
+                <div style="width: 1px;"></div>
             </div>
             <div class="product-demonstration-container">
                 <div class="product-slider">
@@ -254,120 +257,132 @@
                         <span class="report-text">Пожаловаться</span>
                     </div>
                 </div>
-            </div>ssss
-            <div class="users-comments">
-                <h3 class="title-description">
-                    Комментарии @Model.DocumentPublic.CommentsNumber
-                    <span class="title-description number">2</span>
-                </h3>
-                <div class="comment-item">
-                    <div class="comment-author">
-                        <img src="../images/product/author-profile.png" alt="author-profile">
-                        <div class="comment-name">
-                            <p class="author-section-text">
-                                Елена Ведибурская
-                            </p>
-                            <span class="user-role">Автор работы</span>
-                        </div>
-                    </div>
-                    <p class="work-text">
-                        Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.
-                        Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.
-                        В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов,
-                        используя Lorem Ipsum для распечатки образцов.
-                    </p>
-                    <div class="comment-panel">
-                        <div class="created-at">
-                            <span class="clock-icon icons"></span>
-                            <span class="created-at-date">29.12.23</span>
-                            <span class="created-at-time">00:44</span>
-                        </div>
-                        <div class="comment-likes">
-                            <span class="minus-icon icons"></span>
-                            <span class="likes-count">12</span>
-                            <span class="plus-icon icons"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment-item">
-                    <div class="comment-author">
-                        <img src="../images/product/author2-profile.png" alt="author-profile">
-                        <div class="comment-name">
-                            <p class="author-section-text">
-                                Дмитрий Шмидт
-                            </p>
-                        </div>
-                    </div>
-                    <p class="work-text">
-                        Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.
-                        Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.
-                        В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов,
-                        используя Lorem Ipsum для распечатки образцов.
-                    </p>
-                    <div class="comment-panel">
-                        <div class="created-at">
-                            <span class="clock-icon icons"></span>
-                            <span class="created-at-date">29.12.23</span>
-                            <span class="created-at-time">00:44</span>
-                        </div>
-                        <div class="comment-likes">
-                            <span class="minus-icon icons"></span>
-                            <span class="likes-count">-73</span>
-                            <span class="plus-icon icons"></span>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="add-comment-form">
-                <h4 class="title-section">
-                    Оставить комментарий
-                </h4>
-                <div class="comment-inputs">
-                    <label>
-                        <input type="text" class="comment-input-name" placeholder="Ваше имя" style="border-radius: 12px !important;">
-                    </label>
-                    <div class="text-container">
-                        <label style="width: 100%;">
-                            <textarea type="text" class="comment-input-text" placeholder="Комментарий"
-                                      maxlength="300" style="border-radius: 12px !important;"></textarea>
-                            <span class="letter-length"><span>0</span>/300</span>
-                        </label>
+            <div class="comments-container">
+                <div class="users-comments">
+                    <h3 class="title-description">
+                        Комментарии @Model.DocumentPublic.CommentsNumber
+                        <span class="title-description number">2</span>
+                    </h3>
+                    <div class="comment-item">
+                        <div class="comment-author">
+                            <img src="../images/product/author-profile.png" alt="author-profile">
+                            <div class="comment-name">
+                                <p class="author-section-text">
+                                    Елена Ведибурская
+                                </p>
+                                <span class="user-role">Автор работы</span>
+                            </div>
+                        </div>
+                        <p class="work-text">
+                            Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.
+                            Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.
+                            В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов,
+                            используя Lorem Ipsum для распечатки образцов.
+                        </p>
+                        <div class="comment-panel">
+                            <div class="created-at">
+                                <span class="clock-icon icons"></span>
+                                <span class="created-at-date">29.12.23</span>
+                                <span class="created-at-time">00:44</span>
+                            </div>
+                            <div class="comment-likes">
+                                <span class="minus-icon icons"></span>
+                                <span class="likes-count">12</span>
+                                <span class="plus-icon icons"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-item">
+                        <div class="comment-author">
+                            <img src="../images/product/author2-profile.png" alt="author-profile">
+                            <div class="comment-name">
+                                <p class="author-section-text">
+                                    Дмитрий Шмидт
+                                </p>
+                            </div>
+                        </div>
+                        <p class="work-text">
+                            Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.
+                            Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.
+                            В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов,
+                            используя Lorem Ipsum для распечатки образцов.
+                        </p>
+                        <div class="comment-panel">
+                            <div class="created-at">
+                                <span class="clock-icon icons"></span>
+                                <span class="created-at-date">29.12.23</span>
+                                <span class="created-at-time">00:44</span>
+                            </div>
+                            <div class="comment-likes">
+                                <span class="minus-icon icons"></span>
+                                <span class="likes-count">-73</span>
+                                <span class="plus-icon icons"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <button type="submit" class="send-comment-btn" style="border-radius: 12px !important;">Опубликовать комментарий</button>
+                <div class="empty-container"></div>
+            </div>
+            <div class="comments-container">
+                <div class="add-comment-form">
+                    <h4 class="title-section">
+                        Оставить комментарий
+                    </h4>
+                    <div class="comment-inputs">
+                        <label>
+                            <input type="text" class="comment-input-name" placeholder="Ваше имя" style="border-radius: 12px !important;">
+                        </label>
+                        <div class="text-container">
+                            <label style="width: 100%;">
+                                <textarea type="text" class="comment-input-text" placeholder="Комментарий"
+                                          maxlength="300" style="border-radius: 12px !important;"></textarea>
+                                <span class="letter-length"><span>0</span>/300</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="send-comment-btn" style="border-radius: 12px !important;">Опубликовать комментарий</button>
+                </div>
+                <div class="empty-container"></div>
             </div>
             <div class="more-products">
-                <h4 class="title-more-products">Похожие работы</h4>
-                <div class="more-products-list">
-                    @foreach (var work in Model.FeaturedWorks)
-                    {
-                    <div class="product-box">
-                        <div class="product-box-image" style="border-radius: 12px !important; background-image: url('@work.ImageUrl');">
-                            <div class="product-box-items">
-                                <span class="product-box-image-item">
-                                    Алгоритм
-                                </span>
-                                <span class="product-box-image-item">
-                                    Коллекции
-                                </span>
-                                <span class="product-box-image-item">
-                                    C#
-                                </span>
+                <div class="more-products-list-container">
+                    <h4 class="title-more-products">Похожие работы</h4>
+                    <div style="width: 1px;"></div>
+                </div>
+                <div class="more-products-list-container">
+                    <div class="more-products-list">
+                        @foreach (var work in Model.FeaturedWorks)
+                        {
+                            <div class="product-box">
+                                <div class="product-box-image" style="border-radius: 12px !important; background-image: url('@work.ImageUrl');">
+                                    <div class="product-box-items">
+                                        <span class="product-box-image-item">
+                                            Алгоритм
+                                        </span>
+                                        <span class="product-box-image-item">
+                                            Коллекции
+                                        </span>
+                                        <span class="product-box-image-item">
+                                            C#
+                                        </span>
+                                    </div>
+                                    <span class="product-box-image-item rating">
+                                        3.2
+                                    </span>
+                                </div>
+                                <div class="product-box-info">
+                                    <span class="views">12 K</span>
+                                    <span class="product-box-price">@work.PriceLabel</span>
+                                </div>
+                                <div class="product-box-title">
+                                    <p>@work.Title</p>
+                                    <a href="@work.Url" class="watch-more">Смотреть работу</a>
+                                </div>
                             </div>
-                            <span class="product-box-image-item rating">
-                                3.2
-                            </span>
-                        </div>
-                        <div class="product-box-info">
-                            <span class="views">12 K</span>
-                            <span class="product-box-price">@work.PriceLabel</span>
-                        </div>
-                        <div class="product-box-title">
-                            <p>@work.Title</p>
-                            <a href="@work.Url" class="watch-more">Смотреть работу</a>
-                        </div>
+                        }
                     </div>
-                    }
+                    <div style="width: 1px;"></div>
                 </div>
             </div>
         </div>

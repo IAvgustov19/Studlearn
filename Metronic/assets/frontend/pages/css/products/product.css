@@ -28,7 +28,7 @@
     letter-spacing: 0;
     padding: 4px 8px 4px 36px;
     text-decoration: none;
-    background: #FFF url("/Metronic/assets/frontend/pages/img/products/arrow.svg") top 2px left 8px no-repeat;
+    background: #FFF url("/Metronic/assets/frontend/pages/img/products/arrow.svg") top 4px left 8px no-repeat;
     border-radius: 30px !important;
     color: #677685;
     max-height: 35px;
@@ -417,7 +417,7 @@
 
 .author-benefits {
     padding: 2px 4px 2px 24px;
-    border-radius: 4px;
+    border-radius: 4px !important;
     gap: 4px;
 }
 
@@ -444,6 +444,7 @@
     .author-profile img {
         width: 76px;
         height: 76px;
+        border-radius: 8px !important;
     }
 
 .author-info {
@@ -457,7 +458,7 @@
     letter-spacing: 0;
     color: #272F37;
     padding-left: 30px;
-    background: url("/Metronic/assets/frontend/pages/img/products/directory-icon.svg") top left no-repeat;
+    list-style-type: none !important;
 }
 
 .file-list {

@@ -550,6 +550,7 @@
     <Content Include="Metronic\assets\frontend\pages\css\footer\media.css" />
     <Content Include="Metronic\assets\frontend\pages\css\gallery.css" />
     <Content Include="Metronic\assets\frontend\pages\css\mainPage.css" />
+    <Content Include="Metronic\assets\frontend\pages\css\works.css" />
     <Content Include="Metronic\assets\frontend\pages\img\main-page\arrow-left.svg" />
     <Content Include="Metronic\assets\frontend\pages\img\main-page\article1.png" />
     <Content Include="Metronic\assets\frontend\pages\img\main-page\article2.png" />
@@ -2754,6 +2755,7 @@
     <Content Include="Scripts\Plugins\raty\jquery.raty.css" />
     <Content Include="Scripts\Plugins\raty\jquery.raty.js" />
     <Content Include="Scripts\System\sw.site-review.js" />
+    <Content Include="Views\Category\works.html" />
     <Content Include="yandex_401e29bcdc4cf034.html" />
     <Content Include="App_Code\MyHelpers.cshtml" />
     <Content Include="zohoverify\verifyforzoho.html" />

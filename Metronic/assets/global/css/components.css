@@ -11789,52 +11789,62 @@ Transparent Button
 label
 ***/
 .label-red {
-    border-color: #ec7063;
-    background-color: #ec7063;
+    border-color: #D83737;
+    background-color: #D83737;
     color: white;
+    border-radius: 8px !important;
 }
 .label-blue {
-    border-color: #3498db;
-    background-color: #3498db;
+    border-color: #2C74BB;
+    background-color: #2C74BB;
     color: white;
+    border-radius: 8px !important;
 }
 .label-aero {
     border-color: #d4e9f8;
     background-color: #d4e9f8;
     color: white;
+    border-radius: 8px !important;
 }
 .label-green {
-    border-color: #1abc9c;
-    background-color: #1abc9c;
+    border-color: #73C24E;
+    background-color: #73C24E;
     color: white;
+    border-radius: 8px !important;
 }
 .label-orange {
-    border-color: #f39c12;
-    background-color: #f39c12;
+    border-color: #EC9341;
+    background-color: #EC9341;
     color: white;
+    border-radius: 8px !important;
 }
 .label-grey {
-    border-color: #95a5a6;
-    background-color: #95a5a6;
+    border-color: #969FA8;
+    background-color: #969FA8;
     color: white;
+    border-radius: 8px !important;
 }
 .label-yellow {
     border-color: #f1c40f;
     background-color: #f1c40f;
     color: white;
+    border-radius: 8px !important;
 }
 .label-pink {
-    border-color: #af7ac5;
-    background-color: #af7ac5;
+    border-color: #B15DD8;
+    background-color: #B15DD8;
     color: white;
+    border-radius: 8px !important;
 }
 .label-purple {
-    border-color: #9588f2;
-    background-color: #9588f2;
+    border-color: #6A0DAD;
+    background-color: #6A0DAD;
     color: white;
+    border-radius: 8px !important;
 }
 .label-black {
-    border-color: #333333;
-    background-color: #333333;
+    border-color: #272F37;
+    background-color: #272F37;
     color: white;
+    border-radius: 8px !important;
 }

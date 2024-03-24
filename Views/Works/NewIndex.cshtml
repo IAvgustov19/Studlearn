@@ -50,7 +50,7 @@
                                     {
                                         for (Int32 i = 0; i < model.Images.Count; i++)
                                         {
-                                            <div class="item @(i==0 && !model.HasVideo ? "active" : "")">
+                                            <div class="item @(i == 0 && !model.HasVideo ? "active" : "")">
                                                 <a href="@Model.DocumentPublic.Images[i]" class="fancybox-button" title="Нажми, чтобы увеличить" data-rel="fancybox-button">
                                                     <img src="@Model.DocumentPublic.Images[i]" alt="@Model.DocumentPublic.Title" style="width: 100%; height: 100%;">
                                                 </a>
@@ -68,24 +68,30 @@
                             </div>
                         </div>
                     </div>
-                    <div class="thumbnail-slider">
-                        <div class="slide-btn">
-                            <button class="slide-btn-left" style="border-radius: 30px !important;"></button>
-                        </div>
-                        <div class="thumbnail-slider-container">
-                            @if (model.HasImages)
-                            {
-                                foreach (var image in model.Images)
-                                {
+                    @{
+                        if (model.Images.Count > 1)
+                        {
+                            <div class="thumbnail-slider">
+                                <div class="slide-btn">
+                                    <button class="slide-btn-left" href="#myCarousel" data-slide="prev" style="border-radius: 30px !important;"></button>
+                                </div>
+                                <div class="thumbnail-slider-container">
+                                    @if (model.HasImages)
+                                    {
+                                        foreach (var image in model.Images)
+                                        {
 
-                                    <img src="@image" alt="@Model.DocumentPublic.Title " style="border-radius: 12px !important;">
-                                }
-                            }
-                        </div>
-                        <div class="slide-btn">
-                            <button class="slide-btn-right" style="border-radius: 30px !important;"></button>
-                        </div>
-                    </div>
+                                            <img src="@image" alt="@Model.DocumentPublic.Title " style="border-radius: 12px !important;">
+                                        }
+                                    }
+                                </div>
+                                <div class="slide-btn">
+                                    <button class="slide-btn-right" href="#myCarousel" data-slide="next" style="border-radius: 30px !important;"></button>
+                                </div>
+                            </div>
+                        }
+                    }
+
                 </div>
                 <div class="product-demonstration-block">
                     <div class="product-block1">
@@ -102,8 +108,6 @@
                                    title="Посмотреть все @Model.DocumentPublic.Type в категории @Model.DocumentPublic.Category.Title">
                                     @Model.DocumentPublic.Type
                                 </a>
-                                <span class="benefit-item">Курсовые работы</span>
-                                <span class="benefit-item">Сети: Cisko</span>
                             </div>
                         </div>
                     </div>
@@ -116,24 +120,43 @@
                         <div class="mobile-container">
                             <div class="product-price-container">
                                 <div class="product-price">
-                                    <span class="discount-price">@Model.DocumentPublic.Price</span>
-                                    <span class="old-price">@Model.DocumentPublic.Price @Model.DocumentPublic.Profit</span>
+                                        @{
+                                            string price = string.Empty;
+                                            if (Model.DocumentPublic.IsFree)
+                                            {
+                                                price = "Бесплатно";
+                                            }
+                                            else
+                                            {
+                                                price = Convert.ToInt32(Model.DocumentPublic.Price.Value).ToString();
+                                                price += " ₽";
+                                            }
+                                        }
+                                    
+                                    <span class="discount-price">
+                                        @price
+                                    </span>
                                 </div>
                                 <span class="guarantee">Гарантия качества</span>
                             </div>
                             <div class="product-buy-buttons">
                                 @{
                                     var buyLink = (IHtmlString)null;
-                                    if (Model.DocumentPublic.Files.Count == 1)
+                                    string btn_txt = string.Empty;
+
+                                    if (Model.DocumentPublic.IsFree || Model.DocumentPublic.IsPurchased)
                                     {
-                                        buyLink = Html.Raw(Url.Action("File", "Works", new { fileId = @Model.DocumentPublic.Files.Count != 0 ? @Model.DocumentPublic.Files[0].UserFileId : 0, documentId = @ViewBag.WorkId }));
+                                        buyLink = Html.Raw(Url.Action("FilesList", "Works", new { documentId = @ViewBag.WorkId }));
+                                        btn_txt = "Скачать работу";
                                     }
                                     else
                                     {
-                                        buyLink = Html.Raw(Url.Action("FilesList", "Works", new { documentId = @ViewBag.WorkId }));
+                                        buyLink = Html.Raw(Url.Action("Payment", "Works", new { id = @ViewBag.WorkId }));
+                                        btn_txt = "Купить работу";
                                     }
-                                    <a href="@buyLink" class="btn btn-buy" style="border-radius: 12px !important;">Купить работу</a>
-                                }
+
+                                    <a href="@buyLink" class="btn btn-buy" style="border-radius: 12px !important;">@btn_txt</a>
+                                    }
                                 <a href="https://t.me/studlearn_support" class="btn btn-buy-telegram" style="border-radius: 12px !important;"></a>
                             </div>
                         </div>
@@ -152,7 +175,16 @@
                             Автор работы
                         </p>
                         <div class="author-profile">
-                            <img src="@Model.AuthorImageUrl" alt="author-profile-img">
+                            @{
+                                if (Model.AuthorImageUrl == null)
+                                {
+                                    <img src="/images/default/noavatar.jpg?w=150&h=150" alt="author-profile-img">
+                                }
+                                else
+                                {
+                                    <img src="@Model.AuthorImageUrl" alt="author-profile-img">
+                                }
+                            }
                             <div class="author-info">
                                 <p class="author-section-text">
                                     @Model.DocumentPublic.AuthorUserName
@@ -171,13 +203,10 @@
                             Список файлов
                         </p>
                         <div class="work-files">
-                            <p class="work-file-text">
-                                HomeNameFile.zip
-                            </p>
-                            <ul class="file-list">
+                            <ul class="work-file-text">
                                 @foreach (var file in Model.DocumentPublic.Files)
                                 {
-                                <li class="file-list-item txt">@file.Title</li>
+                                <li class="file-list-item txt" >@file.Title</li>
                                 }
                             </ul>
                         </div>
@@ -206,13 +235,13 @@
                         <div class="buy-buttons-container">
                             <a class="btn buy-button" style="border-radius: 12px !important;" href="@buyLink">
                                 @{
-                                    decimal price = 0;
-                                    if (Model.DocumentPublic.Price.HasValue)
+                                    string btn_txt_ = btn_txt;
+                                    if (!Model.DocumentPublic.IsFree || !Model.DocumentPublic.IsPayed)
                                     {
-                                        price = Model.DocumentPublic.Price.Value;
+                                        btn_txt_.Replace("работу", price);
                                     }
                                 }
-                                Купить @price₽
+                                @btn_txt_
                             </a>
                             <a class="btn buy-button-telegram" style="border-radius: 12px !important;" href="https://t.me/studlearn_support">
                                 Заказать через Telegram
@@ -225,7 +254,7 @@
                         <span class="report-text">Пожаловаться</span>
                     </div>
                 </div>
-            </div>sssss
+            </div>ssss
             <div class="users-comments">
                 <h3 class="title-description">
                     Комментарии @Model.DocumentPublic.CommentsNumber

@@ -464,17 +464,17 @@
 
 .author-benefits {
     padding: 2px 4px 2px 24px;
-    border-radius: 4px;
     gap: 4px;
+    border-radius: 4px !important;
 }
 
 .author-benefits.stars {
     background: #F0F1F8 url("/Metronic/assets/frontend/pages/img/products/star.svg") top 3px left 2px no-repeat;
 }
 
-.author-benefits.works {
-    background: #F0F1F8 url("/Metronic/assets/frontend/pages/img/products/mdi_work.svg") top 3px left 4px no-repeat;
-}
+    .author-benefits.works {
+        background: #F0F1F8 url("/Metronic/assets/frontend/pages/img/products/mdi_work.svg") top 3px left 4px no-repeat; 
+    }
 
 .developers-container {
     display: flex;

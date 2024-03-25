@@ -75,7 +75,7 @@ namespace SW.Frontend.Controllers
             SetupWorkAfterMapping(ref dtoWork, dbWork);
             ViewBag.WorkId = id;
             ViewBag.MicrodataProductSnippet = GetWorkMicroData(dtoWork, dbWork);
-            return View("NewIndex", dtoWork);
+            return View("Index", dtoWork);
         }
 
         [CompressContent]
@@ -101,7 +101,7 @@ namespace SW.Frontend.Controllers
             ViewBag.WorkId = dbWork.Id;
             ViewBag.MicrodataProductSnippet = GetWorkMicroData(dtoWork, dbWork);
             ViewBag.HasSales = _documentsUOW.DocumentSalesRepository.GetAll().Count(x => x.IsCompleted && x.DocumentId == dbWork.DocumentId) > 0;
-            return View("NewIndex", model);
+            return View("Index", model);
         }
 
         public void SetupWorkAfterMapping(ref DocumentPublic dtoWork, Document dbWork)

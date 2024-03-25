@@ -8,27 +8,27 @@
 @section RichHeader {
     @RenderSection("RichHeader", false)
 }
-<div class="main">
-    <div class="container">
-        @RenderSection("Breadcrumbs", false)
-        @*<ul class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Blog</a></li>
-                <li class="active">Blog Page</li>
-            </ul>*@
-        <!-- BEGIN SIDEBAR & CONTENT -->
-        <div class="row margin-bottom-40">
-            <!-- BEGIN CONTENT -->
-            <div class="col-md-12 col-sm-12">
+<div class="main main-style">
+    <div class="product-main-container">
+        <div class="custom-container">
+            @*@RenderSection("Breadcrumbs", false)*@
 
-              
-            </div>
-            <!-- END CONTENT -->
+            @RenderSection("Title", true)
+
+            @RenderSection("Product", true)
+
+            @RenderSection("Work", true)
+
+            @RenderSection("Comments", true)
+
+            @RenderSection("More", true)
+
+
+            <!-- END SIDEBAR & CONTENT -->
         </div>
-        <!-- END SIDEBAR & CONTENT -->
     </div>
 </div>
 
-@section JsCode {
-    @RenderSection("JsCode", false)
-}
+    @section JsCode {
+        @RenderSection("JsCode", true)
+    }

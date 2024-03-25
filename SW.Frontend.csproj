@@ -3032,7 +3032,7 @@
     <Content Include="Views\Category\Details.cshtml" />
     <Content Include="Views\Category\Siblings.cshtml" />
     <Content Include="Views\Category\PopularAuthors.cshtml" />
-    <Content Include="Views\Works\Index.cshtml" />
+    <Content Include="Views\Works\OldIndex.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Works\Comments.cshtml" />
     <Content Include="Views\Authors\Details.cshtml" />
@@ -3129,7 +3129,7 @@
     <Content Include="Views\Shared\_PartnerProgramPartial.cshtml" />
     <Content Include="Views\Shared\_OrderWorkPartial.cshtml" />
     <Content Include="Views\Emails\NewOrderWorkEmailView.cshtml" />
-    <Content Include="Views\Works\NewIndex.cshtml" />
+    <Content Include="Views\Works\Index.cshtml" />
     <Content Include="Views\Catalog\_CatalogPartial.cshtml" />
     <Content Include="Views\News\_NewsPartial.cshtml" />
     <None Include="Web.BrainAcademySubscription.config">

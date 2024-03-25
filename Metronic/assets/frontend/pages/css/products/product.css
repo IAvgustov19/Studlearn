@@ -17,7 +17,7 @@
 
 .product-main-container {
     background: url("/Metronic/assets/frontend/pages/img/products/product_bg.svg") no-repeat;
-    background-size: contain;
+    background-size: cover;
     padding-bottom: 40px;
 }
 

@@ -72,10 +72,21 @@ namespace SW.Frontend.Controllers
             if (!String.IsNullOrEmpty(dbWork.Slug))
                 return RedirectToAction("details", "works", new { id = dbWork.Slug });
             var dtoWork = MapperManager.Map<DB.Document, DocumentPublic>(dbWork);
+            var model = new WorkDetailsViewModel();
             SetupWorkAfterMapping(ref dtoWork, dbWork);
+            model.DocumentPublic = dtoWork;
+            var author = _accountUOW.UsersRepository.GetByID(dtoWork.AuthorId);
+            model.AuthorImageUrl = author.AvatartUrl;
+            model.WorksCount = _documentsUOW.DocumentsRepository.GetAll()
+                .Count(x => x.AuthorId == author.Id && !x.IsDeleted && x.DocumentStateId == (int)Shared.Constants.Documents.DocumentState.Approved);
+            model.AuthorRating = author.Rating;
+            model.AuthorDescription = author.Description;
+            model.FeaturedWorks = _documentsUOW.DocumentsRepository
+                ._context.Database
+                .SqlQuery<Core.DataLayer.FeaturedWork>("GetFeaturedNewWorks").Take(5);
             ViewBag.WorkId = id;
             ViewBag.MicrodataProductSnippet = GetWorkMicroData(dtoWork, dbWork);
-            return View("Index", dtoWork);
+            return View("Index", model);
         }
 
         [CompressContent]

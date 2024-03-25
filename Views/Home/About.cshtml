@@ -1,17 +1,23 @@
 ﻿@section styles {
     <link href="~/metronic/assets/frontend/pages/css/about.css" rel="stylesheet" type="text/css" />
     <link href="~/metronic/assets/frontend/pages/css/common.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/frontend/pages/css/products/media.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/frontend/pages/css/products/product.css" rel="stylesheet" type="text/css" />
 };
 
 <div class="for-us">
     <div class="container">
-        <div class="navigation">
-            <a href="@Url.Action("Index", "Home")" class="back-link"><span>Вернуться назад</span></a>
-            <div class="navigraton-directory">
-                <span class="navigation-item">Главная страница</span> / <span class="navigation-item current">
-                    О нас
-                </span>
+        <div class="more-products-list-container">
+            <div class="product-breadcrumb">
+                <a href="@Url.Action("Index", "Home")" class="comeback-to-page" style="border-radius: 8px !important;">Вернуться назад</a>
+                <div class="nav-breadcrumb">
+                    <ul class="nav-breadcrumb-list">
+                        <li class="nav-breadcrumb-item" onclick="window.location.href='@Url.Action("Index", "Home")'">Главная страница /</li>
+                        <li class="nav-breadcrumb-item" style="color: #272F37 !important;">О нас</li>
+                    </ul>
+                </div>
             </div>
+            <div style="width: 1px;"></div>
         </div>
         <h1>О нас</h1>
         <div class="for-us-images">

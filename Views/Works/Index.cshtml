@@ -58,10 +58,10 @@
                     <a href="@Model.DocumentPublic.Category.Url" class="comeback-to-page" style="border-radius: 8px !important;">Вернуться назад</a>
                     <div class="nav-breadcrumb">
                         <ul class="nav-breadcrumb-list">
-                            <li class="nav-breadcrumb-item">Главная страница /</li>
-                            <li class="nav-breadcrumb-item">Каталог /</li>
-                            <li class="nav-breadcrumb-item">@Model.DocumentPublic.Type /</li>
-                            <li class="nav-breadcrumb-item">@Model.DocumentPublic.Title</li>
+                            <li class="nav-breadcrumb-item" onclick="window.location.href='@Url.Action("Index", "Home")'">Главная страница /</li>
+                            <li class="nav-breadcrumb-item" onclick="window.location.href='@Url.Action("Index", "Catalog")'">Каталог /</li>
+                            <li class="nav-breadcrumb-item" onclick="window.location.href='@Model.DocumentPublic.Category.Url'">@Model.DocumentPublic.Type /</li>
+                            <li class="nav-breadcrumb-item" style="color: #272F37 !important;">@Model.DocumentPublic.Title</li>
                         </ul>
                     </div>
                 </div>
@@ -108,24 +108,24 @@
                     @{
                         if (model.Images.Count > 1)
                         {
-                            <div class="thumbnail-slider">
-                                <div class="slide-btn">
-                                    <button class="slide-btn-left" href="#myCarousel" data-slide="prev" style="border-radius: 30px !important;"></button>
-                                </div>
-                                <div class="thumbnail-slider-container">
-                                    @if (model.HasImages)
-                                    {
-                                        foreach (var image in model.Images)
-                                        {
+                                        <div class="thumbnail-slider">
+                                                                <div class="slide-btn">
+                                                                    <button class="slide-btn-left" style="border-radius: 30px !important;"></button>
+                                                                </div>
+                                            <div class="thumbnail-slider-container">
+                                                @if (model.HasImages)
+                                                {
+                                                    foreach (var image in model.Images)
+                                                    {
 
-                                            <img src="@image" alt="@Model.DocumentPublic.Title " style="border-radius: 12px !important;">
-                                        }
-                                    }
-                                </div>
-                                <div class="slide-btn">
-                                    <button class="slide-btn-right" href="#myCarousel" data-slide="next" style="border-radius: 30px !important;"></button>
-                                </div>
-                            </div>
+                                                        <img src="@image" alt="@Model.DocumentPublic.Title " style="border-radius: 12px !important;">
+                                                    }
+                                                }
+                                            </div>
+                                            <div class="slide-btn">
+                                                <button class="slide-btn-right" style="border-radius: 30px !important;"></button>
+                                            </div>
+                                        </div>
                         }
                     }
 

@@ -58,10 +58,10 @@
                     <a href="@Url.Action("Index", "Home")" class="comeback-to-page" style="border-radius: 8px !important;">Вернуться назад</a>
                     <div class="nav-breadcrumb">
                         <ul class="nav-breadcrumb-list">
-                            <li class="nav-breadcrumb-item">Главная страница /</li>
-                            <li class="nav-breadcrumb-item">Каталог /</li>
+                            <li class="nav-breadcrumb-item" onclick="window.location.href='@Url.Action("Index", "Home")'">Главная страница /</li>
+                            <li class="nav-breadcrumb-item" onclick="window.location.href='@Url.Action("Index", "Catalog")'">Каталог /</li>
                             <li class="nav-breadcrumb-item">Дипломные работы по программированию /</li>
-                            <li class="nav-breadcrumb-item">@Model.DocumentPublic.Title</li>
+                            <li class="nav-breadcrumb-item" style="color: #272F37;">@Model.DocumentPublic.Title</li>
                         </ul>
                     </div>
                 </div>
@@ -324,133 +324,156 @@
                 }
 
             @section Comments {
-                <div class="row">
-                    <div class="blog-item" id="">
-                        <button class="btn blue btn-block" style="@(Request.Browser.IsMobileDevice ? "display:block" : "display:none")" id="showCommentsBtn">Комментарии</button>
-                        <div class="portlet-body" id="SwCommentsWrapper" data-bind="with: vmComments" style="@(Request.Browser.IsMobileDevice ? "display:none" : "display:block")">
-                            <div class="sections-title-h2">
-                                Комментарии (@Model.DocumentPublic.CommentsNumber)
-                            </div>
-                            <div class="comments">
-                                <div class="note note-info" style="margin-bottom:0; display:none;" data-bind="visible: comments().length == 0">
-                                    <p>
-                                        @SW.Resources.Frontend.General.NoAnyComment
-                                    </p>
-                                </div>
-                                <div class="well text-center" data-bind="visible: showMoreAvailable">
-                                    <a href="javascript:void(0);" data-bind="click: showMore">
-                                        Показать более ранние комментарии
-                                    </a>
-                                </div>
-                                <div data-bind="foreach: comments">
-                                    <div class="media comment" data-bind="css: rating<= -5 ? 'bad' : ''" temprop="review" itemscope="" itemtype="http://schema.org/Review">
-                                        <a data-bind="attr: {href: author.profileUrl }" class="pull-left">
-                                            <img alt="" class="media-object" data-bind="attr: { src : author.avatarThumbnail }">
-                                        </a>
-                                        <div class="media-body">
-                                            @*<meta itemprop="itemReviewed" content="@Model.Title" />
-                                        <div itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating">
-                                            <meta content="0" itemprop="worstRating">
-                                            <meta content="@Model.Rating" itemprop="ratingValue">
-                                            <meta content="5" itemprop="bestRating">
-                                        </div>*@
-                                            <h4 class="media-heading" style="display: inline-block;">
-                                                <a class="username" data-bind="text: author.username, attr: {href: author.profileUrl }">@Model.DocumentPublic.AuthorUserName</a>
-                                            </h4>
-                                            <span class="badge " data-bind="visible: userTypeDisplay, text: userType, css: 'badge-' + userTypeColor, attr: {title: userTypeDescription}"></span>
-                                            <div style="float:right">
-                                                <div class="dislike" style="font-size: 18px !important;" title="отстойчик" data-bind="css: isUserVoted && !isPositive ? 'font-red' : '', click: $parent.negative.bind($data, '@User.Identity.GetUserId()')">
-                                                    <i class="fa fa-thumbs-down"></i>
-                                                </div>
-                                                <div style="width: 30px; display: inline-block; text-align:center;" data-bind="text: rating"></div>
-                                                <div class="like" style="font-size: 18px !important;" title="крутотень" data-bind="css: isUserVoted && isPositive ? 'font-green' : '', click: $parent.positive.bind($data, '@User.Identity.GetUserId()')">
-                                                    <i class="fa fa-thumbs-up"></i>
-                                                </div>
-                                                / <span class="sw-datetime" data-format="LL" data-bind="text: postedAt"></span>
-                                                @if (!string.IsNullOrEmpty(@User.Identity.Name))
-                                                {
-                                                    @: / <a class="reply" title="ответить" style="cursor:pointer;" data-bind="click: $parent.click"><i class="fa fa-reply"></i></a>
-                                                }
-                                                <!--  ko if: options.editEnabled -->
-                                                / <a class="edit" title="редактировать" style="cursor:pointer;" data-bind="click: $parent.startEdit"><i class="fa fa-pencil"></i></a>
-                                                <!-- /ko -->
-                                                @if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim(SW.Core.DataLayer.Account.ResourcesType.Type, "Moderator"))
-                                                {
-                                                    @: / <a class="edit" title="удалить" style="cursor:pointer;" data-bind="click: $parent.delete"><i class="fa fa-trash"></i></a>
-                                                }
+                <div class="comments-container">
+                              <div class="users-comments" id="">
+                                    <h3 class="title-description">
+                                        Комментарии
+                                        <span class="title-description number">@Model.DocumentPublic.CommentsNumber</span>
+                                    </h3>
+                                    <div class="portlet-body" id="SwCommentsWrapper" data-bind="with: vmComments" style="@(Request.Browser.IsMobileDevice ? "display:none" : "display:block")">
 
+                                        <div class="comments">
+                                            <div class="note note-info" style="margin-bottom:0; display:none;" data-bind="visible: comments().length == 0">
+                                                <p>
+                                                    @SW.Resources.Frontend.General.NoAnyComment
+                                                </p>
                                             </div>
-                                            <p>
-                                                <!-- ko ifnot: repliedTo == null -->
-                                                <a data-bind="text: repliedTo.username + ',', attr: {href: '/Authors/Profile/' + repliedTo.slug }"></a>
-                                                <!-- /ko -->
-                                                <!-- ko ifnot: onEdit -->
-                                                <span itemprop="description" data-bind="text: message"></span>
-                                                <!-- /ko -->
-                                                <div data-bind="visible: onEdit">
-                                                    <div class="form-group" style="margin-bottom: 0;">
-                                                        <textarea class="form-control edit-message" rows="4" data-bind="value: message,"></textarea>
+                                            <div class="well text-center" data-bind="visible: showMoreAvailable">
+                                                <a href="javascript:void(0);" data-bind="click: showMore">
+                                                    Показать более ранние комментарии
+                                                </a>
+                                            </div>
+                                            <div data-bind="foreach: comments">
+                                                <div class="comment-item" data-bind="css: rating<= -5 ? 'bad' : ''" temprop="review" itemscope="" itemtype="http://schema.org/Review">
+                                                    @*<a data-bind="attr: {href: author.profileUrl }" class="pull-left">
+            <img alt="author-profile" class="media-object" data-bind="attr: { src : author.avatarThumbnail }">
+        </a>*@
+
+                                                    <div class="comment-author">
+                                                        <img data-bind="attr: { src : author.avatarThumbnail }" alt="author-profile" style="border-radius: 8px !important;">
+                                                        <div class="comment-name">
+                                                            <p class="author-section-text" data-bind="text: author.username, attr: {href: author.profileUrl }">
+                                                                @Model.DocumentPublic.AuthorUserName
+                                                            </p>
+                                                            <span class="user-role" data-bind="visible: userTypeDisplay, text: userType, css: 'badge-' + userTypeColor, attr: {title: userTypeDescription}"></span>
+                                                        </div>
                                                     </div>
-                                                    <button class="btn btn-primary" data-bind="click: $parent.stopEdit">Сохранить</button>
+
+                                                    <p class="work-text" data-bind="text: message">
+                                                    </p>
+
+                                                    <div class="comment-panel">
+                                                        <div class="created-at">
+                                                            <span class="clock-icon icons"></span>
+                                                            <span class="created-at-date" data-format="DD-MM-YY" data-bind="text: postedAt"></span>
+                                                            <span class="created-at-time" data-bind="text: postedAt"></span>
+                                                        </div>
+                                                        <div class="comment-likes">
+                                                            <span class="minus-icon icons"  title="отстойчик" data-bind="css: isUserVoted && !isPositive ? 'font-red' : '', click: $parent.negative.bind($data, '@User.Identity.GetUserId()')"></span>
+                                                            <span class="likes-count" data-bind="text: likes"></span>
+                                                            <span class="plus-icon icons" data-bind="css: isUserVoted && isPositive ? 'font-green' : '', click: $parent.positive.bind($data, '@User.Identity.GetUserId()')"></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="media-body">
+                                                        @*<meta itemprop="itemReviewed" content="@Model.Title" />
+            <div itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating">
+                <meta content="0" itemprop="worstRating">
+                <meta content="@Model.Rating" itemprop="ratingValue">
+                <meta content="5" itemprop="bestRating">
+            </div>*@
+                                                        @*<div class="comment-name" style="display: inline-block;">
+                <p class="author-section-text" data-bind="text: author.username, attr: {href: author.profileUrl }">@Model.DocumentPublic.AuthorUserName</p>
+            </div>
+            <span class="user-role" data-bind="visible: userTypeDisplay, text: userType, css: 'badge-' + userTypeColor, attr: {title: userTypeDescription}"></span>*@
+                                                        <div style="float:right">
+                                                            @*<div class="dislike" style="font-size: 18px !important;" title="отстойчик" data-bind="css: isUserVoted && !isPositive ? 'font-red' : '', click: $parent.negative.bind($data, '@User.Identity.GetUserId()')">
+                                                                <i class="fa fa-thumbs-down"></i>
+                                                            </div>
+                                                            <div style="width: 30px; display: inline-block; text-align:center;" data-bind="text: rating"></div>
+                                                            <div class="comment-likes" style="font-size: 18px !important;" title="крутотень" data-bind="css: isUserVoted && isPositive ? 'font-green' : '', click: $parent.positive.bind($data, '@User.Identity.GetUserId()')">
+                                                                <i class="fa fa-thumbs-up"></i>
+                                                            </div>*@
+                                                             @*<span class="created-at-date" data-format="LL" data-bind="text: postedAt"></span>*@
+                                                            @if (!string.IsNullOrEmpty(@User.Identity.Name))
+                                                            {
+                                                                @: / <a class="reply" title="ответить" style="cursor:pointer;" data-bind="click: $parent.click"><i class="fa fa-reply"></i></a>
+                                                            }
+                                                            <!--  ko if: options.editEnabled -->
+                                                             <a class="edit" title="редактировать" style="cursor:pointer;" data-bind="click: $parent.startEdit"><i class="fa fa-pencil"></i></a>
+                                                            <!-- /ko -->
+                                                            @if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim(SW.Core.DataLayer.Account.ResourcesType.Type, "Moderator"))
+                                                            {
+                                                                @:  <a class="edit" title="удалить" style="cursor:pointer;" data-bind="click: $parent.delete"><i class="fa fa-trash"></i></a>
+                                                            }
+
+                                                        </div>
+                                                        <p>
+                                                            <!-- ko ifnot: repliedTo == null -->
+                                                            <a data-bind="text: repliedTo.username + ',', attr: {href: '/Authors/Profile/' + repliedTo.slug }"></a>
+                                                            <!-- /ko -->
+                                                            <!-- ko ifnot: onEdit -->
+                                                            @*<span itemprop="work-text" data-bind="text: message"></span>*@
+                                                            <!-- /ko -->
+                                                            <div data-bind="visible: onEdit">
+                                                                <div class="form-group" style="margin-bottom: 0;">
+                                                                    <textarea class="form-control edit-message" rows="4" data-bind="value: message,"></textarea>
+                                                                </div>
+                                                                <button class="btn btn-primary" data-bind="click: $parent.stopEdit">Сохранить</button>
+                                                            </div>
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </p>
+                                            </div>
                                         </div>
+                                        @*<div class="post-comment padding-top-20">
+                                            <div class="sections-title-h2">Оставить комментарий</div>
+                                           
+                                        </div>*@
                                     </div>
                                 </div>
-                            </div>
-                            <div class="post-comment padding-top-20">
-                                <div class="sections-title-h2">Оставить комментарий</div>
-                                @if (string.IsNullOrEmpty(@User.Identity.Name))
-                                {
-                                    <div class="note note-warning">
-                                        <h4>Ты не можешь комментировать</h4>
-                                        Только зарегистрированые пользователи имеют возможность комментировать работы
-                                        <div>
-                                            @Html.Action("RegisterPartial", "Shared", true)
-                                        </div>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div data-bind="with: model" id="new-message">
-                                        <div class="form-group">
-                                            <label>Имя</label>
-                                            <input class="form-control" type="text" value="@User.Identity.Name" name="Author.Name" readonly="readonly">
-                                        </div>
-                                        <div class="form-group" data-bind="validationElement: message">
-                                            <label>Сообщение</label>
-                                            <textarea class="form-control new-message" placeholder="Ваш комментарий..." rows="8" name="Message" data-bind="value: message, executeOnEnter: $parent.post"></textarea>
-                                        </div>
-                                        <p><button class="btn btn-primary" data-bind="click: $parent.post">Опубликовать</button></p>
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            }
-
+            
             <div class="comments-container">
                 <div class="add-comment-form">
                     <h4 class="title-section">
                         Оставить комментарий
                     </h4>
-                    <div class="comment-inputs">
-                        <label>
-                            <input type="text" class="comment-input-name" placeholder="Ваше имя" style="border-radius: 12px !important;">
-                        </label>
-                        <div class="text-container">
-                            <label style="width: 100%;">
-                                <textarea type="text" class="comment-input-text" placeholder="Комментарий"
-                                          maxlength="300" style="border-radius: 12px !important;"></textarea>
-                                <span class="letter-length"><span>0</span>/300</span>
-                            </label>
+
+                    @if (string.IsNullOrEmpty(@User.Identity.Name))
+                    {
+                        <div class="note note-warning">
+                            <h4>Ты не можешь комментировать</h4>
+                            Только зарегистрированые пользователи имеют возможность комментировать работы
+                            <div>
+                                @Html.Action("RegisterPartial", "Shared", true)
+                            </div>
                         </div>
-                    </div>
-                    <button type="submit" class="send-comment-btn" style="border-radius: 12px !important;">Опубликовать комментарий</button>
+                    }
+                    else
+                    {
+                        <div class="comment-inputs">
+                            <label>
+                                <input type="text" class="comment-input-name" placeholder="Ваше имя" style="border-radius: 12px !important;"
+                                       value="@User.Identity.Name" name="Author.Name" readonly="readonly">
+                            </label>
+                            <div class="text-container">
+                                <label style="width: 100%;">
+                                    <textarea type="text" class="comment-input-text" placeholder="Комментарий"
+                                              maxlength="300" style="border-radius: 12px !important;"
+                                              name="Message" data-bind="value: message, executeOnEnter: $parent.post"></textarea>
+                                    <span class="letter-length"><span>0</span>/300</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="send-comment-btn" data-bind="click: $parent.post" style="border-radius: 12px !important;">Опубликовать комментарий</button>
+
+                    }
+
                 </div>
                 <div class="empty-container"></div>
             </div>
+                }
 
             @section More {
             <div class="more-products">

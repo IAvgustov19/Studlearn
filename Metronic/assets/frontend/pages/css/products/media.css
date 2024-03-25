@@ -5,10 +5,6 @@
 }
 
 @media screen and (max-width: 1075px) {
-    .btn {
-        font-size: 12px;
-    }
-
     .product-slider {
         max-width: 420px;
     }
@@ -20,10 +16,6 @@
 
 
 @media screen and (max-width: 980px) {
-    .btn {
-        font-size: 10px;
-    }
-
     .product-title {
         font-size: 24px;
     }
@@ -33,20 +25,18 @@
         flex-basis: 66%;
     }
 
-    .product-block2:hover .btn-buy {
-        flex-basis: 34%;
-    }
-
-    .buy-buttons-container button {
-        font-size: 12px;
-    }
-
     .author-section-text {
         font-size: 16px;
     }
 
     .buy-button-telegram {
         background: #2086FF url("/Metronic/assets/frontend/pages/img/products/telegram.svg") top 50% left 7% no-repeat;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .product-description {
+        width: 95% !important;
     }
 }
 
@@ -77,10 +67,6 @@
 
     .work-description-container {
         flex-wrap: wrap;
-    }
-
-    .product-description {
-        flex-basis: 95%;
     }
 
     .author-work {
@@ -147,10 +133,6 @@
         border-radius: 8px;
     }
 
-    .btn-buy {
-        font-size: 12px;
-    }
-
     .btn-buy-telegram-on-hover {
         font-size: 12px;
     }
@@ -165,7 +147,7 @@
     }
 
     .product-demonstration-container {
-        padding-bottom: 0;
+        padding-bottom: 0 !important;
     }
 
     .archive-slider {
@@ -195,6 +177,10 @@
 
     .comment-input-text {
         width: 97.5%;
+    }
+
+    .product-block2 {
+        margin-bottom: 20px;
     }
 }
 

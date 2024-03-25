@@ -55,13 +55,13 @@
             @section Title {
             <div class="more-products-list-container">
                 <div class="product-breadcrumb">
-                    <a href="@Url.Action("Index", "Home")" class="comeback-to-page" style="border-radius: 8px !important;">Вернуться назад</a>
+                    <a href="@Model.DocumentPublic.Category.Url" class="comeback-to-page" style="border-radius: 8px !important;">Вернуться назад</a>
                     <div class="nav-breadcrumb">
                         <ul class="nav-breadcrumb-list">
-                            <li class="nav-breadcrumb-item" onclick="window.location.href='@Url.Action("Index", "Home")'">Главная страница /</li>
-                            <li class="nav-breadcrumb-item" onclick="window.location.href='@Url.Action("Index", "Catalog")'">Каталог /</li>
-                            <li class="nav-breadcrumb-item">Дипломные работы по программированию /</li>
-                            <li class="nav-breadcrumb-item" style="color: #272F37;">@Model.DocumentPublic.Title</li>
+                            <li class="nav-breadcrumb-item">Главная страница /</li>
+                            <li class="nav-breadcrumb-item">Каталог /</li>
+                            <li class="nav-breadcrumb-item">@Model.DocumentPublic.Type /</li>
+                            <li class="nav-breadcrumb-item">@Model.DocumentPublic.Title</li>
                         </ul>
                     </div>
                 </div>

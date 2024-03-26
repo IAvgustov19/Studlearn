@@ -11,11 +11,11 @@
 .irs-line-right,
 .irs-diapason,
 .irs-slider {
-    background:#E5E5E5;
+    background:#dcf5e3;
 }
 
 .irs-diapason {
-    background: #ffb848;
+    background: #14b33e;
 }
 
 .irs {
@@ -25,40 +25,40 @@
     height: 60px;
 }
 .irs-line {
-    height: 8px; top: 25px;
+    height: 4px; top: 27px;
 }
     .irs-line-left {
-        height: 8px;
+        height: 4px;
     }
     .irs-line-mid {
-        height: 8px;
+        height: 4px;
     }
     .irs-line-right {
-        height: 8px;
+        height: 4px;
     }
 
 .irs-diapason {
-    height: 8px; top: 25px;
+    height: 4px; top: 27px;
 }
 
 .irs-slider {
-    width: 13px;
-    height: 24px;
-    top: 17px;
+    width: 17px;
+    height: 17px;
+    top: 19px;
     border:1px solid #fefefe;
-    background:#777;
+    background:#14b33e;
+    border-radius: 30px !important;
 }
 #irs-active-slider, .irs-slider:hover {
     
 }
 
 .irs-min, .irs-max {
-   color: #999;
+   color: #fff;
     font-size: 10px;
     line-height: 1.333;
     text-shadow: none;
     top: 0; padding: 1px 3px;
-    background: rgba(0,0,0,0.1);
     border-radius: 0;
 }
 .lt-ie9 .irs-min, .lt-ie9 .irs-max {
@@ -66,12 +66,11 @@
 }
 
 .irs-from, .irs-to, .irs-single {
-    color: #fff;
     font-size: 10px; line-height: 1.333;
     text-shadow: none;
     padding: 1px 5px;
-    background: rgba(0,0,0,0.3);
-    border-radius: 3px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 3px !important;
 }
 .lt-ie9 .irs-from, .lt-ie9 .irs-to, .lt-ie9 .irs-single {
     background: #999;

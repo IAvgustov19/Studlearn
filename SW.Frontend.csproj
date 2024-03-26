@@ -544,10 +544,12 @@
     <Content Include="Metronic\assets\frontend\pages\css\authors\Media.css" />
     <Content Include="Metronic\assets\frontend\pages\css\blog.css" />
     <Content Include="Metronic\assets\frontend\pages\css\categories.css" />
+    <Content Include="Metronic\assets\frontend\pages\css\form\mark.png" />
     <Content Include="Metronic\assets\frontend\pages\css\common.css" />
     <Content Include="Metronic\assets\frontend\pages\css\contacts.css" />
     <Content Include="Metronic\assets\frontend\pages\css\footer\footer.css" />
     <Content Include="Metronic\assets\frontend\pages\css\footer\media.css" />
+    <Content Include="Metronic\assets\frontend\pages\css\form\form.css" />
     <Content Include="Metronic\assets\frontend\pages\css\gallery.css" />
     <Content Include="Metronic\assets\frontend\pages\css\mainPage.css" />
     <Content Include="Metronic\assets\frontend\pages\css\works.css" />

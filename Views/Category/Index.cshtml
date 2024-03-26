@@ -22,7 +22,7 @@
     }
     <link href="~/metronic/assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.css" rel="stylesheet" type="text/css">
     <link href="~/metronic/assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.Metronic.css" rel="stylesheet" type="text/css">
-    <link href="~/metronic/assets/global/plugins/icheck/skins/flat/_all.css" rel="stylesheet" type="text/css">
+    <link href="~/metronic/assets/frontend/pages/css/form/form.css" rel="stylesheet" type="text/css">
     <link href="~/metronic/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
     <style>
         .dataTable a, .dataTable a:hover {
@@ -189,39 +189,32 @@
 }
 @section RightSidebar {
     @*<div class="no-top-space category-rightbar-h2">Фильтр</div><br />*@
-    <form action="/sections/@(Model.SectionModel.Slug)/@(ViewBag.CategorySlug)" id="search-form" class="content-search-view2 hidden-xs @(Request.Browser.IsMobileDevice?"display-none":"")" style="padding: 10px;">
+    <form action="/sections/@(Model.SectionModel.Slug)/@(ViewBag.CategorySlug)" id="search-form" class="content-search-view3 hidden-xs @(Request.Browser.IsMobileDevice?"display-none":"")" style="padding: 10px;">
         <div class="input-group" style="display:block;">
             @*<div class="category-rightbar-h3">Период</div>
-                <div class="row" style="margin:0;">
-                    <select class="form-control" name="period" id="period">
-                        @foreach (var period in Model.Filter.Periods)
-                        {
-                            <option value="@period" selected="@(period == @Model.Filter.SelectedPeriod)">@Html.Encode(SW.Resources.Frontend.Filter.ResourceManager.GetString(period.ToString()))</option>
-                        }
-                    </select>
-                </div>*@
-            <div class="category-rightbar-h3">Цена</div>
-            <div class="input-group" style="padding: 5px 0 0 0;">
-                <div class="icheck-list">
-                    <label style="position: relative;">
-                        <input class="icheck" type="checkbox" id="free" name="free" data-checkbox="icheckbox_flat-orange" value="true" checked="@Model.Filter.Free" /> Только Бесплатные
-                    </label>
-                </div>
-            </div>
+        <div class="row" style="margin:0;">
+            <select class="form-control" name="period" id="period">
+                @foreach (var period in Model.Filter.Periods)
+                {
+                    <option value="@period" selected="@(period == @Model.Filter.SelectedPeriod)">@Html.Encode(SW.Resources.Frontend.Filter.ResourceManager.GetString(period.ToString()))</option>
+                }
+            </select>
+        </div>*@
+            <div class="category-rightbar-h3 category-rightbar-txt">Стоимость</div>
             <div class="price" style="margin-top: 5px;">
                 <input type="text" id="min" name="minmax" class="form-control range" value="@Html.Raw(Model.Filter.PriceRangeMin + ";" + Model.Filter.PriceRangeMax)" />
             </div>
-            <div class="input-group" style="padding: 5px 0 0 0;">
+            <div class="input-group only-free-txt">
                 <div class="icheck-list">
-                    <label style="position: relative;">
-                        <input class="icheck" type="checkbox" id="recent" name="recent" data-checkbox="icheckbox_flat-orange" value="true" checked="@Model.Filter.Recent" /> Только Новые
+                    <label style="position: relative;" class="category-rightbar-txt">
+                        <input class="icheck" type="checkbox" id="free" name="free" data-checkbox="icheckbox_flat-custom" value="true" checked="@Model.Filter.Free" /> Только бесплатные
                     </label>
                 </div>
             </div>
-            <div class="input-group" style="padding: 5px 0 0 0;">
+            <div class="input-group only-recent-txt">
                 <div class="icheck-list">
-                    <label style="position: relative;">
-                        <input class="icheck" type="checkbox" id="unbuyed" name="unbuyed" data-checkbox="icheckbox_flat-orange" value="true" checked="@Model.Filter.Unbuyed" /> Только Непокупавшиеся
+                    <label style="position: relative;" class="category-rightbar-txt">
+                        <input class="icheck" type="checkbox" id="recent" name="recent" data-checkbox="icheckbox_flat-custom" value="true" checked="@Model.Filter.Recent" /> Только новые работы
                     </label>
                 </div>
             </div>
@@ -230,15 +223,15 @@
             </div>
             @if (Model.Types.Count() > 0)
             {
-                <div class="category-rightbar-h3">По типу</div>
+                <div class="category-rightbar-h3 category-rightbar-txt section-title">Выбор типа</div>
                 <div class="input-group">
                     <div class="icheck-list">
                         @foreach (var t in Model.Types.OrderBy(x => x.Title))
                         {
                             var color = "icheckbox_flat";
                             color += string.IsNullOrEmpty(t.Color) || t.Color == "black" ? string.Empty : "-" + t.Color;
-                            <label style="position: relative;">
-                                <input class="icheck" type="checkbox" data-checkbox="@(color)" name="type" value="@t.TypeId" checked="@(Model.Filter.Types != null ? Model.Filter.Types.Contains(t.TypeId) : true)" /> @t.Title (@t.DocumentsCount)
+                            <label style="position: relative;" class="category-rightbar-txt">
+                                <input class="icheck" type="checkbox" data-checkbox="icheckbox_flat-custom" name="type" value="@t.TypeId" checked="@(Model.Filter.Types != null ? Model.Filter.Types.Contains(t.TypeId) : true)" /> @t.Title
                             </label>
                         }
                     </div>

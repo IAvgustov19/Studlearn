@@ -37,21 +37,29 @@
 @section styles {
     <link href="~/metronic/assets/frontend/pages/css/authors/Media.css" rel="stylesheet" type="text/css" />
     <link href="~/metronic/assets/frontend/pages/css/authors/Authors.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/frontend/pages/css/products/media.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/frontend/pages/css/products/product.css" rel="stylesheet" type="text/css" />
 };
 
 <div class="workers-block">
     <div class="workers custom-container">
-        <div class="navigation">
-            <a  href="@Url.Action("Index", "Home")" class="back-link"><span>Вернуться назад</span></a>
-            <div class="navigraton-directory">
-                <span class="navigation-item">Главная страница</span> / <span class="navigation-item current">Исполнители</span>
+        <div class="more-products-list-container">
+            <div class="product-breadcrumb">
+                <a href="@Url.Action("Index", "Home")" class="comeback-to-page" style="border-radius: 8px !important;">Вернуться назад</a>
+                <div class="nav-breadcrumb">
+                    <ul class="nav-breadcrumb-list">
+                        <li class="nav-breadcrumb-item" onclick="window.location.href='@Url.Action("Index", "Home")'">Главная страница /</li>
+                        <li class="nav-breadcrumb-item" style="color: #272F37 !important;">Исполнители</li>
+                    </ul>
+                </div>
             </div>
+            <div style="width: 1px;"></div>
         </div>
         <h1>ИСПОЛНИТЕЛИ</h1>
         <div class="workers-container">
             @foreach (var author in Model.Authors.Where(x => x.WorksPublishedCount > 0))
             {
-                    @Html.Partial("_AuthorPreviewPartial", author)
+                @Html.Partial("_AuthorPreviewPartial", author)
             }
         </div>
         <br />

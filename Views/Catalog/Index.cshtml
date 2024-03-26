@@ -12,17 +12,23 @@
 @section styles {
     <link href="~/metronic/assets/frontend/pages/css/categories.css" rel="stylesheet" type="text/css" />
     <link href="~/metronic/assets/frontend/pages/css/common.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/frontend/pages/css/products/media.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/frontend/pages/css/products/product.css" rel="stylesheet" type="text/css" />
 };
 
 <div class="main-background">
     <div class="container">
-        <div class="navigation">
-            <a href="@Url.Action("Index", "Home")" class="back-link"><span>Вернуться назад</span></a>
-            <div class="navigraton-directory">
-                <span class="navigation-item">Главная страница</span> / <span class="navigation-item current">
-                    О нас
-                </span>
+        <div class="more-products-list-container">
+            <div class="product-breadcrumb">
+                <a href="@Url.Action("Index", "Home")" class="comeback-to-page" style="border-radius: 8px !important;">Вернуться назад</a>
+                <div class="nav-breadcrumb">
+                    <ul class="nav-breadcrumb-list">
+                        <li class="nav-breadcrumb-item" onclick="window.location.href='@Url.Action("Index", "Home")'">Главная страница /</li>
+                        <li class="nav-breadcrumb-item" style="color: #272F37 !important;">Каталог</li>
+                    </ul>
+                </div>
             </div>
+            <div style="width: 1px;"></div>
         </div>
         <h1>КАТАЛОГ</h1>
         <div class="categories">
@@ -34,7 +40,7 @@
                         <span>
                             @if (parent.Title == "Программирование")
                             {
-                               <img src="~/Metronic/assets/frontend/pages/img/ph_code.png"/> <span>Языки программирования</span>
+                                <img src="~/Metronic/assets/frontend/pages/img/ph_code.png" /> <span>Языки программирования</span>
                             }
                             else
                             {
@@ -54,7 +60,7 @@
                 }
             </div>
             <div class="category">
-                <div class="category-header"><span><img src="~/Metronic/assets/frontend/pages/img/ic_round-bookmark.png"/>Типы работ</span><span>@sectionTypes.Sum(it => it.DocumentsCount)</span></div>
+                <div class="category-header"><span><img src="~/Metronic/assets/frontend/pages/img/ic_round-bookmark.png" />Типы работ</span><span>@sectionTypes.Sum(it => it.DocumentsCount)</span></div>
                 <div class="category-content" style="grid-template-rows: repeat(@(sectionTypes.Count()>10?10:sectionTypes.Count()), 1fr);">
 
                     @foreach (var item in sectionTypes)
@@ -78,7 +84,7 @@
                 </div>
             </div>
             <div class="category">
-                <div class="category-header"><span><img src="~/Metronic/assets/frontend/pages/img/ion_book-outline.png"/>Темы работ</span><span>@themes.Sum(it => it.DocumentsCount)</span></div>
+                <div class="category-header"><span><img src="~/Metronic/assets/frontend/pages/img/ion_book-outline.png" />Темы работ</span><span>@themes.Sum(it => it.DocumentsCount)</span></div>
                 <div class="category-content" style="grid-template-rows: repeat(@(themes.Count()>10?10:themes.Count()), 1fr);">
                     @foreach (var item in themes)
                     {

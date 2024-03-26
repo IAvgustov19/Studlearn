@@ -51,10 +51,10 @@
     line-height: 16px;
     background-color: #F0F1F8;
     padding: 2px 4px 2px 4px;
-    border-radius: 4px;
+    border-radius: 4px !important;
     display: flex;
     align-items: center;
-    max-width: 45px;
+    max-width: 55px;
     color: #5D638E;
     margin-right: 5px;
 }

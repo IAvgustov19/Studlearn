@@ -1,14 +1,22 @@
 ﻿@{
     <link href="~/metronic/assets/frontend/pages/css/contacts.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/frontend/pages/css/products/media.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/frontend/pages/css/products/product.css" rel="stylesheet" type="text/css" />
 }
 
 <div class="contacts">
     <div class="custom-container">
-        <div class="navigation">
-            <a href="#" class="back-link"><span>Вернуться назад</span></a>
-            <div class="navigraton-directory">
-                <span class="navigation-item">Главная страница</span> / <span class="navigation-item current">Контакты</span>
+        <div class="more-products-list-container">
+            <div class="product-breadcrumb">
+                <a href="@Url.Action("Index", "Home")" class="comeback-to-page" style="border-radius: 8px !important;">Вернуться назад</a>
+                <div class="nav-breadcrumb">
+                    <ul class="nav-breadcrumb-list">
+                        <li class="nav-breadcrumb-item" onclick="window.location.href='@Url.Action("Index", "Home")'">Главная страница /</li>
+                        <li class="nav-breadcrumb-item" style="color: #272F37 !important;">Контакты</li>
+                    </ul>
+                </div>
             </div>
+            <div style="width: 1px;"></div>
         </div>
         <h1 style="font-weight:bold">КОНТАКТЫ</h1>
         <div class="contacts-blocks">

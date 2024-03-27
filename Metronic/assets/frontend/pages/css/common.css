@@ -87,10 +87,11 @@
         align-items: center;
         margin-right: 8px;
         background-color: white;
+        cursor: pointer;
     }
 
         .pagination-list > li:hover {
-            background-color: #F0F1F8 !important;
+            background-color: #F0F1F8;
         }
 
             .pagination-list > li:hover > a {
@@ -105,6 +106,7 @@
 .current-page {
     background-color: #272F37 !important;
     color: white;
+    cursor: default !important;
 }
 
     .current-page > a {

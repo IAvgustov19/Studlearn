@@ -21,7 +21,7 @@ namespace SW.Frontend.Helpers
 
             if (model.CurrentPage - 3 > 1)
             {
-                sb.AppendFormat("<li><a href=\"{0}{1}\">1</a></li>", url.Action(actionName, controllerName, new { q = model.QueryString }), string.IsNullOrEmpty(additionalQuery) ? "" : "&" + additionalQuery);
+                sb.AppendFormat("<li onclick=\"window.location.href=\'{0}{1}\'\">1</li>", url.Action(actionName, controllerName, new { q = model.QueryString }), string.IsNullOrEmpty(additionalQuery) ? "" : "&" + additionalQuery);
                 sb.Append("<li><span>...</span></li>");
             }
 
@@ -46,10 +46,10 @@ namespace SW.Frontend.Helpers
                             {
                                 link += string.IsNullOrEmpty(additionalQuery) ? "" : ("?" + additionalQuery);
                             }
-                            sb.AppendFormat("<li><a href=\"{0}\">{1}</a></li>", link, i);
+                            sb.AppendFormat("<li onclick=\"window.location.href=\'{0}\'\">{1}</li>", link, i);
                         }
                         else
-                            sb.AppendFormat("<li><a href=\"{0}{2}\">{1}</a></li>", url.Action(actionName, controllerName, new { q = model.QueryString, page = i }), i, string.IsNullOrEmpty(additionalQuery) ? "" : "&" + additionalQuery);
+                            sb.AppendFormat("<li onclick=\"window.location.href=\'{0}{2}\'\">{1}</li>", url.Action(actionName, controllerName, new { q = model.QueryString, page = i }), i, string.IsNullOrEmpty(additionalQuery) ? "" : "&" + additionalQuery);
                     }
                 }
 
@@ -58,7 +58,7 @@ namespace SW.Frontend.Helpers
             if (model.LastPage - model.CurrentPage > 3)
             {
                 sb.Append("<li><span class=\"bg-reset\">...</span></li>");
-                sb.AppendFormat("<li><a href=\"{0}{2}\">{1}</a></li>", url.Action(actionName, controllerName, new { q = model.QueryString, page = model.LastPage }), model.LastPage, string.IsNullOrEmpty(additionalQuery) ? "" : "&" + additionalQuery);
+                sb.AppendFormat("<li onclick=\"window.location.href=\'{0}{2}\'\">{1}</li>", url.Action(actionName, controllerName, new { q = model.QueryString, page = model.LastPage }), model.LastPage, string.IsNullOrEmpty(additionalQuery) ? "" : "&" + additionalQuery);
             }
             sb.Append("</ul></div>");
 

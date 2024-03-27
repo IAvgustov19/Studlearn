@@ -39,6 +39,8 @@
     background: #FFF;
     padding: 20px;
     margin: 0 0 20px;
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
+    border-radius: 12px !important;
 }
 
 .icheckbox_flat,
@@ -370,12 +372,14 @@
     height: 20px;
     background: none;
     border: 1px solid;
+    border-radius: 4px !important;
     cursor: pointer;
 }
     .icheckbox_flat-custom.checked {
         background: url(mark.png) no-repeat;
-        background-position-x: -2px;
-        background-position-y: -2px;
+        background-position-x: 1px;
+        background-position-y: 2px;
+        background-size: 91%;
     }
     .icheckbox_flat-custom.disabled {
         cursor: default;

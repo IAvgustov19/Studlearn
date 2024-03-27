@@ -4,6 +4,7 @@
 @model SW.Frontend.Models.CategoryViewModel
 @{
     int type; int.TryParse(Request.QueryString["type"] ?? "0", out type);
+    string _url = string.Format("{0}/{1}", Model.SectionModel.Slug, ViewBag.CategoryTitle);
     ViewBag.Title = ViewBag.CategorySEOTitle + (Model.PagerModel.CurrentPage > 1 ? " Страница " + Model.PagerModel.CurrentPage : "");// Seo.GetCategoryTitle(ViewBag.CategoryTitle, Model.PagerModel.CurrentPage, type);
     ViewBag.Description = ViewBag.CategorySEODescription + (Model.PagerModel.CurrentPage > 1 ? " Страница " + Model.PagerModel.CurrentPage : "");//Seo.GetCategoryDescription(ViewBag.CategoryTitle, Model.PagerModel.CurrentPage, type);
     Layout = "~/Views/Shared/_TwoColumnsLayout.cshtml";
@@ -25,29 +26,43 @@
     <link href="~/metronic/assets/frontend/pages/css/form/form.css" rel="stylesheet" type="text/css">
     <link href="~/metronic/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
     <link href="~/Metronic/assets/frontend/pages/css/works.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/frontend/pages/css/products/media.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/frontend/pages/css/products/product.css" rel="stylesheet" type="text/css" />
     <style>
         .dataTable a, .dataTable a:hover {
             color: #2165df;
         }
+
+        .main-page-category-item {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: 0;
+            text-align: center;
+            background: #FFF;
+            color: #5D638E;
+            cursor: pointer;
+        }
+
+            .main-page-category-item:hover {
+                color: #FFF;
+                background: #4AB22D;
+            }
     </style>
     @Html.PrevNextLinksBlock(null, "Category", Model.PagerModel, (Model.Filter.ToString() + "&" + Model.SorterModel.ToString()).Trim('&'))
 }
 @section RichHeader {
-    <div class="container">
-        <ul class="breadcrumb">
-            <li>
-                <a title="Главная" href="/">Главная</a>
-            </li>
-            <li>
-                <a title="Каталог" href="/sections">Каталог</a>
-            </li>
-            <li>
-                <a title="@Model.SectionModel.Title" href="/sections/@Model.SectionModel.Slug">@Model.SectionModel.Title</a>
-            </li>
-            <li class="active">
-                <text title="@ViewBag.CategoryTitle">@ViewBag.CategoryTitle</text>
-            </li>
-        </ul>
+    <div class="product-breadcrumb">
+        <a href="/sections/@Model.SectionModel.Slug" class="comeback-to-page" style="border-radius: 8px !important;">Вернуться назад</a>
+        <div class="nav-breadcrumb">
+            <ul class="nav-breadcrumb-list">
+                <li class="nav-breadcrumb-item" onclick="window.location.href='@Url.Action("Index", "Home")'">Главная страница /</li>
+                <li class="nav-breadcrumb-item" onclick="window.location.href='@Url.Action("Index", "Sections")'">Каталог /</li>
+                <li class="nav-breadcrumb-item" onclick="window.location.href='/sections/@Model.SectionModel.Slug'">@Model.SectionModel.Title /</li>
+                <li class="nav-breadcrumb-item" style="color: #272F37 !important;">@ViewBag.CategoryTitle</li>
+            </ul>
+        </div>
     </div>
 }
 @section LeftSidebar {
@@ -78,13 +93,13 @@
         </div>
         <br />*@
 
-    <div>
-        <p>Всего работ <strong>@Model.Documents.Count()</strong></p>
-    </div>
     <div class="recent-work margin-bottom-40">
         @{
             Html.RenderAction("_ThemesListPartial", "Themes", new { categoryId = ViewBag.CategoryId });
         }
+    </div>
+    <div>
+        <p><strong>Всего найдено: @Model.Documents.Count()</strong></p>
     </div>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
     <div class="blog-posts">
@@ -193,14 +208,14 @@
     <form action="/sections/@(Model.SectionModel.Slug)/@(ViewBag.CategorySlug)" id="search-form" class="content-search-view3 hidden-xs @(Request.Browser.IsMobileDevice?"display-none":"")" style="padding: 10px;">
         <div class="input-group" style="display:block;">
             @*<div class="category-rightbar-h3">Период</div>
-        <div class="row" style="margin:0;">
-            <select class="form-control" name="period" id="period">
-                @foreach (var period in Model.Filter.Periods)
-                {
-                    <option value="@period" selected="@(period == @Model.Filter.SelectedPeriod)">@Html.Encode(SW.Resources.Frontend.Filter.ResourceManager.GetString(period.ToString()))</option>
-                }
-            </select>
-        </div>*@
+                <div class="row" style="margin:0;">
+                    <select class="form-control" name="period" id="period">
+                        @foreach (var period in Model.Filter.Periods)
+                        {
+                            <option value="@period" selected="@(period == @Model.Filter.SelectedPeriod)">@Html.Encode(SW.Resources.Frontend.Filter.ResourceManager.GetString(period.ToString()))</option>
+                        }
+                    </select>
+                </div>*@
             <div class="category-rightbar-h3 category-rightbar-txt">Стоимость</div>
             <div class="price" style="margin-top: 5px;">
                 <input type="text" id="min" name="minmax" class="form-control range" value="@Html.Raw(Model.Filter.PriceRangeMin + ";" + Model.Filter.PriceRangeMax)" />
@@ -234,11 +249,12 @@
                             <label style="position: relative;" class="category-rightbar-txt">
                                 <input class="icheck" type="checkbox" data-checkbox="icheckbox_flat-custom" name="type" value="@t.TypeId" checked="@(Model.Filter.Types != null ? Model.Filter.Types.Contains(t.TypeId) : true)" /> @t.Title
                             </label>
+                            @*<span style="background-color: @t.Color.ToLower(); width: 10px; height: 10px; border-radius: 3px;"></span>*@
                         }
                     </div>
                 </div>
             }
-            <div class="row" style="margin:10px 0 0 0 ;">
+            <div class="row" style="margin:20px 0 0 0 ;">
                 <div class="col-md-6" style="padding: 0 5px 0 0;">
                     <button type="submit" class="btn btn-primary btn-block">@Html.Encode(SW.Resources.Frontend.General.Apply)</button>
                 </div>
@@ -258,13 +274,8 @@
             }
         </div>
     </form>
-    @Html.Action("Siblings", new { id = Model.Filter.Category.FirstOrDefault() })
-    @if (!Request.Browser.IsMobileDevice)
-    {
-        <div class="hidden-xs">
-            @Html.Action("PopularAuthors", new { id = Model.Filter.Category.FirstOrDefault() })
-        </div>
-    }
+    <br />
+    @Html.CustomPager(_url, "Sections", Model.PagerModel)
 }
 @section JsCode {
     <script type="application/ld+json">

@@ -1140,11 +1140,12 @@ Customized Bootstrap Buttons
 .btn-default {
   color: #333333;
   background-color: white;
+  border-radius: 12px !important;
   border-color: #cccccc;
 }
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active {
   color: #333333;
-  background-color: #ebebeb;
+  background-color: white;
   border-color: #b3b3b3;
 }
 .open .btn-default.dropdown-toggle {

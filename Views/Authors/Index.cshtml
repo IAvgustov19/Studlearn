@@ -55,15 +55,21 @@
             </div>
             <div style="width: 1px;"></div>
         </div>
-        <h1>ИСПОЛНИТЕЛИ</h1>
-        <div class="workers-container">
-            @foreach (var author in Model.Authors.Where(x => x.WorksPublishedCount > 0))
-            {
-                @Html.Partial("_AuthorPreviewPartial", author)
-            }
+        <div style="display: flex; justify-content: center;">
+            <h1 style="max-width: 1222px; width: 99%;">ИСПОЛНИТЕЛИ</h1>
+            <div class="empty-container" style="width: 65px;"></div>
         </div>
-        <br />
-        @Html.CustomPager("Index", "Authors", Model.PagerModel)
-        <br />
+            <div style="display: flex; justify-content: center;">
+                <div class="workers-container" style="max-width: 1315px;">
+                    @foreach (var author in Model.Authors.Where(x => x.WorksPublishedCount > 0))
+                    {
+                        @Html.Partial("_AuthorPreviewPartial", author)
+                    }
+                </div>
+                <div class="empty-container" style="width: 65px;"></div>
+            </div>
+            <br />
+            @Html.CustomPager("Index", "Authors", Model.PagerModel)
+            <br />
+        </div>
     </div>
-</div>

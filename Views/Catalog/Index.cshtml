@@ -51,7 +51,7 @@
                     <div class="category-content" style="grid-template-rows: repeat(@(parent.CategoriesModels.Count()>10?10:parent.CategoriesModels.Count()), 1fr);">
                         @foreach (var category in parent.CategoriesModels)
                         {
-                            <a class="category-item" href="/catalog/@parent.Slug/@category.Url.Replace("/category/","")">
+                            <a class="category-item" href="/sections/@parent.Slug/@category.Url.Replace("/category/","")">
                                 <span>@category.Title</span>
                                 <span>(@category.Count)</span>
                             </a>
@@ -78,7 +78,7 @@
                         {
                             continue;
                         }
-                        <a href="/catalog/programmirovanie/@item.Slug" class="category-item"><span class="category-name">@sectionTypeTitle</span><span class="category-count">@item.DocumentsCount</span></a>
+                        <a href="/sections/programmirovanie/@item.Slug" class="category-item"><span class="category-name">@sectionTypeTitle</span><span class="category-count">@item.DocumentsCount</span></a>
                     }
 
                 </div>
@@ -88,7 +88,7 @@
                 <div class="category-content" style="grid-template-rows: repeat(@(themes.Count()>10?10:themes.Count()), 1fr);">
                     @foreach (var item in themes)
                     {
-                        <a class="category-item" href="/catalog/@item.Slug">
+                        <a class="category-item" href="/sections/@item.Slug">
                             <span class="category-name">@item.Name</span><span class="category-count">(@item.DocumentsCount)</span>
                         </a>
                     }

@@ -24,6 +24,7 @@
     <link href="~/metronic/assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.Metronic.css" rel="stylesheet" type="text/css">
     <link href="~/metronic/assets/frontend/pages/css/form/form.css" rel="stylesheet" type="text/css">
     <link href="~/metronic/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Metronic/assets/frontend/pages/css/works.css" rel="stylesheet" type="text/css" />
     <style>
         .dataTable a, .dataTable a:hover {
             color: #2165df;
@@ -87,9 +88,9 @@
     </div>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
     <div class="blog-posts">
-        <table class="table">
+        <table>
             <thead>
-                <tr>
+                <tr class="table-header">
                     <th style="border-bottom:0px;@(Request.Browser.IsMobileDevice?"display:none;":"")">Тип</th>
                     <th style="border-bottom:0px;">Название</th>
                     <th style="border-bottom:0px;@(Request.Browser.IsMobileDevice?"display:none;":"")">Рейтинг</th>
@@ -107,7 +108,7 @@
                     <tr>
                         <td style="@(Request.Browser.IsMobileDevice?"display:none;":"")"><span class="label @(color)">@document.TypeTitle</span></td>
                         <td>
-                            <a href="@document.Url" target="_blank">@document.Title</a>
+                            <a href="@document.Url" target="_blank" style="color: #3e4d5c;">@document.Title</a>
                             @if (document.CreatedAt >= minDate)
                             {
                                 <span class="badge badge-success" style="margin-left: 5px;">new</span>
